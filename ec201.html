@@ -246,10 +246,212 @@
         }
     }
 
+    
+    /* Dynamic N-in-1 Layout System */
+    .paper-layout-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 6px 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .paper-layout-bar .bar-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: #93c5fd;
+        margin-right: 4px;
+    }
+    .paper-layout-bar .lay-btn {
+        background: #334155;
+        color: #f1f5f9;
+        border: 1px solid #475569;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+    .paper-layout-bar .lay-btn:hover {
+        background: #475569;
+        color: #fff;
+    }
+    .paper-layout-bar .lay-btn.active {
+        background: #2563eb;
+        border-color: #3b82f6;
+        color: #fff;
+    }
+    .paper-layout-bar .lay-print {
+        margin-left: auto;
+        background: #059669;
+        border-color: #10b981;
+    }
+    .paper-layout-bar .lay-print:hover {
+        background: #047857;
+    }
+
+    /* Layout 1 (Default Normal Full Page) */
+    body.layout-1 .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        display: block;
+    }
+    body.layout-1 .qa-block {
+        font-size: 15px;
+        line-height: 1.5;
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    body.layout-1 .q-line {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
+    }
+    body.layout-1 .answer {
+        font-size: 15px;
+        color: #0000cd;
+    }
+
+    /* Layout 2 (2 in 1: Dual Column) */
+    body.layout-2 .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 12px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 14px !important;
+        align-items: start !important;
+    }
+    body.layout-2 .qa-block {
+        font-size: 12.5px !important;
+        line-height: 1.38 !important;
+        padding: 10px 14px !important;
+        margin-bottom: 0 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px !important;
+        background: #fff !important;
+        break-inside: avoid !important;
+    }
+    body.layout-2 .q-line {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #000 !important;
+    }
+    body.layout-2 .answer {
+        font-size: 12.5px !important;
+        color: #0000cd !important;
+    }
+    body.layout-2 pre {
+        font-size: 10.5px !important;
+        padding: 6px 8px !important;
+    }
+
+    /* Layout 4 (4 in 1: Compact Grid 2x2) */
+    body.layout-4 .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 8px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        align-items: start !important;
+    }
+    body.layout-4 .qa-block {
+        font-size: 11px !important;
+        line-height: 1.32 !important;
+        padding: 8px 10px !important;
+        margin-bottom: 0 !important;
+        border: 1px solid #94a3b8 !important;
+        border-radius: 5px !important;
+        background: #fff !important;
+        break-inside: avoid !important;
+    }
+    body.layout-4 .q-line {
+        font-size: 11.5px !important;
+        font-weight: 700 !important;
+        color: #000 !important;
+    }
+    body.layout-4 .answer {
+        font-size: 11px !important;
+        color: #0000cd !important;
+    }
+    body.layout-4 pre {
+        font-size: 9.5px !important;
+        line-height: 1.2 !important;
+        padding: 4px 6px !important;
+    }
+
+    /* Layout 6 (6 in 1: Pocket 3-Column Grid) */
+    body.layout-6 .container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 6px !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        align-items: start !important;
+    }
+    body.layout-6 .qa-block {
+        font-size: 9.5px !important;
+        line-height: 1.25 !important;
+        padding: 6px 8px !important;
+        margin-bottom: 0 !important;
+        border: 1px solid #94a3b8 !important;
+        border-radius: 4px !important;
+        background: #fff !important;
+        break-inside: avoid !important;
+    }
+    body.layout-6 .q-line {
+        font-size: 10px !important;
+        font-weight: 700 !important;
+        color: #000 !important;
+    }
+    body.layout-6 .answer {
+        font-size: 9.5px !important;
+        color: #0000cd !important;
+    }
+    body.layout-6 pre {
+        font-size: 8.5px !important;
+        line-height: 1.18 !important;
+        padding: 4px 6px !important;
+    }
+    body.layout-6 table {
+        font-size: 8.5px !important;
+    }
+
+    @media print {
+        .paper-layout-bar {
+            display: none !important;
+        }
+        body.layout-2 { page: landscape; }
+        body.layout-6 { page: landscape; }
+    }
+
     </style>
 </head>
 
-<body>
+<body class="layout-1">
+
+    <div id="paper-layout-bar" class="paper-layout-bar">
+        <span class="bar-title">📐 Layout:</span>
+        <button class="lay-btn active" id="lay-btn-1" onclick="switchPaperLayout('1')">📄 1-in-1 (Normal)</button>
+        <button class="lay-btn" id="lay-btn-2" onclick="switchPaperLayout('2')">📑 2-in-1 (Dual)</button>
+        <button class="lay-btn" id="lay-btn-4" onclick="switchPaperLayout('4')">📑 4-in-1 (Compact)</button>
+        <button class="lay-btn" id="lay-btn-6" onclick="switchPaperLayout('6')">📑 6-in-1 (Pocket)</button>
+        <button class="lay-btn lay-print" onclick="window.print()">🖨️ Print</button>
+    </div>
+
 
     <h1>EC-201 — PROGRAMMING IN C &amp; MATLAB</h1>
     <h2>M.Sc. Mathematics (Honours) — Question Bank with Complete Solutions</h2>
@@ -3940,6 +4142,22 @@ switch lower(unit)
 end</code></pre>
         </div>
     </div>
+
+<script>
+function switchPaperLayout(mode) {
+    document.body.classList.remove('layout-1', 'layout-2', 'layout-4', 'layout-6');
+    document.body.classList.add('layout-' + mode);
+    document.querySelectorAll('.lay-btn').forEach(function(b) { b.classList.remove('active'); });
+    var btn = document.getElementById('lay-btn-' + mode);
+    if (btn) btn.classList.add('active');
+}
+window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'SET_LAYOUT') {
+        switchPaperLayout(e.data.mode);
+    }
+});
+</script>
+
 </body>
 
 </html>

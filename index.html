@@ -7,7 +7,7 @@
     <title>M.Sc. Mathematics — Semester II Exam Papers Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -39,7 +39,7 @@
         header {
             background-color: var(--header-bg);
             color: var(--header-text);
-            padding: 10px 20px;
+            padding: 8px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -64,7 +64,7 @@
         }
 
         .brand h1 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             line-height: 1.2;
         }
@@ -74,41 +74,165 @@
             color: #94a3b8;
         }
 
-        /* Action Buttons */
-        .header-actions {
+        /* Interactive Layout Controller Bar */
+        .layout-controller-bar {
+            background: #0f172a;
+            color: #fff;
+            padding: 7px 16px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            border-bottom: 2px solid #3b82f6;
+            flex-wrap: wrap;
+            gap: 8px;
+            z-index: 20;
         }
 
-        .btn {
-            background: #334155;
-            color: #f1f5f9;
-            border: 1px solid #475569;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
+        .ctrl-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .ctrl-title {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #93c5fd;
+        }
+
+        .layout-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lay-toggle {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #334155;
+            padding: 4px 9px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
+            gap: 4px;
+            transition: all 0.15s;
+        }
+
+        .lay-toggle:hover {
+            background: #334155;
+            color: #fff;
+        }
+
+        .lay-toggle.active {
+            background: #2563eb;
+            border-color: #3b82f6;
+            color: #fff;
+            box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+        }
+
+        .lay-toggle .tag {
+            background: rgba(255, 255, 255, 0.18);
+            font-size: 9.5px;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .ctrl-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn-ctrl {
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.15s;
             text-decoration: none;
         }
 
-        .btn:hover {
+        .btn-print {
+            background: #059669;
+            color: #fff;
+            border-color: #10b981;
+        }
+
+        .btn-print:hover {
+            background: #047857;
+        }
+
+        .btn-download {
+            background: #2563eb;
+            color: #fff;
+            border-color: #3b82f6;
+        }
+
+        .btn-download:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-tab {
+            background: #334155;
+            color: #f1f5f9;
+            border-color: #475569;
+        }
+
+        .btn-tab:hover {
             background: #475569;
             color: #fff;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            border-color: var(--primary);
+        .dropdown-wrapper {
+            position: relative;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-hover);
+        .download-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 4px;
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 6px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+            min-width: 220px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .download-dropdown.show {
+            display: block;
+        }
+
+        .download-dropdown a {
+            display: block;
+            padding: 8px 14px;
+            color: #e2e8f0;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid #334155;
+            transition: background 0.15s;
+        }
+
+        .download-dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .download-dropdown a:hover {
+            background: #2563eb;
+            color: #fff;
         }
 
         /* Tab Navigation Bar */
@@ -125,8 +249,8 @@
         .tab-btn {
             background: none;
             border: none;
-            padding: 12px 18px;
-            font-size: 14px;
+            padding: 10px 16px;
+            font-size: 13.5px;
             font-weight: 600;
             color: #64748b;
             cursor: pointer;
@@ -134,7 +258,7 @@
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
             white-space: nowrap;
         }
 
@@ -254,41 +378,50 @@
             </div>
         </div>
 
-        <div class="header-actions">
-            <button class="btn" style="background: #059669; border-color: #047857; font-weight: 700; color: #fff;" onclick="download6in1PDF()" title="Download 6-pages-in-1-sheet PDF for current paper">
-                📥 6-in-1 PDF (6 Pages/Sheet)
-            </button>
-            <button class="btn" onclick="printCurrentPaper()" title="Print currently active paper">
-                🖨️ Print View
-            </button>
-            <button class="btn" onclick="openCurrentInNewTab()" title="Open currently active paper in new browser tab">
-                ↗ Separate Tab
-            </button>
-            <button class="btn btn-primary" onclick="switchTab('multi')" title="View all 3 papers together side-by-side">
-                📑 View All 3
+        <div>
+            <button class="btn-ctrl btn-tab" onclick="switchTab('multi')" title="View all 3 papers together side-by-side">
+                📑 Split View (All 3 Papers)
             </button>
         </div>
     </header>
 
-    <!-- Dedicated 6-in-1 Print Bar -->
-    <div style="background: linear-gradient(90deg, #0f172a, #1e293b); color: #f8fafc; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #3b82f6; flex-wrap: wrap; gap: 8px;">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="background: #dc2626; color: white; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.5px;">6-IN-1 READY</span>
-            <div style="font-size: 13px;">
-                <strong>Compact 6 Pages Per Sheet PDFs:</strong>
-                <span style="color: #94a3b8; font-size: 12px; margin-left: 4px;">(A4 landscape with 6 bordered, numbered pages. No printer config required!)</span>
+    <!-- Interactive Page Layout & Print Controller Bar -->
+    <div class="layout-controller-bar">
+        <div class="ctrl-section">
+            <span class="ctrl-title">📐 PAGE LAYOUT:</span>
+            <div class="layout-buttons">
+                <button class="lay-toggle active" id="btn-lay-1" onclick="setLayout('1')" title="Normal single-column reading view">
+                    📄 1 in 1 <span class="tag">Normal</span>
+                </button>
+                <button class="lay-toggle" id="btn-lay-2" onclick="setLayout('2')" title="Dual column side-by-side view">
+                    📑 2 in 1 <span class="tag">Dual</span>
+                </button>
+                <button class="lay-toggle" id="btn-lay-4" onclick="setLayout('4')" title="4-up compact grid layout">
+                    📑 4 in 1 <span class="tag">Compact</span>
+                </button>
+                <button class="lay-toggle" id="btn-lay-6" onclick="setLayout('6')" title="6-up pocket size grid layout">
+                    📑 6 in 1 <span class="tag">Pocket</span>
+                </button>
             </div>
         </div>
-        <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-            <a href="ec201_6in1.pdf" download="EC201_Programming_C_MATLAB_6in1.pdf" style="background: #2563eb; color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border: 1px solid #3b82f6;">
-                📥 EC-201 (8 Sheets)
-            </a>
-            <a href="cc204_6in1.pdf" download="CC204_ODE_6in1.pdf" style="background: #0d9488; color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border: 1px solid #14b8a6;">
-                📥 CC-204 (4 Sheets)
-            </a>
-            <a href="cc205_6in1.pdf" download="CC205_DiffGeometry_6in1.pdf" style="background: #d97706; color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; border: 1px solid #f59e0b;">
-                📥 CC-205 (1 Sheet)
-            </a>
+
+        <div class="ctrl-actions">
+            <button class="btn-ctrl btn-print" onclick="printCurrentPaper()" title="Print currently active paper with selected layout">
+                🖨️ Print View
+            </button>
+            <div class="dropdown-wrapper">
+                <button class="btn-ctrl btn-download" onclick="toggleDownloadMenu()" title="Download PDF of active paper">
+                    📥 Download PDF ▾
+                </button>
+                <div id="download-dropdown" class="download-dropdown">
+                    <a href="javascript:void(0)" onclick="downloadPaperPDF('6in1')">📑 6-in-1 PDF (Pocket Print)</a>
+                    <a href="javascript:void(0)" onclick="downloadPaperPDF('4in1')">📑 4-in-1 PDF (Compact Grid)</a>
+                    <a href="javascript:void(0)" onclick="downloadPaperPDF('compact')">📄 1-in-1 Full Paper PDF</a>
+                </div>
+            </div>
+            <button class="btn-ctrl btn-tab" onclick="openCurrentInNewTab()" title="Open active paper in separate browser tab">
+                ↗ Separate Tab
+            </button>
         </div>
     </div>
 
@@ -350,6 +483,8 @@
 
     <script>
         let currentActive = 'cc204';
+        let currentLayout = '1';
+
         const fileMap = {
             'cc204': 'paper cc-204.html',
             'cc205': 'cc-205.html',
@@ -373,8 +508,57 @@
                 multiView.classList.add('active');
             } else {
                 const targetFrame = document.getElementById('iframe-' + tabId);
-                if (targetFrame) targetFrame.classList.add('active');
+                if (targetFrame) {
+                    targetFrame.classList.add('active');
+                    // Synchronize layout with newly active iframe
+                    if (targetFrame.contentWindow) {
+                        targetFrame.contentWindow.postMessage({ type: 'SET_LAYOUT', mode: currentLayout }, '*');
+                    }
+                }
             }
+        }
+
+        function setLayout(mode) {
+            currentLayout = mode;
+            document.querySelectorAll('.lay-toggle').forEach(b => b.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-lay-' + mode);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Send message to all iframes
+            ['iframe-cc204', 'iframe-cc205', 'iframe-ec201'].forEach(id => {
+                const frame = document.getElementById(id);
+                if (frame && frame.contentWindow) {
+                    frame.contentWindow.postMessage({ type: 'SET_LAYOUT', mode: mode }, '*');
+                }
+            });
+        }
+
+        function toggleDownloadMenu() {
+            const drop = document.getElementById('download-dropdown');
+            if (drop) drop.classList.toggle('show');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(e) {
+            if (!e.target.closest('.dropdown-wrapper')) {
+                const drop = document.getElementById('download-dropdown');
+                if (drop && drop.classList.contains('show')) {
+                    drop.classList.remove('show');
+                }
+            }
+        };
+
+        function downloadPaperPDF(type) {
+            const map = {
+                'cc204': { '6in1': 'cc204_6in1.pdf', '4in1': 'cc204_4in1.pdf', 'compact': 'cc204_base_compact.pdf' },
+                'cc205': { '6in1': 'cc205_6in1.pdf', '4in1': 'cc205_4in1.pdf', 'compact': 'cc205_base_compact.pdf' },
+                'ec201': { '6in1': 'ec201_6in1.pdf', '4in1': 'ec201_4in1.pdf', 'compact': 'ec201_base_compact.pdf' }
+            };
+            const paper = (currentActive === 'multi') ? 'ec201' : currentActive;
+            const targetPdf = (map[paper] && map[paper][type]) || 'ec201_6in1.pdf';
+            window.open(targetPdf, '_blank');
+            const drop = document.getElementById('download-dropdown');
+            if (drop) drop.classList.remove('show');
         }
 
         function openCurrentInNewTab() {
@@ -388,38 +572,15 @@
             }
         }
 
-        function download6in1PDF() {
-            const pdfMap = {
-                'cc204': 'cc204_6in1.pdf',
-                'cc205': 'cc205_6in1.pdf',
-                'ec201': 'ec201_6in1.pdf'
-            };
-            const targetPdf = pdfMap[currentActive] || 'ec201_6in1.pdf';
-            const a = document.createElement('a');
-            a.href = targetPdf;
-            a.download = targetPdf;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
         function printCurrentPaper() {
             if (currentActive === 'multi') {
                 alert('Please select a specific paper tab (CC-204, CC-205, or EC-201) to print.');
                 return;
             }
-            const confirmPrint = confirm(
-                "NOTE: To print 6 miniature pages per physical sheet, click 'Cancel' to download the pre-formatted 6-in-1 PDF (8 sheets total)!\n\n" +
-                "Click 'OK' if you want standard single-page portrait printing."
-            );
-            if (confirmPrint) {
-                const iframe = document.getElementById('iframe-' + currentActive);
-                if (iframe && iframe.contentWindow) {
-                    iframe.contentWindow.focus();
-                    iframe.contentWindow.print();
-                }
-            } else {
-                download6in1PDF();
+            const iframe = document.getElementById('iframe-' + currentActive);
+            if (iframe && iframe.contentWindow) {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
             }
         }
     </script>
