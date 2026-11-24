@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC-204 (CCMATH204) — Ordinary Differential Equations (Short, Medium & Long)</title>
+    <!-- MathJax for rendering LaTeX math -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15.5px;
+            line-height: 1.65;
+            max-width: 880px;
+            margin: 30px auto;
+            padding: 30px 40px;
+            background: #fff;
+            color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2.main-sub {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+
+        .nav-pills {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #f0f4f8;
+            color: #00008b;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 14.5px;
+            border: 1px solid #708090;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #00008b;
+            color: #fff;
+        }
+
+        .section-title {
+            background: #eef2f8;
+            border-left: 6px solid #0000cd;
+            padding: 10px 16px;
+            font-size: 17px;
+            font-weight: bold;
+            color: #000;
+            margin: 40px 0 20px;
+            text-transform: uppercase;
+        }
+
+        .qa-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #d5dbe2;
+            padding-bottom: 18px;
+        }
+
+        .q-line {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .marks {
+            font-weight: normal;
+            color: #000;
+            font-size: 14.5px;
+        }
+
+        .year {
+            font-weight: normal;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .answer {
+            margin-top: 8px;
+            text-align: justify;
+            color: #0000cd; /* Notebook blue ink */
+            font-size: 15.5px;
+        }
+
+        .answer p {
+            margin: 8px 0;
+        }
+
+        .answer strong {
+            color: #00008b;
+        }
+
+        ol {
+            padding-left: 25px;
+            margin-top: 5px;
+        }
+
+        ol li {
+            margin-bottom: 14px;
+            text-align: justify;
+            color: #000;
+        }
+
+        .sol-box {
+            margin-top: 6px;
+            color: #0000cd;
+            padding-left: 10px;
+            border-left: 3px solid #bfdbfe;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #000;
+            margin: 35px 0;
+        }
+
+        @media print {
+            body { padding: 0; margin: 15mm; }
+            .nav-pills { display: none; }
+            .qa-block { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CC-204 (CCMATH204) — ORDINARY DIFFERENTIAL EQUATIONS</h1>
+    <h2 class="main-sub">M.Sc. Mathematics Semester II — Question Bank Arranged by Short, Medium &amp; Long Questions</h2>
+
+    <!-- Quick Navigation -->
+    <div class="nav-pills">
+        <a class="nav-btn" href="#short">⚡ Short Questions (2 Marks)</a>
+        <a class="nav-btn" href="#medium">📝 Medium Questions (3–8 Marks)</a>
+        <a class="nav-btn" href="#long">📚 Long Questions (10–14 Marks)</a>
+    </div>
+
+    <!-- ========================================================================== -->
+    <!-- PART I : SHORT ANSWER QUESTIONS (2 MARKS)                                  -->
+    <!-- ========================================================================== -->
+    <div id="short" class="section-title">Short Answer Questions (2 Marks)</div>
+    <div class="qa-block">
+        <div class="q-line">Q1. Define Wronskian of \(n\) functions. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let \(f_1,f_2,\ldots,f_n\) be \((n-1)\)-times differentiable functions on an interval \(I\). The
+                Wronskian of these functions is defined as the determinant</p>
+            <p>\[
+                W(f_1,f_2,\ldots,f_n)(x)=
+                \begin{vmatrix}
+                f_1(x)&f_2(x)&\cdots&f_n(x)\\
+                f_1'(x)&f_2'(x)&\cdots&f_n'(x)\\
+                \vdots&\vdots&\ddots&\vdots\\
+                f_1^{(n-1)}(x)&f_2^{(n-1)}(x)&\cdots&f_n^{(n-1)}(x)
+                \end{vmatrix}.
+                \]</p>
+            <p>Equivalently, \(W(x)=\det\left(f_j^{(i-1)}(x)\right)_{1\le i,j\le n}\).</p>
+            <p>If \(f_1,\ldots,f_n\) are linearly dependent on \(I\), then \(W(x)\equiv 0\) on \(I\).</p>
+            <p>The converse is not true for arbitrary differentiable functions; however, for solutions of a linear
+                homogeneous ODE, \(W\equiv 0\) iff the solutions are linearly dependent.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q2. State Lipschitz condition. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let \(f(x,y)\) be defined on a domain \(D\subseteq \mathbb{R}^2\). The function \(f\) is said to satisfy
+                the Lipschitz condition in \(y\) on \(D\) if there exists a constant \(L>0\) such that</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|
+                \]</p>
+            <p>for all \((x,y_1),(x,y_2)\in D\).</p>
+            <p>The constant \(L\) is called the Lipschitz constant and is independent of \(y_1,y_2\) on the specified
+                domain.</p>
+            <p>If \(f\) and \(\partial f/\partial y\) are continuous on a rectangle, then \(f\) satisfies a Lipschitz
+                condition in \(y\) there.</p>
+            <p>This condition is a sufficient condition for uniqueness of solutions of the initial value problem.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q3. Define linearly independent functions. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A set of functions \(\{f_1,f_2,\ldots,f_n\}\) defined on an interval \(I\) is said to be linearly
+                independent on \(I\) if the identity</p>
+            <p>\[
+                c_1f_1(x)+c_2f_2(x)+\cdots+c_nf_n(x)=0,\quad \forall x\in I,
+                \]</p>
+            <p>implies that</p>
+            <p>\[
+                c_1=c_2=\cdots=c_n=0.
+                \]</p>
+            <p>Here \(c_1,c_2,\ldots,c_n\) are constants.</p>
+            <p>If there exists a nontrivial choice of constants, not all zero, satisfying the above identity, then the
+                functions are linearly dependent.</p>
+            <p>Linear independence is a property of the set of functions on the whole interval \(I\), not merely at a
+                single point.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q4. Define Sturm–Liouville problem. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A Sturm–Liouville problem consists of a second-order linear differential equation of the form</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+\bigl(q(x)+\lambda r(x)\bigr)y=0,\quad a\le x\le b,
+                \]</p>
+            <p>together with homogeneous boundary conditions</p>
+            <p>\[
+                \alpha_1 y(a)+\beta_1 p(a)y'(a)=0,\qquad
+                \alpha_2 y(b)+\beta_2 p(b)y'(b)=0,
+                \]</p>
+            <p>where not both coefficients in each condition are zero.</p>
+            <p>Here \(\lambda\) is the eigenvalue parameter, \(p(x)>0\), \(r(x)>0\), and \(p,p',q,r\) are continuous on
+                \([a,b]\).</p>
+            <p>The values of \(\lambda\) for which nontrivial solutions exist are called eigenvalues, and the
+                corresponding solutions are eigenfunctions.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q5. Define Green's function. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let \(L\) be a linear differential operator and consider the boundary value problem</p>
+            <p>\[
+                L[y]=f(x),\qquad B[y]=0,
+                \]</p>
+            <p>where \(B[y]=0\) denotes homogeneous boundary conditions.</p>
+            <p>A Green's function for this problem is a function \(G(x,\xi)\) such that</p>
+            <p>\[
+                L_xG(x,\xi)=\delta(x-\xi),
+                \]</p>
+            <p>and \(G(x,\xi)\), as a function of \(x\), satisfies the homogeneous boundary conditions.</p>
+            <p>The solution is then represented as</p>
+            <p>\[
+                y(x)=\int_a^b G(x,\xi)f(\xi)\,d\xi.
+                \]</p>
+            <p>For a second-order self-adjoint operator \(L[y]=(p y')'+q y\), \(G\) is continuous at \(x=\xi\), and its
+                derivative has the jump</p>
+            <p>\[
+                \left.\frac{\partial G}{\partial x}\right|_{x=\xi+}
+                -\left.\frac{\partial G}{\partial x}\right|_{x=\xi-}
+                =\frac{1}{p(\xi)}.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q6. Write Picard's iteration formula. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Consider the initial value problem</p>
+            <p>\[
+                \frac{dy}{dx}=f(x,y),\qquad y(x_0)=y_0.
+                \]</p>
+            <p>This is equivalent to the integral equation</p>
+            <p>\[
+                y(x)=y_0+\int_{x_0}^{x}f(t,y(t))\,dt.
+                \]</p>
+            <p>Picard's iteration formula is</p>
+            <p>\[
+                y_{n+1}(x)=y_0+\int_{x_0}^{x}f(t,y_n(t))\,dt,\qquad n=0,1,2,\ldots
+                \]</p>
+            <p>The initial approximation is chosen as</p>
+            <p>\[
+                y_0(x)=y_0.
+                \]</p>
+            <p>Under continuity and Lipschitz conditions on \(f\), the sequence \(\{y_n(x)\}\) converges uniformly to
+                the unique solution of the initial value problem.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q7. Define boundary value problem. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A boundary value problem consists of an ordinary differential equation together with conditions imposed
+                at more than one point of the interval of definition.</p>
+            <p>For a second-order linear differential equation</p>
+            <p>\[
+                y''+P(x)y'+Q(x)y=R(x),\qquad a\le x\le b,
+                \]</p>
+            <p>typical boundary conditions are</p>
+            <p>\[
+                \alpha_1y(a)+\beta_1y'(a)=\gamma_1,\qquad
+                \alpha_2y(b)+\beta_2y'(b)=\gamma_2.
+                \]</p>
+            <p>Here the conditions are prescribed at the endpoints \(x=a\) and \(x=b\).</p>
+            <p>Unlike an initial value problem, a boundary value problem may have no solution, a unique solution, or
+                infinitely many solutions.</p>
+            <p>Existence and uniqueness depend on the differential equation, the boundary conditions, and the interval.
+            </p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q8. Define Wronskian and state its property regarding linear independence. <span
+                class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>For \((n-1)\)-times differentiable functions \(f_1,\ldots,f_n\) on an interval \(I\), the Wronskian is
+            </p>
+            <p>\[
+                W(f_1,\ldots,f_n)(x)=
+                \begin{vmatrix}
+                f_1(x)&f_2(x)&\cdots&f_n(x)\\
+                f_1'(x)&f_2'(x)&\cdots&f_n'(x)\\
+                \vdots&\vdots&\ddots&\vdots\\
+                f_1^{(n-1)}(x)&f_2^{(n-1)}(x)&\cdots&f_n^{(n-1)}(x)
+                \end{vmatrix}.
+                \]</p>
+            <p>If \(f_1,\ldots,f_n\) are linearly dependent on \(I\), then \(W(x)\equiv 0\) on \(I\).</p>
+            <p>However, for arbitrary differentiable functions, \(W\equiv 0\) does not necessarily imply linear
+                dependence.</p>
+            <p>If \(f_1,\ldots,f_n\) are solutions of an \(n\)-th order linear homogeneous ODE with continuous
+                coefficients on \(I\), then either \(W(x)\neq 0\) for all \(x\in I\) or \(W(x)\equiv 0\) on \(I\).</p>
+            <p>In that case, \(W\equiv 0\) iff the solutions are linearly dependent.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q9. Define linearly dependent functions. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A set of functions \(\{f_1,f_2,\ldots,f_n\}\) defined on an interval \(I\) is said to be linearly
+                dependent on \(I\) if there exist constants \(c_1,c_2,\ldots,c_n\), not all zero, such that</p>
+            <p>\[
+                c_1f_1(x)+c_2f_2(x)+\cdots+c_nf_n(x)=0
+                \]</p>
+            <p>for every \(x\in I\).</p>
+            <p>Equivalently, at least one of the functions can be expressed as a linear combination of the remaining
+                functions on \(I\).</p>
+            <p>If no such nontrivial set of constants exists, then the functions are linearly independent.</p>
+            <p>Linear dependence is defined over the whole interval \(I\), not merely at isolated points.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q10. Define self-adjoint boundary value problem. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A second-order linear differential equation is said to be in <strong>self-adjoint form</strong> if it can
+                be written as</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=0,
+                \]</p>
+            <p>where \(p(x)\) and \(q(x)\) are real-valued continuous functions on \([a,b]\), and \(p(x)>0\) on
+                \([a,b]\).</p>
+            <p>A <strong>self-adjoint boundary value problem</strong> consists of such a self-adjoint differential
+                equation together with boundary conditions of the form</p>
+            <p>\[
+                \alpha_1 y(a)+\beta_1 y'(a)=0,\qquad
+                \alpha_2 y(b)+\beta_2 y'(b)=0,
+                \]</p>
+            <p>where the coefficients are real and not both zero in each condition.</p>
+            <p>The operator \(L[y]=\frac{d}{dx}\left(p\frac{dy}{dx}\right)+qy\) is called a <strong>self-adjoint
+                    operator</strong>, and it satisfies Lagrange's identity:</p>
+            <p>\[
+                \int_a^b \left(u\,L[v]-v\,L[u]\right)dx=0
+                \]</p>
+            <p>for functions \(u,v\) satisfying the boundary conditions.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q11. State jump discontinuity property of Green's function derivative. <span
+                class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let \(G(x,\xi)\) be the Green's function for the self-adjoint boundary value problem</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=f(x),\qquad a\le x\le b,
+                \]</p>
+            <p>with homogeneous boundary conditions. Then \(G(x,\xi)\) satisfies the following properties:</p>
+            <p>1. \(G(x,\xi)\) is continuous at \(x=\xi\).</p>
+            <p>2. \(G(x,\xi)\) satisfies the homogeneous differential equation for \(x\neq \xi\).</p>
+            <p>3. \(G(x,\xi)\) satisfies the given homogeneous boundary conditions as a function of \(x\).</p>
+            <p>The <strong>jump discontinuity property</strong> states that the derivative of \(G(x,\xi)\) with respect
+                to \(x\) has a jump discontinuity at \(x=\xi\), given by</p>
+            <p>\[
+                \left.\frac{\partial G}{\partial x}\right|_{x=\xi^+}
+                -\left.\frac{\partial G}{\partial x}\right|_{x=\xi^-}
+                =\frac{1}{p(\xi)}.
+                \]</p>
+            <p>This jump condition is essential for constructing the Green's function and for solving boundary value
+                problems.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q12. Define eigenvalue and eigenfunction. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Consider the Sturm–Liouville boundary value problem</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+\bigl(q(x)+\lambda r(x)\bigr)y=0,\qquad a\le x\le b,
+                \]</p>
+            <p>with homogeneous boundary conditions.</p>
+            <p>The values of the parameter \(\lambda\) for which the boundary value problem has a <strong>nontrivial
+                    solution</strong> (i.e., \(y\not\equiv 0\)) are called <strong>eigenvalues</strong> (or
+                characteristic values or characteristic numbers).</p>
+            <p>The corresponding nontrivial solutions \(y(x)\) are called <strong>eigenfunctions</strong> (or
+                characteristic functions).</p>
+            <p>For a regular Sturm–Liouville problem, the eigenvalues form a real, infinite, discrete sequence</p>
+            <p>\[
+                \lambda_1<\lambda_2<\lambda_3<\cdots,\qquad \lambda_n\to\infty, \]</p>
+                    <p>and the corresponding eigenfunctions \(y_n(x)\) are orthogonal with respect to the weight
+                        function \(r(x)\):</p>
+                    <p>\[
+                        \int_a^b y_m(x)y_n(x)r(x)\,dx=0,\qquad m\neq n.
+                        \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q13. Write formula for reduction of order. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Consider the second-order linear homogeneous differential equation</p>
+            <p>\[
+                y''+P(x)y'+Q(x)y=0.
+                \]</p>
+            <p>Suppose \(y_1(x)\) is a known non-zero solution of this equation. Then a second linearly independent
+                solution \(y_2(x)\) is given by the <strong>reduction of order formula</strong>:</p>
+            <p>\[
+                y_2(x)=y_1(x)\int\frac{e^{-\int P(x)\,dx}}{[y_1(x)]^2}\,dx.
+                \]</p>
+            <p>Equivalently, if the differential equation is in the self-adjoint form</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=0,
+                \]</p>
+            <p>then the second solution is</p>
+            <p>\[
+                y_2(x)=y_1(x)\int\frac{1}{p(x)[y_1(x)]^2}\,dx.
+                \]</p>
+            <p>This formula is used to find the general solution \(y=c_1y_1+c_2y_2\) of the differential equation.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q14. Define Lipschitz condition and find Lipschitz constant for \(f(x,y)=x^2|y|\) on
+            \(|x|\le1, |y|\le1\). <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Lipschitz condition:</strong> A function \(f(x,y)\) defined on a domain
+                \(D\subseteq\mathbb{R}^2\) is said to satisfy the Lipschitz condition in \(y\) on \(D\) if there exists
+                a constant \(L>0\) such that</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|
+                \]</p>
+            <p>for all \((x,y_1),(x,y_2)\in D\). The constant \(L\) is called the Lipschitz constant.</p>
+            <p><strong>Problem:</strong> \(f(x,y)=x^2|y|\) on \(|x|\le1, |y|\le1\).</p>
+            <p>For \((x,y_1),(x,y_2)\) in the rectangle,</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|=|x^2|y_1|-x^2|y_2||=x^2\bigl||y_1|-|y_2|\bigr|\le x^2|y_1-y_2|.
+                \]</p>
+            <p>Since \(|x|\le1\), we have \(x^2\le1\). Hence</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le 1\cdot|y_1-y_2|.
+                \]</p>
+            <p>Thus the Lipschitz constant is \(L=1\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q15. State orthogonality condition for eigenfunctions. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Consider the regular Sturm–Liouville problem</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+\bigl(q(x)+\lambda r(x)\bigr)y=0,\qquad a\le x\le b,
+                \]</p>
+            <p>with homogeneous boundary conditions, where \(p(x)>0\) and \(r(x)>0\) on \([a,b]\).</p>
+            <p>Let \(\lambda_m\) and \(\lambda_n\) be two distinct eigenvalues, and let \(y_m(x)\) and \(y_n(x)\) be the
+                corresponding eigenfunctions. Then the eigenfunctions satisfy the <strong>orthogonality
+                    condition</strong>:</p>
+            <p>\[
+                \int_a^b y_m(x)\,y_n(x)\,r(x)\,dx=0,\qquad m\neq n.
+                \]</p>
+            <p>This means the eigenfunctions are orthogonal with respect to the weight function \(r(x)\) on the interval
+                \([a,b]\).</p>
+            <p>If \(r(x)=1\), the condition reduces to the usual orthogonality:</p>
+            <p>\[
+                \int_a^b y_m(x)\,y_n(x)\,dx=0,\qquad m\neq n.
+                \]</p>
+            <p>Every function \(f(x)\) that is piecewise smooth on \([a,b]\) can be expanded in a series of these
+                eigenfunctions:</p>
+            <p>\[
+                f(x)=\sum_{n=1}^{\infty}c_n y_n(x),\qquad
+                c_n=\frac{\int_a^b f(x)y_n(x)r(x)\,dx}{\int_a^b y_n^2(x)r(x)\,dx}.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q16. Write Green's function formula for BVP. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Consider the self-adjoint boundary value problem</p>
+            <p>\[
+                L[y]=\frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=f(x),\qquad a\le x\le b,
+                \]</p>
+            <p>with homogeneous boundary conditions</p>
+            <p>\[
+                B_1[y]=\alpha_1y(a)+\beta_1y'(a)=0,\qquad
+                B_2[y]=\alpha_2y(b)+\beta_2y'(b)=0.
+                \]</p>
+            <p>If the homogeneous problem \(L[y]=0\) with \(B_1[y]=B_2[y]=0\) has only the trivial solution, then there
+                exists a unique <strong>Green's function</strong> \(G(x,\xi)\) such that the solution of the
+                non-homogeneous BVP is given by</p>
+            <p>\[
+                \boxed{y(x)=\int_a^b G(x,\xi)\,f(\xi)\,d\xi.}
+                \]</p>
+            <p>The Green's function \(G(x,\xi)\) satisfies:</p>
+            <p>1. \(L_xG(x,\xi)=0\) for \(x\neq \xi\).</p>
+            <p>2. \(B_1[G]=0\) and \(B_2[G]=0\) (as functions of \(x\)).</p>
+            <p>3. \(G(x,\xi)\) is continuous at \(x=\xi\).</p>
+            <p>4. Jump condition:</p>
+            <p>\[
+                \left.\frac{\partial G}{\partial x}\right|_{x=\xi^+}
+                -\left.\frac{\partial G}{\partial x}\right|_{x=\xi^-}
+                =\frac{1}{p(\xi)}.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q17. Define Orthonormal system with suitable example. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A set of functions \(\{\phi_n(x)\}\) defined on an interval \([a,b]\) is called an <strong>orthonormal
+                    system</strong> if it satisfies the following two conditions:</p>
+            <p>1. <strong>Orthogonality:</strong></p>
+            <p>\[
+                \int_a^b \phi_m(x)\,\phi_n(x)\,dx=0,\qquad m\neq n.
+                \]</p>
+            <p>2. <strong>Normalization:</strong></p>
+            <p>\[
+                \int_a^b [\phi_n(x)]^2\,dx=1,\qquad \text{for all }n.
+                \]</p>
+            <p><strong>Example:</strong> The set of functions</p>
+            <p>\[
+                \phi_n(x)=\sqrt{\frac{2}{\pi}}\sin(nx),\qquad n=1,2,3,\ldots
+                \]</p>
+            <p>forms an orthonormal system on the interval \([0,\pi]\).</p>
+            <p><strong>Verification:</strong></p>
+            <p>For \(m\neq n\):</p>
+            <p>\[
+                \int_0^\pi \sqrt{\frac{2}{\pi}}\sin(mx)\cdot\sqrt{\frac{2}{\pi}}\sin(nx)\,dx
+                =\frac{2}{\pi}\int_0^\pi \sin(mx)\sin(nx)\,dx=0.
+                \]</p>
+            <p>For \(m=n\):</p>
+            <p>\[
+                \int_0^\pi \left(\sqrt{\frac{2}{\pi}}\sin(nx)\right)^2dx
+                =\frac{2}{\pi}\int_0^\pi \sin^2(nx)\,dx=\frac{2}{\pi}\cdot\frac{\pi}{2}=1.
+                \]</p>
+            <p>Thus \(\{\phi_n(x)\}\) is an orthonormal system on \([0,\pi]\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q18. Transform \((t^4+t^2)\frac{d^2x}{dt^2}+2t^3\frac{dx}{dt}+3x=0\) into equivalent
+            self-adjoint equation. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>The given differential equation is</p>
+            <p>\[
+                (t^4+t^2)\frac{d^2x}{dt^2}+2t^3\frac{dx}{dt}+3x=0.
+                \]</p>
+            <p><strong>Step 1:</strong> Divide throughout by \((t^4+t^2)=t^2(t^2+1)\):</p>
+            <p>\[
+                \frac{d^2x}{dt^2}+\frac{2t^3}{t^2(t^2+1)}\frac{dx}{dt}+\frac{3}{t^2(t^2+1)}x=0.
+                \]</p>
+            <p>That is,</p>
+            <p>\[
+                \frac{d^2x}{dt^2}+\frac{2t}{t^2+1}\frac{dx}{dt}+\frac{3}{t^2(t^2+1)}x=0.
+                \]</p>
+            <p><strong>Step 2:</strong> Here \(P(t)=\dfrac{2t}{t^2+1}\). The integrating factor is</p>
+            <p>\[
+                \mu(t)=e^{\int P(t)\,dt}=e^{\int\frac{2t}{t^2+1}\,dt}=e^{\ln(t^2+1)}=t^2+1.
+                \]</p>
+            <p><strong>Step 3:</strong> Multiply the equation in Step 1 by \(\mu(t)=t^2+1\):</p>
+            <p>\[
+                (t^2+1)\frac{d^2x}{dt^2}+(t^2+1)\cdot\frac{2t}{t^2+1}\frac{dx}{dt}+(t^2+1)\cdot\frac{3}{t^2(t^2+1)}x=0.
+                \]</p>
+            <p>Simplifying:</p>
+            <p>\[
+                (t^2+1)\frac{d^2x}{dt^2}+2t\frac{dx}{dt}+\frac{3}{t^2}x=0.
+                \]</p>
+            <p><strong>Step 4:</strong> The first two terms can be combined as a single derivative:</p>
+            <p>\[
+                \frac{d}{dt}\left[(t^2+1)\frac{dx}{dt}\right]+\frac{3}{t^2}x=0.
+                \]</p>
+            <p>Therefore, the equivalent self-adjoint form is</p>
+            <p>\[
+                \boxed{\frac{d}{dt}\left[(t^2+1)\frac{dx}{dt}\right]+\frac{3}{t^2}x=0.}
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q19. Find characteristic number and characteristic function of \(y''+\lambda y=0;\ y(0)=0,\
+            y(\pi/2)=0\). <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>The given boundary value problem is</p>
+            <p>\[
+                y''+\lambda y=0,\qquad y(0)=0,\quad y\left(\frac{\pi}{2}\right)=0.
+                \]</p>
+            <p><strong>Case 1: \(\lambda>0\).</strong> Let \(\lambda=k^2\) (\(k>0\)). Then the general solution is</p>
+            <p>\[
+                y(x)=A\cos(kx)+B\sin(kx).
+                \]</p>
+            <p>Applying \(y(0)=0\):</p>
+            <p>\[
+                A\cdot 1+B\cdot 0=0\implies A=0.
+                \]</p>
+            <p>So \(y(x)=B\sin(kx)\).</p>
+            <p>Applying \(y(\pi/2)=0\):</p>
+            <p>\[
+                B\sin\left(\frac{k\pi}{2}\right)=0.
+                \]</p>
+            <p>For a nontrivial solution, \(B\neq 0\), so</p>
+            <p>\[
+                \sin\left(\frac{k\pi}{2}\right)=0\implies \frac{k\pi}{2}=n\pi\implies k=2n,\quad n=1,2,3,\ldots
+                \]</p>
+            <p>Therefore, the characteristic numbers (eigenvalues) are</p>
+            <p>\[
+                \boxed{\lambda_n=k^2=4n^2,\qquad n=1,2,3,\ldots}
+                \]</p>
+            <p>and the corresponding characteristic functions (eigenfunctions) are</p>
+            <p>\[
+                \boxed{y_n(x)=\sin(2nx),\qquad n=1,2,3,\ldots}
+                \]</p>
+            <p><strong>Case 2: \(\lambda\le 0\).</strong> The resulting boundary value problem has only the trivial
+                solution \(y\equiv 0\). Hence no negative or zero characteristic numbers exist.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q20. Find solution of \(\frac{dy}{dx}=-xe^{-y}\). <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>The given differential equation is</p>
+            <p>\[
+                \frac{dy}{dx}=-xe^{-y}.
+                \]</p>
+            <p>This is a first-order variable separable equation.</p>
+            <p>Separating the variables \(x\) and \(y\), we obtain</p>
+            <p>\[
+                e^{y}\,dy=-x\,dx.
+                \]</p>
+            <p>Integrating both sides,</p>
+            <p>\[
+                \int e^{y}\,dy=-\int x\,dx,
+                \]</p>
+            <p>which gives</p>
+            <p>\[
+                e^{y}=-\frac{x^{2}}{2}+C,
+                \]</p>
+            <p>where \(C\) is an arbitrary constant of integration.</p>
+            <p>Taking the natural logarithm on both sides,</p>
+            <p>\[
+                y(x)=\ln\left(C-\frac{x^{2}}{2}\right).
+                \]</p>
+            <p>This is the general solution of the given differential equation.</p>
+            <p>The solution is valid for \(C-\frac{x^{2}}{2}>0\), i.e., \(x^{2}<2C\), so that the argument of the
+                    logarithm remains positive.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q21. Express \(\frac{d^3y}{dt^3} - \frac{d^2y}{dt^2} + \frac{dy}{dt} + 3y = 0\) as system of
+            three linear differential equations. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let us introduce new variables:</p>
+            <p>\[
+                x_1=y,\qquad x_2=\frac{dy}{dt},\qquad x_3=\frac{d^2y}{dt^2}.
+                \]</p>
+            <p>Differentiating these with respect to \(t\), we get</p>
+            <p>\[
+                x_1'=x_2,\qquad x_2'=x_3.
+                \]</p>
+            <p>From the given third-order differential equation,</p>
+            <p>\[
+                \frac{d^3y}{dt^3}=\frac{d^2y}{dt^2}-\frac{dy}{dt}-3y.
+                \]</p>
+            <p>Therefore,</p>
+            <p>\[
+                x_3'=x_3-x_2-3x_1.
+                \]</p>
+            <p>Thus, the system of three first-order linear differential equations is</p>
+            <p>\[
+                \begin{aligned}
+                x_1' &= x_2,\\
+                x_2' &= x_3,\\
+                x_3' &= -3x_1-x_2+x_3.
+                \end{aligned}
+                \]</p>
+            <p>In matrix form, this can be written as</p>
+            <p>\[
+                \frac{d}{dt}
+                \begin{pmatrix}
+                x_1\\x_2\\x_3
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                0&1&0\\
+                0&0&1\\
+                -3&-1&1
+                \end{pmatrix}
+                \begin{pmatrix}
+                x_1\\x_2\\x_3
+                \end{pmatrix}.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q22. Define orthogonal function. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A set of functions \(\{\phi_n(x)\}\) defined on an interval \([a,b]\) is said to be an orthogonal system
+                if the integral of the product of any two distinct functions is zero.</p>
+            <p>Mathematically,</p>
+            <p>\[
+                \int_a^b \phi_n(x)\phi_m(x)\,dx=0,\qquad n\neq m.
+                \]</p>
+            <p>More generally, with respect to a weight function \(w(x)>0\), the functions are orthogonal if</p>
+            <p>\[
+                \int_a^b \phi_n(x)\phi_m(x)w(x)\,dx=0,\qquad n\neq m.
+                \]</p>
+            <p>If \(n=m\), the integral is non-zero and equals the square of the norm of the function:</p>
+            <p>\[
+                \int_a^b [\phi_n(x)]^2 w(x)\,dx=\|\phi_n\|^2\neq 0.
+                \]</p>
+            <p>A standard example is the set \(\{\sin nx\}_{n=1}^{\infty}\) on \([-\pi,\pi]\), where</p>
+            <p>\[
+                \int_{-\pi}^{\pi}\sin(nx)\sin(mx)\,dx=0,\qquad n\neq m.
+                \]</p>
+            <p>Orthogonal functions play a fundamental role in eigenfunction expansions and Fourier series.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q23. Find characteristic roots and characteristic vectors of matrix \(\begin{bmatrix} 0 & 1
+            \\ -1 & 0 \end{bmatrix}\). <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let</p>
+            <p>\[
+                A=\begin{bmatrix}0&1\\-1&0\end{bmatrix}.
+                \]</p>
+            <p>The characteristic equation is given by</p>
+            <p>\[
+                \det(A-\lambda I)=0.
+                \]</p>
+            <p>Thus,</p>
+            <p>\[
+                \begin{vmatrix}
+                -\lambda&1\\
+                -1&-\lambda
+                \end{vmatrix}
+                =\lambda^{2}+1=0.
+                \]</p>
+            <p>Therefore, the characteristic roots (eigenvalues) are</p>
+            <p>\[
+                \lambda_1=i,\qquad \lambda_2=-i.
+                \]</p>
+            <p>For \(\lambda_1=i\), the characteristic vector \(v_1\) satisfies</p>
+            <p>\[
+                (A-iI)v_1=0.
+                \]</p>
+            <p>This gives</p>
+            <p>\[
+                \begin{bmatrix}
+                -i&1\\
+                -1&-i
+                \end{bmatrix}
+                \begin{bmatrix}
+                x\\y
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                0\\0
+                \end{bmatrix}.
+                \]</p>
+            <p>From the first equation, \(-ix+y=0\), i.e., \(y=ix\).</p>
+            <p>Choosing \(x=1\), we obtain</p>
+            <p>\[
+                v_1=\begin{bmatrix}1\\i\end{bmatrix}.
+                \]</p>
+            <p>Similarly, for \(\lambda_2=-i\), we get</p>
+            <p>\[
+                v_2=\begin{bmatrix}1\\-i\end{bmatrix}.
+                \]</p>
+            <p>Hence, the characteristic roots are \(i,-i\) and the corresponding characteristic vectors are
+                \(\begin{bmatrix}1\\i\end{bmatrix}\) and \(\begin{bmatrix}1\\-i\end{bmatrix}\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q24. Prove that every homogeneous linear equation of second order is a self adjoint
+            differential equation. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Consider a general second-order homogeneous linear differential equation</p>
+            <p>\[
+                y''+P(x)y'+Q(x)y=0.
+                \]</p>
+            <p>Multiply the equation by the integrating factor</p>
+            <p>\[
+                \mu(x)=e^{\int P(x)\,dx}.
+                \]</p>
+            <p>Since \(\mu'(x)=\mu(x)P(x)\), the equation becomes</p>
+            <p>\[
+                \mu(x)y''+\mu'(x)y'+\mu(x)Q(x)y=0.
+                \]</p>
+            <p>The first two terms can be combined as the derivative of a product:</p>
+            <p>\[
+                \frac{d}{dx}\left(\mu(x)\frac{dy}{dx}\right)+\mu(x)Q(x)y=0.
+                \]</p>
+            <p>This is of the standard self-adjoint form</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=0,
+                \]</p>
+            <p>where \(p(x)=\mu(x)\) and \(q(x)=\mu(x)Q(x)\).</p>
+            <p>Hence, every homogeneous linear equation of second order can be made self-adjoint by multiplying by a
+                suitable integrating factor.</p>
+            <p>Therefore, every such equation is a self-adjoint differential equation.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q25. Show that Wronskian of functions \(x^2\) and \(x^2 \log x\) is non-zero. <span
+                class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>Let \(f_1(x)=x^2\) and \(f_2(x)=x^2\log x\).</p>
+            <p>The Wronskian is defined as</p>
+            <p>\[
+                W(f_1,f_2)(x)=
+                \begin{vmatrix}
+                f_1&f_2\\
+                f_1'&f_2'
+                \end{vmatrix}.
+                \]</p>
+            <p>Computing the derivatives,</p>
+            <p>\[
+                f_1'(x)=2x,\qquad f_2'(x)=2x\log x+x.
+                \]</p>
+            <p>Substituting into the determinant,</p>
+            <p>\[
+                W=
+                \begin{vmatrix}
+                x^2&x^2\log x\\
+                2x&2x\log x+x
+                \end{vmatrix}.
+                \]</p>
+            <p>Expanding,</p>
+            <p>\[
+                W=x^2(2x\log x+x)-(x^2\log x)(2x).
+                \]</p>
+            <p>Simplifying,</p>
+            <p>\[
+                W=2x^3\log x+x^3-2x^3\log x=x^3.
+                \]</p>
+            <p>Since \(x^3\neq 0\) for all \(x>0\), the Wronskian is non-zero.</p>
+            <p>Therefore, the functions \(x^2\) and \(x^2\log x\) are linearly independent on \((0,\infty)\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q26. Show that \(f(x,y) = xy^2\) satisfy Lipschitz condition on rectangle \(|x| \le 1, |y|
+            \le 1\). Find Lipschitz constant. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p>A function \(f(x,y)\) satisfies the Lipschitz condition in \(y\) on a domain \(D\) if there exists a
+                constant \(L>0\) such that</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|
+                \]</p>
+            <p>for all \((x,y_1),(x,y_2)\in D\).</p>
+            <p>For \(f(x,y)=xy^2\), we have</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|=|xy_1^2-xy_2^2|
+                =|x|\,|y_1^2-y_2^2|.
+                \]</p>
+            <p>Using the factorization \(y_1^2-y_2^2=(y_1-y_2)(y_1+y_2)\),</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|=|x|\,|y_1-y_2|\,|y_1+y_2|.
+                \]</p>
+            <p>Given \(|x|\le 1\) and \(|y|\le 1\), we have</p>
+            <p>\[
+                |x|\le 1,\qquad |y_1+y_2|\le |y_1|+|y_2|\le 2.
+                \]</p>
+            <p>Therefore,</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le 1\cdot 2\cdot |y_1-y_2|=2|y_1-y_2|.
+                \]</p>
+            <p>Hence, \(f(x,y)\) satisfies the Lipschitz condition on the given rectangle with Lipschitz constant
+                \(L=2\).</p>
+        </div>
+    </div>
+
+
+    <hr>
+    <!-- ========================================================================== -->
+    <!-- PART II : MEDIUM ANSWER QUESTIONS (3 TO 8 MARKS)                          -->
+    <!-- ========================================================================== -->
+    <div id="medium" class="section-title">Medium Answer Questions (3 to 8 Marks)</div>
+    <div class="qa-block">
+        <div class="q-line">Q27. State Picard's Local Existence and Uniqueness Theorem. <span class="marks">[2
+                Marks]</span></div>
+        <div class="answer">
+            <p>Let \(R=\{(x,y): |x-x_0|\le a,\ |y-y_0|\le b\}\). Suppose \(f(x,y)\) is continuous on \(R\) and satisfies
+                the Lipschitz condition in \(y\) on \(R\), i.e.</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|
+                \]</p>
+            <p>for some constant \(L>0\).</p>
+            <p>Then the initial value problem</p>
+            <p>\[
+                \frac{dy}{dx}=f(x,y),\qquad y(x_0)=y_0
+                \]</p>
+            <p>has a unique solution \(y=y(x)\) on the interval</p>
+            <p>\[
+                |x-x_0|\le h,\qquad h=\min\left(a,\frac{b}{M}\right),
+                \]</p>
+            <p>where \(M=\max_R|f(x,y)|\).</p>
+            <p>The solution is obtained as the uniform limit of Picard's iterates.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q28. Define initial value problem and boundary value problem. <span class="marks">[2
+                Marks]</span></div>
+        <div class="answer">
+            <p><strong>Initial Value Problem (IVP):</strong></p>
+            <p>An initial value problem consists of an ordinary differential equation together with conditions
+                prescribed at a <strong>single point</strong> (usually \(x=x_0\)) of the interval. For a first-order
+                equation,</p>
+            <p>\[
+                \frac{dy}{dx}=f(x,y),\qquad y(x_0)=y_0.
+                \]</p>
+            <p>For a second-order equation,</p>
+            <p>\[
+                y''=f(x,y,y'),\qquad y(x_0)=y_0,\quad y'(x_0)=y_1.
+                \]</p>
+            <p><strong>Boundary Value Problem (BVP):</strong></p>
+            <p>A boundary value problem consists of an ordinary differential equation together with conditions
+                prescribed at <strong>two or more distinct points</strong> (usually the endpoints \(x=a\) and \(x=b\)).
+                For a second-order equation,</p>
+            <p>\[
+                y''+P(x)y'+Q(x)y=R(x),\qquad a\le x\le b,
+                \]</p>
+            <p>with</p>
+            <p>\[
+                \alpha_1y(a)+\beta_1y'(a)=\gamma_1,\qquad
+                \alpha_2y(b)+\beta_2y'(b)=\gamma_2.
+                \]</p>
+            <p>Unlike an IVP, a BVP may have no solution, a unique solution, or infinitely many solutions.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q29. Define system of first-order differential equations. <span class="marks">[2
+                Marks]</span></div>
+        <div class="answer">
+            <p>A <strong>system of first-order differential equations</strong> is a collection of equations involving
+                first derivatives of several unknown functions of a single independent variable. In general form, it can
+                be written as</p>
+            <p>\[
+                \frac{dx_1}{dt}=f_1(t,x_1,x_2,\ldots,x_n),
+                \]</p>
+            <p>\[
+                \frac{dx_2}{dt}=f_2(t,x_1,x_2,\ldots,x_n),
+                \]</p>
+            <p>\[
+                \vdots
+                \]</p>
+            <p>\[
+                \frac{dx_n}{dt}=f_n(t,x_1,x_2,\ldots,x_n).
+                \]</p>
+            <p>Using vector notation, if \(\mathbf{x}=(x_1,x_2,\ldots,x_n)^T\) and
+                \(\mathbf{f}=(f_1,f_2,\ldots,f_n)^T\), the system can be written compactly as</p>
+            <p>\[
+                \frac{d\mathbf{x}}{dt}=\mathbf{f}(t,\mathbf{x}).
+                \]</p>
+            <p>If the functions \(f_i\) are linear in \(x_1,\ldots,x_n\), the system is called a <strong>linear
+                    system</strong> and can be expressed in matrix form as</p>
+            <p>\[
+                \frac{d\mathbf{x}}{dt}=A(t)\mathbf{x}+\mathbf{b}(t),
+                \]</p>
+            <p>where \(A(t)\) is an \(n\times n\) matrix and \(\mathbf{b}(t)\) is a column vector. If
+                \(\mathbf{b}(t)=\mathbf{0}\), the system is <strong>homogeneous</strong>; otherwise it is
+                <strong>non-homogeneous</strong>.</p>
+            <p>Any \(n\)-th order linear ODE can be transformed into an equivalent system of \(n\) first-order equations
+                by introducing new variables for the derivatives.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q30. State Picard's Theorem of Successive Approximations. <span class="marks">[2
+                Marks]</span></div>
+        <div class="answer">
+            <p><strong>Picard's Theorem of Successive Approximations</strong> (also known as Picard–Lindelöf Theorem)
+                states:</p>
+            <p>Consider the initial value problem</p>
+            <p>\[
+                \frac{dy}{dx}=f(x,y),\qquad y(x_0)=y_0.
+                \]</p>
+            <p>Let \(R=\{(x,y): |x-x_0|\le a,\ |y-y_0|\le b\}\). Suppose:</p>
+            <p>1. \(f(x,y)\) is continuous on \(R\), so \(|f(x,y)|\le M\) for some \(M>0\) on \(R\).</p>
+            <p>2. \(f(x,y)\) satisfies the Lipschitz condition in \(y\) on \(R\), i.e., there exists \(L>0\) such that
+            </p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|
+                \]</p>
+            <p>for all \((x,y_1),(x,y_2)\in R\).</p>
+            <p>Then the IVP has a <strong>unique solution</strong> \(y=y(x)\) on the interval</p>
+            <p>\[
+                |x-x_0|\le h,\qquad h=\min\left(a,\frac{b}{M}\right).
+                \]</p>
+            <p>Moreover, this solution is the uniform limit of the sequence of <strong>Picard iterates</strong>
+                \(\{y_n(x)\}\) defined by</p>
+            <p>\[
+                y_0(x)=y_0,\qquad
+                y_{n+1}(x)=y_0+\int_{x_0}^{x}f(t,y_n(t))\,dt,\quad n=0,1,2,\ldots
+                \]</p>
+            <p>That is, \(y_n(x)\to y(x)\) uniformly on \(|x-x_0|\le h\) as \(n\to\infty\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q31. Condition of continuity of \(f(x,y)\) is not necessary for existence of solution. [2 Marks]
+            Justify with example. <span class="marks">[2/3 Marks]</span></div>
+        <div class="answer">
+            <p>The continuity of \(f(x,y)\) is a <strong>sufficient</strong> condition for the existence of a solution
+                of the IVP \(\frac{dy}{dx}=f(x,y),\ y(x_0)=y_0\), but it is <strong>not necessary</strong>.</p>
+            <p><strong>Example:</strong> Consider the initial value problem</p>
+            <p>\[
+                \frac{dy}{dx}=f(x,y),\qquad y(0)=0,
+                \]</p>
+            <p>where</p>
+            <p>\[
+                f(x,y)=\begin{cases}
+                1, & y\ge 0,\\
+                -1, & y<0. \end{cases} \]</p>
+                    <p>The function \(f(x,y)\) is discontinuous at \(y=0\) (and hence at the initial point \((0,0)\)).
+                    </p>
+                    <p>However, the function \(y(x)=x\) is a solution of the IVP, because:</p>
+                    <p>\[
+                        y'(x)=1=f(x,y)\quad\text{for }x\ge 0,
+                        \]</p>
+                    <p>and \(y(0)=0\).</p>
+                    <p>Thus, even though \(f(x,y)\) is not continuous at the initial point, the IVP still has a
+                        solution. Hence, continuity of \(f(x,y)\) is not necessary for existence.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q32. Find particular integral of \(y''+6y'+y=\cos x-\sin x\) by Annihilator method. [2 Marks] <span
+                class="marks">[2/3 Marks]</span></div>
+        <div class="answer">
+            <p>The given differential equation is</p>
+            <p>\[
+                y''+6y'+y=\cos x-\sin x.
+                \]</p>
+            <p><strong>Step 1:</strong> The annihilator of \(\cos x-\sin x\) is \((D^2+1)\), since \(\cos x\) and \(\sin
+                x\) satisfy \(y''+y=0\).</p>
+            <p>Applying \((D^2+1)\) to both sides:</p>
+            <p>\[
+                (D^2+1)(D^2+6D+1)y=0.
+                \]</p>
+            <p><strong>Step 2:</strong> The auxiliary equation for the homogeneous part is</p>
+            <p>\[
+                m^2+6m+1=0\implies m=-3\pm 2\sqrt{2}.
+                \]</p>
+            <p>So the complementary function is</p>
+            <p>\[
+                y_c=c_1e^{(-3+2\sqrt{2})x}+c_2e^{(-3-2\sqrt{2})x}.
+                \]</p>
+            <p><strong>Step 3:</strong> For the particular integral, since the RHS is \(\cos x-\sin x\), we try</p>
+            <p>\[
+                y_p=A\cos x+B\sin x.
+                \]</p>
+            <p>Then</p>
+            <p>\[
+                y_p'=-A\sin x+B\cos x,\qquad y_p''=-A\cos x-B\sin x.
+                \]</p>
+            <p>Substituting into the ODE:</p>
+            <p>\[
+                (-A\cos x-B\sin x)+6(-A\sin x+B\cos x)+(A\cos x+B\sin x)
+                \]</p>
+            <p>\[
+                =(-A+6B+A)\cos x+(-B-6A+B)\sin x
+                =6B\cos x-6A\sin x.
+                \]</p>
+            <p>Comparing with \(\cos x-\sin x\):</p>
+            <p>\[
+                6B=1\implies B=\frac{1}{6},\qquad -6A=-1\implies A=\frac{1}{6}.
+                \]</p>
+            <p>Therefore, the particular integral is</p>
+            <p>\[
+                \boxed{y_p=\frac{1}{6}\cos x+\frac{1}{6}\sin x=\frac{1}{6}(\cos x+\sin x).}
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q33. Show that differential equation \(x^2 \frac{d^2y}{dx^2} + x \frac{dy}{dx} + y = 0\) is
+            self adjoint. <span class="marks">[2/3 Marks]</span></div>
+        <div class="answer">
+            <p>A second-order linear differential equation is said to be in self-adjoint form if it can be expressed as
+            </p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=0.
+                \]</p>
+            <p>The given equation is</p>
+            <p>\[
+                x^{2}y''+xy'+y=0.
+                \]</p>
+            <p>Dividing throughout by \(x\) (for \(x\neq 0\)), we get</p>
+            <p>\[
+                xy''+y'+\frac{1}{x}y=0.
+                \]</p>
+            <p>Observe that the first two terms can be combined as the derivative of a product:</p>
+            <p>\[
+                \frac{d}{dx}\left(x\frac{dy}{dx}\right)=x y''+y'.
+                \]</p>
+            <p>Substituting this back into the equation, we obtain</p>
+            <p>\[
+                \frac{d}{dx}\left(x\frac{dy}{dx}\right)+\frac{1}{x}y=0.
+                \]</p>
+            <p>This is precisely the standard self-adjoint form</p>
+            <p>\[
+                \frac{d}{dx}\left(p(x)\frac{dy}{dx}\right)+q(x)y=0,
+                \]</p>
+            <p>where \(p(x)=x\) and \(q(x)=\frac{1}{x}\).</p>
+            <p>Hence, the given differential equation is self-adjoint.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q34. Find characteristic number and characteristic function of \(\frac{d^2y}{dx^2} + \lambda
+            y = 0\); \(y(0) = 0, y(\pi) = 0\). <span class="marks">[2/3 Marks]</span></div>
+        <div class="answer">
+            <p>Consider the boundary value problem</p>
+            <p>\[
+                y''+\lambda y=0,\qquad y(0)=0,\quad y(\pi)=0.
+                \]</p>
+            <p>We consider three cases for \(\lambda\).</p>
+            <p><strong>Case 1: \(\lambda=0\).</strong></p>
+            <p>Then \(y''=0\), so \(y=c_1x+c_2\).</p>
+            <p>Using \(y(0)=0\), we get \(c_2=0\).</p>
+            <p>Using \(y(\pi)=0\), we get \(c_1\pi=0\), hence \(c_1=0\).</p>
+            <p>Thus, only the trivial solution exists, so \(\lambda=0\) is not an eigenvalue.</p>
+            <p><strong>Case 2: \(\lambda<0\).< /strong>
+            </p>
+            <p>Let \(\lambda=-k^2\), \(k>0\). Then \(y=c_1e^{kx}+c_2e^{-kx}\).</p>
+            <p>The boundary conditions force \(c_1=c_2=0\), giving only the trivial solution.</p>
+            <p><strong>Case 3: \(\lambda>0\).</strong></p>
+            <p>Let \(\lambda=k^2\), \(k>0\). Then</p>
+            <p>\[
+                y=c_1\cos(kx)+c_2\sin(kx).
+                \]</p>
+            <p>Using \(y(0)=0\), we get \(c_1=0\).</p>
+            <p>Thus, \(y=c_2\sin(kx)\).</p>
+            <p>Using \(y(\pi)=0\), we get \(c_2\sin(k\pi)=0\).</p>
+            <p>For a nontrivial solution, \(c_2\neq 0\), so</p>
+            <p>\[
+                \sin(k\pi)=0\implies k=n,\qquad n=1,2,3,\ldots
+                \]</p>
+            <p>Therefore, the characteristic numbers (eigenvalues) are</p>
+            <p>\[
+                \lambda_n=n^2,\qquad n=1,2,3,\ldots
+                \]</p>
+            <p>and the corresponding characteristic functions (eigenfunctions) are</p>
+            <p>\[
+                y_n(x)=\sin(nx),\qquad n=1,2,3,\ldots
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q35. Find particular integral of \(y'' + 6y' + y = e^{3x} - \sin x\) by Annihilator method. [2 Marks]
+            <span class="marks">[2/3 Marks]</span></div>
+        <div class="answer">
+            <p>The given differential equation is</p>
+            <p>\[
+                (D^2+6D+1)y=e^{3x}-\sin x.
+                \]</p>
+            <p>The annihilator of \(e^{3x}\) is \((D-3)\), and the annihilator of \(\sin x\) is \((D^2+1)\).</p>
+            <p>Applying the product of these annihilators to both sides,</p>
+            <p>\[
+                (D-3)(D^2+1)(D^2+6D+1)y=0.
+                \]</p>
+            <p>The roots of the auxiliary equation \(m^2+6m+1=0\) are</p>
+            <p>\[
+                m=-3\pm 2\sqrt{2}.
+                \]</p>
+            <p>Since \(3\) and \(\pm i\) are not roots of the auxiliary equation, the particular integral is of the form
+            </p>
+            <p>\[
+                y_p=Ae^{3x}+B\cos x+C\sin x.
+                \]</p>
+            <p>Differentiating,</p>
+            <p>\[
+                y_p'=3Ae^{3x}-B\sin x+C\cos x,
+                \]</p>
+            <p>\[
+                y_p''=9Ae^{3x}-B\cos x-C\sin x.
+                \]</p>
+            <p>Substituting into the differential equation and equating coefficients of \(e^{3x}\), \(\cos x\), and
+                \(\sin x\), we get</p>
+            <p>\[
+                (9A+18A+A)e^{3x}=e^{3x}\implies 28A=1\implies A=\frac{1}{28}.
+                \]</p>
+            <p>For the trigonometric terms,</p>
+            <p>\[
+                (-B+6C+B)\cos x+(-C-6B+C)\sin x=-\sin x.
+                \]</p>
+            <p>This gives</p>
+            <p>\[
+                6C\cos x-6B\sin x=-\sin x.
+                \]</p>
+            <p>Equating coefficients,</p>
+            <p>\[
+                6C=0\implies C=0,\qquad -6B=-1\implies B=\frac{1}{6}.
+                \]</p>
+            <p>Therefore, the particular integral is</p>
+            <p>\[
+                y_p=\frac{1}{28}e^{3x}+\frac{1}{6}\cos x.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q36. Define Pfaffian differential equation with example. <span class="marks">[3
+                Marks]</span></div>
+        <div class="answer">
+            <p>A Pfaffian differential equation is a first-order partial differential equation of the form</p>
+            <p>\[
+                P(x,y,z)\,dx+Q(x,y,z)\,dy+R(x,y,z)\,dz=0,
+                \]</p>
+            <p>where \(P,Q,R\) are functions of the variables \(x,y,z\).</p>
+            <p>In two variables, it reduces to</p>
+            <p>\[
+                P(x,y)\,dx+Q(x,y)\,dy=0.
+                \]</p>
+            <p>The necessary and sufficient condition for the integrability of a Pfaffian equation is</p>
+            <p>\[
+                P\left(\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}\right)
+                +Q\left(\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}\right)
+                +R\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)=0.
+                \]</p>
+            <p>If this condition is satisfied, the Pfaffian equation is integrable and possesses a solution of the form
+            </p>
+            <p>\[
+                \phi(x,y,z)=C,
+                \]</p>
+            <p>where \(C\) is an arbitrary constant.</p>
+            <p>A simple example is the Pfaffian equation</p>
+            <p>\[
+                y\,dx+x\,dy=0.
+                \]</p>
+            <p>This can be written as</p>
+            <p>\[
+                d(xy)=0,
+                \]</p>
+            <p>which gives the solution</p>
+            <p>\[
+                xy=C.
+                \]</p>
+            <p>Thus, the given Pfaffian equation is integrable and represents a family of rectangular hyperbolas.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q37. Find order and degree of differential equation: \(y = \sqrt{x \frac{dy}{dx}} +
+            \frac{K}{dy/dx}\). <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>The given differential equation is</p>
+            <p>\[
+                y=\sqrt{x\frac{dy}{dx}}+\frac{K}{dy/dx}.
+                \]</p>
+            <p>Let</p>
+            <p>\[
+                p=\frac{dy}{dx}.
+                \]</p>
+            <p>Then the equation becomes</p>
+            <p>\[
+                y=\sqrt{xp}+\frac{K}{p}.
+                \]</p>
+            <p>To eliminate the radical and the fraction involving \(p\), we rearrange:</p>
+            <p>\[
+                y-\frac{K}{p}=\sqrt{xp}.
+                \]</p>
+            <p>Squaring both sides,</p>
+            <p>\[
+                \left(y-\frac{K}{p}\right)^2=xp.
+                \]</p>
+            <p>Expanding,</p>
+            <p>\[
+                y^2-\frac{2Ky}{p}+\frac{K^2}{p^2}=xp.
+                \]</p>
+            <p>Multiplying throughout by \(p^2\),</p>
+            <p>\[
+                y^2p^2-2Kyp+K^2=xp^3.
+                \]</p>
+            <p>Rearranging the terms,</p>
+            <p>\[
+                xp^3-y^2p^2+2Kyp-K^2=0.
+                \]</p>
+            <p>Substituting \(p=\frac{dy}{dx}\), we obtain</p>
+            <p>\[
+                x\left(\frac{dy}{dx}\right)^3
+                -y^2\left(\frac{dy}{dx}\right)^2
+                +2Ky\frac{dy}{dx}
+                -K^2=0.
+                \]</p>
+            <p>The order of the differential equation is \(1\) (the highest derivative present), and the degree is \(3\)
+                (the power of the highest derivative).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q38. Show that \(y = \frac{A}{x} + B\) is solution of \(\frac{d^2y}{dx^2} + \frac{2}{x}
+            \frac{dy}{dx} = 0\). <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>We are given</p>
+            <p>\[
+                y=\frac{A}{x}+B,
+                \]</p>
+            <p>where \(A\) and \(B\) are arbitrary constants.</p>
+            <p>Differentiating with respect to \(x\),</p>
+            <p>\[
+                y'=-\frac{A}{x^2}.
+                \]</p>
+            <p>Differentiating again,</p>
+            <p>\[
+                y''=\frac{2A}{x^3}.
+                \]</p>
+            <p>Now, consider the left-hand side of the given differential equation:</p>
+            <p>\[
+                y''+\frac{2}{x}y'.
+                \]</p>
+            <p>Substituting the expressions for \(y'\) and \(y''\),</p>
+            <p>\[
+                y''+\frac{2}{x}y'=\frac{2A}{x^3}+\frac{2}{x}\left(-\frac{A}{x^2}\right).
+                \]</p>
+            <p>Simplifying,</p>
+            <p>\[
+                =\frac{2A}{x^3}-\frac{2A}{x^3}=0.
+                \]</p>
+            <p>Since the left-hand side evaluates to zero, the given function \(y=\frac{A}{x}+B\) satisfies the
+                differential equation</p>
+            <p>\[
+                \frac{d^2y}{dx^2}+\frac{2}{x}\frac{dy}{dx}=0.
+                \]</p>
+            <p>Hence, \(y=\frac{A}{x}+B\) is a solution of the given differential equation.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q39. Find differential equation of family of curves \(y = e^{mx}\), \(m\) arbitrary
+            constant. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>The given family of curves is</p>
+            <p>\[
+                y=e^{mx},
+                \]</p>
+            <p>where \(m\) is an arbitrary constant.</p>
+            <p>Differentiating with respect to \(x\),</p>
+            <p>\[
+                \frac{dy}{dx}=me^{mx}=my.
+                \]</p>
+            <p>From this, we can express the arbitrary constant \(m\) as</p>
+            <p>\[
+                m=\frac{1}{y}\frac{dy}{dx}.
+                \]</p>
+            <p>Substituting this value of \(m\) back into the original equation \(y=e^{mx}\), we get</p>
+            <p>\[
+                y=e^{\left(\frac{1}{y}\frac{dy}{dx}\right)x}.
+                \]</p>
+            <p>Taking the natural logarithm on both sides,</p>
+            <p>\[
+                \log y=\frac{x}{y}\frac{dy}{dx}.
+                \]</p>
+            <p>Multiplying by \(y\),</p>
+            <p>\[
+                y\log y=x\frac{dy}{dx}.
+                \]</p>
+            <p>Therefore, the required differential equation is</p>
+            <p>\[
+                x\frac{dy}{dx}-y\log y=0.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q40. If \(y_1(x) = \sin 3x\) and \(y_2(x) = \cos 3x\) are two solutions of \(y'' + 9y = 0\),
+            show \(y_1\) and \(y_2\) are linearly independent solutions. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>We are given</p>
+            <p>\[
+                y_1(x)=\sin 3x,\qquad y_2(x)=\cos 3x.
+                \]</p>
+            <p>First, we verify that they are solutions of the differential equation</p>
+            <p>\[
+                y''+9y=0.
+                \]</p>
+            <p>For \(y_1\),</p>
+            <p>\[
+                y_1'=3\cos 3x,\qquad y_1''=-9\sin 3x=-9y_1.
+                \]</p>
+            <p>Thus,</p>
+            <p>\[
+                y_1''+9y_1=0.
+                \]</p>
+            <p>For \(y_2\),</p>
+            <p>\[
+                y_2'=-3\sin 3x,\qquad y_2''=-9\cos 3x=-9y_2.
+                \]</p>
+            <p>Thus,</p>
+            <p>\[
+                y_2''+9y_2=0.
+                \]</p>
+            <p>To check linear independence, we compute their Wronskian:</p>
+            <p>\[
+                W(y_1,y_2)=
+                \begin{vmatrix}
+                \sin 3x&\cos 3x\\
+                3\cos 3x&-3\sin 3x
+                \end{vmatrix}.
+                \]</p>
+            <p>Expanding,</p>
+            <p>\[
+                W=-3\sin^2 3x-3\cos^2 3x
+                =-3(\sin^2 3x+\cos^2 3x)=-3.
+                \]</p>
+            <p>Since the Wronskian is non-zero for all \(x\), the functions \(y_1\) and \(y_2\) are linearly independent
+                solutions of the given differential equation.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q41. If \(S\) is defined by rectangle \(|x| \le a, |y| \le b\). Show that \(f(x,y) = x^2 +
+            y^2\) satisfy Lipschitz condition. Find Lipschitz constant. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>A function \(f(x,y)\) satisfies the Lipschitz condition in \(y\) on a domain \(S\) if there exists a
+                constant \(L>0\) such that</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|
+                \]</p>
+            <p>for all \((x,y_1),(x,y_2)\in S\).</p>
+            <p>For \(f(x,y)=x^2+y^2\), we have</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|
+                =|(x^2+y_1^2)-(x^2+y_2^2)|
+                =|y_1^2-y_2^2|.
+                \]</p>
+            <p>Using the factorization \(y_1^2-y_2^2=(y_1-y_2)(y_1+y_2)\),</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|=|y_1-y_2|\,|y_1+y_2|.
+                \]</p>
+            <p>Given the rectangle \(|x|\le a, |y|\le b\), we have</p>
+            <p>\[
+                |y_1|\le b,\qquad |y_2|\le b.
+                \]</p>
+            <p>By the triangle inequality,</p>
+            <p>\[
+                |y_1+y_2|\le |y_1|+|y_2|\le 2b.
+                \]</p>
+            <p>Therefore,</p>
+            <p>\[
+                |f(x,y_1)-f(x,y_2)|\le 2b|y_1-y_2|.
+                \]</p>
+            <p>Hence, \(f(x,y)\) satisfies the Lipschitz condition on the given rectangle with Lipschitz constant</p>
+            <p>\[
+                L=2b.
+                \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q42. Define Wronskian. Evaluate Wronskian of functions \(y_1(x) = \sin x\) and \(y_2(x) =
+            \sin x - \cos x\). <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>The Wronskian of two differentiable functions \(y_1(x)\) and \(y_2(x)\) is defined as</p>
+            <p>\[
+                W(y_1,y_2)(x)=
+                \begin{vmatrix}
+                y_1(x)&y_2(x)\\
+                y_1'(x)&y_2'(x)
+                \end{vmatrix}
+                =y_1y_2'-y_1'y_2.
+                \]</p>
+            <p>Here,</p>
+            <p>\[
+                y_1(x)=\sin x,\qquad y_2(x)=\sin x-\cos x.
+                \]</p>
+            <p>Differentiating,</p>
+            <p>\[
+                y_1'(x)=\cos x,\qquad y_2'(x)=\cos x+\sin x.
+                \]</p>
+            <p>Substituting these into the Wronskian determinant,</p>
+            <p>\[
+                W=
+                \begin{vmatrix}
+                \sin x&\sin x-\cos x\\
+                \cos x&\cos x+\sin x
+                \end{vmatrix}.
+                \]</p>
+            <p>Expanding,</p>
+            <p>\[
+                W=\sin x(\cos x+\sin x)-(\sin x-\cos x)\cos x.
+                \]</p>
+            <p>Simplifying,</p>
+            <p>\[
+                W=\sin x\cos x+\sin^2 x-\sin x\cos x+\cos^2 x.
+                \]</p>
+            <p>Thus,</p>
+            <p>\[
+                W=\sin^2 x+\cos^2 x=1.
+                \]</p>
+            <p>Therefore, the Wronskian of the given functions is</p>
+            <p>\[
+                W(y_1,y_2)(x)=1.
+                \]</p>
+            <p>Since \(W\neq 0\), the functions \(y_1\) and \(y_2\) are linearly independent.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q43. Find Eigen value and Eigen vector of matrix \(\begin{bmatrix} 8 & -6 \\ -4 & 2
+            \end{bmatrix}\). <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>Let \(A = \begin{bmatrix} 8 & -6 \\ -4 & 2 \end{bmatrix}\). The characteristic equation is given by</p>
+            <p>\[
+                \det(A - \lambda I) = 0.
+                \]</p>
+            <p>Thus,</p>
+            <p>\[
+                \begin{vmatrix} 8-\lambda & -6 \\ -4 & 2-\lambda \end{vmatrix} = 0.
+                \]</p>
+            <p>Expanding the determinant,</p>
+            <p>\[
+                (8-\lambda)(2-\lambda) - (-6)(-4) = 0.
+                \]</p>
+            <p>Simplifying,</p>
+            <p>\[
+                16 - 8\lambda - 2\lambda + \lambda^2 - 24 = 0 \implies \lambda^2 - 10\lambda - 8 = 0.
+                \]</p>
+            <p>Solving the quadratic equation,</p>
+            <p>\[
+                \lambda = \frac{10 \pm \sqrt{100 + 32}}{2} = \frac{10 \pm \sqrt{132}}{2} = 5 \pm \sqrt{33}.
+                \]</p>
+            <p>Thus, the eigenvalues are \(\lambda_1 = 5 + \sqrt{33}\) and \(\lambda_2 = 5 - \sqrt{33}\).</p>
+            <p>For \(\lambda_1 = 5 + \sqrt{33}\), the eigenvector \(v_1\) satisfies \((A - \lambda_1 I)v_1 = 0\):</p>
+            <p>\[
+                \begin{bmatrix} 3-\sqrt{33} & -6 \\ -4 & -3-\sqrt{33} \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}
+                = \begin{bmatrix} 0 \\ 0 \end{bmatrix}.
+                \]</p>
+            <p>From the first row, \((3-\sqrt{33})x - 6y = 0\), which gives \(y = \frac{3-\sqrt{33}}{6}x\).</p>
+            <p>Choosing \(x = 6\), we get \(y = 3-\sqrt{33}\). Thus, \(v_1 = \begin{bmatrix} 6 \\ 3-\sqrt{33}
+                \end{bmatrix}\).</p>
+            <p>Similarly, for \(\lambda_2 = 5 - \sqrt{33}\), the eigenvector is \(v_2 = \begin{bmatrix} 6 \\ 3+\sqrt{33}
+                \end{bmatrix}\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q44. Discuss about Reduction of higher order linear differential equation into first order
+            linear differential equation. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+            <p>Consider a general \(n\)-th order linear differential equation of the form</p>
+            <p>\[
+                y^{(n)} + P_1(x)y^{(n-1)} + P_2(x)y^{(n-2)} + \cdots + P_n(x)y = R(x).
+                \]</p>
+            <p>To reduce this into a system of first-order linear differential equations, we introduce new dependent
+                variables \(x_1, x_2, \ldots, x_n\) defined by</p>
+            <p>\[
+                x_1 = y,\quad x_2 = y',\quad x_3 = y'',\quad \ldots,\quad x_n = y^{(n-1)}.
+                \]</p>
+            <p>Differentiating these with respect to \(x\), we obtain</p>
+            <p>\[
+                x_1' = x_2,\quad x_2' = x_3,\quad \ldots,\quad x_{n-1}' = x_n.
+                \]</p>
+            <p>From the original differential equation, we can express the highest derivative as</p>
+            <p>\[
+                x_n' = y^{(n)} = R(x) - P_n(x)x_1 - P_{n-1}(x)x_2 - \cdots - P_1(x)x_n.
+                \]</p>
+            <p>Thus, the given \(n\)-th order equation is transformed into a system of \(n\) first-order equations:</p>
+            <p>\[
+                \begin{aligned}
+                x_1' &= x_2, \\
+                x_2' &= x_3, \\
+                &\vdots \\
+                x_{n-1}' &= x_n, \\
+                x_n' &= -P_n(x)x_1 - P_{n-1}(x)x_2 - \cdots - P_1(x)x_n + R(x).
+                \end{aligned}
+                \]</p>
+            <p>In matrix form, this is written as</p>
+            <p>\[
+                \frac{d\mathbf{X}}{dx} = A(x)\mathbf{X} + \mathbf{F}(x),
+                \]</p>
+            <p>where \(\mathbf{X} = [x_1, x_2, \ldots, x_n]^T\), \(A(x)\) is the companion matrix, and \(\mathbf{F}(x) =
+                [0, 0, \ldots, R(x)]^T\).</p>
+            <p>For example, the equation \(y''' - 2y'' + 3y' - 4y = e^x\) reduces to the system:</p>
+            <p>\[
+                \begin{bmatrix} x_1' \\ x_2' \\ x_3' \end{bmatrix} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 4 & -3 &
+                2 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} + \begin{bmatrix} 0 \\ 0 \\ e^x
+                \end{bmatrix}.
+                \]</p>
+            <p>This reduction is fundamental in the theory of linear systems and allows the application of matrix
+                methods.</p>
+        </div>
+    </div>
+
+
+    <div style="margin: 25px 0 15px; font-weight: bold; font-size: 16px; color: #00008b;">
+        Additional Medium Answer Questions from Past Examinations:
+    </div>
+    <ol>
+        <li>If \(y=x\) is a solution of \(x^2y''+xy'-y=0\), then find the 2nd linearly independent solution. <span class="year">(2018,2022,2023)</span> <span class="marks">[14/4]</span></li>
+        <li>Find the differential equation with solutions \(y_1(x)=x\) and \(y_2(x)=x e^x\). <span class="year">(2018,2023)</span> <span class="marks">[14/4]</span></li>
+        <li>Prove that \(y_1\) and \(y_2\) are two solutions of the equation \(a_0(x)y''+a_1(x)y'+a_2(x)y=0\) (\(a_0(x)\ne0\)) are linearly dependent if and only if their Wronskian is identically zero. <span class="year">(2023,2024)</span> <span class="marks">[14/7]</span></li>
+        <li>If \(f(x,y)\) does not satisfy Lipschitz condition, show that the Initial Value Problem (I.V.P.) may have more than one solution. <span class="year">(2023,2024)</span> <span class="marks">[14/4]</span></li>
+        <li>Convert the pair of 2nd order equations \(\frac{d^2y}{dt^2}+3\frac{dz}{dt}+2y=0,\ \frac{d^2z}{dt^2}+3\frac{dy}{dt}+2z=0\) into a system of four first order equations. <span class="year">(2025)</span> <span class="marks">[4]</span></li>
+        <li>State and prove Sturm-Liouville's boundary value theorem. <span class="year">(2023,2025)</span> <span class="marks">[8]</span></li>
+        <li>Show that Green's function has the symmetric property. <span class="year">(2025)</span> <span class="marks">[6]</span></li>
+        <li>If \(f(x,y)\) does not satisfy Lipschitz condition then I.V.P may have more than one solution. Justify with example. <span class="year">(2024)</span> <span class="marks">[4]</span></li>
+        <li>The Wronskian of two solutions of equation \(a_0(x)y''+a_1(x)y'+a_2(x)y=0;\ a_0(x)\ne0,\ x\in[a,b]\) is either identically zero or never zero on \([a,b]\). <span class="year">(2024)</span> <span class="marks">[7]</span></li>
+        <li>Show that linearly independent solutions of \(y''-2y'+2y=0\) are \(e^x\sin x\) and \(e^x\cos x\). What is the general solution? Find solution \(y(x)\) with \(y(0)=2,\ y'(0)=3\). <span class="year">(2021,2024)</span> <span class="marks">[10/7]</span></li>
+        <li>Using Wronskian show that functions \(1, x, x^2, x^3\) are linearly independent. Determine differential equation with these as independent solution. <span class="year">(2024)</span> <span class="marks">[6]</span></li>
+        <li>Write about the solution of homogeneous linear system when two characteristic values are equal. <span class="year">(2024)</span> <span class="marks">[4]</span></li>
+        <li>State and prove Sturm-Liouville's theorem. <span class="year">(2023)</span> <span class="marks">[7]</span></li>
+        <li>Solve the B.V.P using Green's function \(\frac{d^2u}{dx^2}+u=x^2;\ u(0)=0,\ u(\pi/2)=0\). <span class="year">(2023)</span> <span class="marks">[7]</span></li>
+    </ol>
+
+
+    <hr>
+    <!-- ========================================================================== -->
+    <!-- PART III : LONG ANSWER QUESTIONS (10 TO 14 MARKS)                         -->
+    <!-- ========================================================================== -->
+    <div id="long" class="section-title">Long Answer Questions (10 to 14 Marks)</div>
+    <ol>
+        <li>Prove that the Wronskian of the functions \(e^{m_1x}, e^{m_2x}, e^{m_3x}\) is equal to \((m_1-m_2)(m_2-m_3)(m_3-m_1)e^{(m_1+m_2+m_3)x}\). <span class="year">(2019,2023,2024)</span> <span class="marks">[14]</span></li>
+        <li>Show that \(y_1=\sin x\), \(y_2=\sin x-\cos x\) are linearly independent solutions of \(y''+y=0\). <span class="year">(2020,2023,2024)</span> <span class="marks">[14]</span></li>
+        <li>Given that \(y=x\) is a solution of \((x^2+1)y''-2xy'+2y=0\), find a linearly independent solution by reducing the order. <span class="year">(2019,2024)</span> <span class="marks">[14/10]</span></li>
+        <li>If \(f(x,y)=xy^2\) on \(|x|\le1, |y|\le1\), show that \(f(x,y)\) satisfies the Lipschitz condition and find the Lipschitz constant. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>If \(\frac{dy}{dx}=2xy\), with \(y=1\) when \(x=0\): Find up to the 4th approximation by Picard's method. Also find \(\lim_{n\to\infty}y_n(x)\). <span class="year">(2019,2023)</span> <span class="marks">[14/10]</span></li>
+        <li>Show that the Wronskian of \(e^{ax}\cos(bx)\) and \(e^{ax}\sin(bx)\) (\(b\ne0\)) is \(b e^{2ax}\). <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Show that the Wronskian of the functions \(x^2\) and \(x^2\log x\) is non-zero. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Use Wronskian to show that the functions \(x, x^2, x^3\) are independent. Determine the differential equation with these linearly independent solutions. <span class="year">(2024)</span> <span class="marks">[14]</span></li>
+        <li>Prove that if \(y_1\) and \(y_2\) are any two solutions of \(a_0(x)y''+a_1(x)y'+a_2(x)y=0\), then their linear combination \(c_1y_1+c_2y_2\) is also a solution of the given equation (\(c_1, c_2\) are constants). <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Express \(\frac{d^3y}{dt^3}-\frac{d^2y}{dt^2}+2\frac{dy}{dt}+3y=0\) as a system of three linear differential equations. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Convert \(\frac{d^3y}{dt^3}+\left(\frac{dy}{dt}\right)^2=0\) into a system of first-order differential equations. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Convert \(\frac{d^3y}{dt^3}+\cos y=e^t\) into a system of first-order differential equations. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>State and Prove Sturm–Liouville's Theorem. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Solve the Boundary Value Problem using Green's Function: \(\frac{d^2u}{dx^2}+u=x^2,\ u(0)=0,\ u(\pi/2)=0\). <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>State and prove Picard's Theorem of Successive Approximations for the first-order initial value problem \(\frac{dy}{dx}=f(x,y),\ y(x_0)=y_0\). Use it to compute the first three successive approximations for \(\frac{dy}{dx}=x+y^2\) with \(y(0)=0\). <span class="year">(2025)</span> <span class="marks">[14]</span></li>
+        <li>State and prove the necessary and sufficient condition in terms of the Wronskian for solutions of an n-th order linear homogeneous ODE to be linearly independent. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Explain the Annihilator Method to find a particular integral of non-homogeneous differential equations with constant coefficients. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Prove that any n-th order linear ODE can be transformed into an equivalent system of n first-order differential equations. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Find the fundamental matrix solution and general solution for the linear system: \(\frac{d\mathbf{X}}{dt}=\begin{bmatrix}1&1\\4&1\end{bmatrix}\mathbf{X}\). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Define the Sturm-Liouville Problem. Prove that all eigenvalues of a regular Sturm-Liouville problem are real and the eigenfunctions corresponding to distinct eigenvalues are orthogonal with respect to the weight function. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Construct the Green's function for the boundary value problem: \(\frac{d^2y}{dx^2}=-f(x),\ y(0)=0,\ y(1)=0\) and hence solve the equation when \(f(x)=x\). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>State and prove Gronwall's Inequality and show how it is used to prove the uniqueness of solutions for Initial Value Problems. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>State Peano's Existence Theorem. How does it differ from Picard-Lindelöf Theorem in terms of continuity and uniqueness? <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Show that the Initial Value Problem \(\frac{dy}{dx}=3y^{2/3}\) with \(y(0)=0\) has infinitely many solutions. Explain why Picard's theorem fails here. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Define Lipschitz condition for a vector-valued function \(\mathbf{f}(t,\mathbf{x})\). Show that if \(\frac{\partial f_i}{\partial x_j}\) are bounded, then the vector function satisfies the Lipschitz condition. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>State and prove Abel's Formula for the Wronskian of solutions of \(y''+P(x)y'+Q(x)y=0\). Hence show that the Wronskian \(W(x)\) either never vanishes or is identically zero. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>State and prove Sturm's Separation Theorem regarding the zeros of two linearly independent solutions of a second-order linear differential equation. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>State and prove Sturm's Fundamental Comparison Theorem. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>If \(y_1(x)\) is a known non-zero solution of \(y''+P(x)y'+Q(x)y=0\), derive the general expression for the second linearly independent solution \(y_2(x)=y_1(x)\int\frac{e^{-\int P(x)dx}}{[y_1(x)]^2}dx\). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Define the matrix exponential \(e^{At}=\sum_{k=0}^{\infty}\frac{A^k t^k}{k!}\). Prove that \(\frac{d}{dt}(e^{At})=A e^{At}\) and show that \(\mathbf{X}(t)=e^{At}\mathbf{C}\) is the general solution of the system \(\frac{d\mathbf{X}}{dt}=A\mathbf{X}\). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Derive the method of Variation of Parameters for the non-homogeneous vector differential equation \(\frac{d\mathbf{X}}{dt}=A(t)\mathbf{X}+\mathbf{F}(t)\). Prove that the solution is given by \(\mathbf{X}(t)=\Phi(t)\mathbf{C}+\Phi(t)\int_{t_0}^t\Phi^{-1}(s)\mathbf{F}(s)ds\). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Explain how to construct the fundamental matrix of \(\frac{d\mathbf{X}}{dt}=A\mathbf{X}\) when the matrix \(A\) has repeated eigenvalues and lacks a complete set of linearly independent eigenvectors. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>State and prove the four fundamental characteristic properties that uniquely define the Green's function \(G(x,t)\) for a self-adjoint boundary value problem. <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Consider the regular Sturm-Liouville problem \(\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right]+[q(x)+\lambda r(x)]y=0\) with \(p(x)>0, r(x)>0\). Prove that all its eigenvalues are real and non-degenerate (simple). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Construct the Green's function for the differential equation \(\frac{d^2y}{dx^2}=0\) subject to the mixed boundary conditions \(y(0)=0\) and \(y'(1)=0\). <span class="year">(—)</span> <span class="marks">[14]</span></li>
+        <li>Using Picard's method of successive approximation, find solution up to 3rd iteration of \(\frac{dy}{dx}=x+y^2;\ y=0\) when \(x=0\). <span class="year">(2021,2023,2025)</span> <span class="marks">[14/10]</span></li>
+        <li>Solve the I.V.P: \(\frac{d\mathbf{x}}{dt}=\begin{bmatrix}2&1&3\\0&2&-1\\0&0&2\end{bmatrix}\mathbf{x};\ \mathbf{x}(0)=\begin{bmatrix}1\\2\\1\end{bmatrix}\). <span class="year">(2023,2025)</span> <span class="marks">[14]</span></li>
+        <li>Find the unique solution \(\phi\) of the non-homogeneous linear system: \(\frac{d\mathbf{x}}{dt}=\begin{bmatrix}-1&1\\-12&6\end{bmatrix}\mathbf{x}+\begin{bmatrix}3e^{4t}\\8e^{4t}\end{bmatrix},\ \phi(0)=\begin{bmatrix}2\\4\end{bmatrix}\). <span class="year">(2025)</span> <span class="marks">[10]</span></li>
+        <li>Obtain the formal expansion of \(f(x)=\pi x-x^2;\ 0\le x\le\pi\) in the series of orthonormal characteristic function \(\{\phi_n\}\) of Sturm-Liouville problem \(y''+\lambda y=0;\ y(0)=0,\ y(\pi)=0\). Discuss convergence. <span class="year">(2023,2025)</span> <span class="marks">[14]</span></li>
+        <li>Using Picard's method to solve I.V.P up to 3rd approximation: \(\frac{dy}{dx}=2y-2x^2-3;\ y=2\) when \(x=0\). <span class="year">(2024)</span> <span class="marks">[10]</span></li>
+        <li>Solve the homogeneous linear system: \(\mathbf{x}'=\begin{bmatrix}0&-1&1\\2&-3&1\\1&-1&-1\end{bmatrix}\mathbf{x}\). <span class="year">(2024)</span> <span class="marks">[14]</span></li>
+        <li>Find the unique solution \(\phi\) of non-homogeneous differential equation \(\frac{d\mathbf{x}}{dt}=\begin{bmatrix}6&-3\\2&1\end{bmatrix}\mathbf{x}+\begin{bmatrix}e^{5t}\\4\end{bmatrix}\) with \(\phi(0)=\begin{bmatrix}9\\4\end{bmatrix}\). <span class="year">(2024)</span> <span class="marks">[10]</span></li>
+        <li>Find the sequence of characteristic numbers and characteristic functions of given differential equation:<br> (i) \(y''+\lambda y=0;\ y(0)=0,\ y(\pi/2)=0\).<br> (ii) \(y''+(1+\lambda)y=0;\ y(0)=0,\ y(\pi)=0\). <span class="year">(2023)</span> <span class="marks">[10]</span></li>
+        <li>Obtain the formal expansion of \(f(t)=\pi t-t^2;\ 0\le t\le\pi\) in series of orthonormal characteristic function \(\{\phi_n\}\) of Sturm-Liouville problem \(\frac{d^2y}{dt^2}+\lambda y=0;\ y(0)=0,\ y(\pi)=0\). Discuss convergence. <span class="year">(2023)</span> <span class="marks">[14]</span></li>
+        <li>Show that function \(y=cx^2+x+3\) is a solution though not unique of I.V.P \(x^2y''-2xy'+2y=6\) with \(y(0)=3,\ y'(0)=1\) on \((-\infty,\infty)\). <span class="year">(2021)</span> <span class="marks">[10]</span></li>
+        <li>Solve homogeneous linear system \(\frac{dx}{dt}=3x-2y\) and \(\frac{dy}{dt}=2x+6y\). <span class="year">(2021)</span> <span class="marks">[10]</span></li>
+        <li>State and prove Sturm-Liouville's boundary value problem. <span class="year">(2019,2021)</span> <span class="marks">[10]</span></li>
+        <li>Wronskian of functions \(x^2, \ldots\) non zero. Can these functions be independent solution of an ordinary differential equation? If so determine this equation. <span class="year">(2019)</span> <span class="marks">[10]</span></li>
+        <li>Given \(y=x\) is a solution of \((x^2+1)y''-2xy'+2y=0\). Find a linearly independent solution by reducing the order. <span class="year">(2019)</span> <span class="marks">[10]</span></li>
+        <li>Solve homogeneous linear system \(\frac{dx}{dt}=6x-3y,\ \frac{dy}{dt}=2x+y\). <span class="year">(2019)</span> <span class="marks">[10]</span></li>
+        <li>Find the sequence of characteristic numbers and characteristic functions of the given differential equation. <span class="year">(2019)</span> <span class="marks">[10]</span></li>
+    </ol>
+
+</body>
+
+</html>

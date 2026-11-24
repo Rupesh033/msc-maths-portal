@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC-205 (CCMATH205) — Differential Geometry and Tensor Analysis</title>
+    <!-- MathJax for rendering LaTeX math -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 20px 30px;
+            background: #fff;
+            color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #000;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            color: #000;
+        }
+
+        .qa-block {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .q-line {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        .marks {
+            font-weight: normal;
+            color: #000;
+            font-size: 14px;
+        }
+
+        .year {
+            font-weight: normal;
+            color: #333;
+        }
+
+        .answer {
+            margin-top: 8px;
+            text-align: justify;
+            color: blue;
+        }
+
+        .answer p {
+            margin: 8px 0;
+        }
+
+        ol {
+            padding-left: 25px;
+            margin-top: 5px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            text-align: justify;
+            color: #000;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #000;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CC-205 (CCMATH205) — DIFFERENTIAL GEOMETRY AND TENSOR ANALYSIS</h1>
+    <h2>Section A — Short Answer Questions & Solutions</h2>
+
+    <div class="qa-block">
+        <div class="q-line">Q1. State Serret-Frenet formulae for space curves. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> Let \(\vec{t}, \vec{n}, \vec{b}\) be the unit tangent, principal normal, and binormal vectors to a space curve at an arc-length parameter \(s\). The Serret-Frenet formulae are:</p>
+            \[
+            \frac{d\vec{t}}{ds} = \kappa \vec{n}, \quad \frac{d\vec{n}}{ds} = -\kappa \vec{t} + \tau \vec{b}, \quad \frac{d\vec{b}}{ds} = -\tau \vec{n}
+            \]
+            <p>where \(\kappa\) is the curvature and \(\tau\) is the torsion of the curve.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q2. Define the curvature (\(\kappa\)) and torsion (\(\tau\)) of a space curve. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong></p>
+            <p><strong>Curvature (\(\kappa\)):</strong> The arc-rate of turning of the unit tangent vector \(\vec{t}\), defined as \(\kappa = \left\|\frac{d\vec{t}}{ds}\right\|\). It measures the deviation of the curve from being a straight line.</p>
+            <p><strong>Torsion (\(\tau\)):</strong> The arc-rate of turning of the binormal vector \(\vec{b}\), defined by \(\frac{d\vec{b}}{ds} = -\tau \vec{n}\). It measures the deviation of the curve from being a plane curve.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q3. What is the necessary and sufficient condition for a curve to be a plane curve? <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> The necessary and sufficient condition for a curve to be a plane curve is that its torsion \(\tau = 0\) at all points of the curve.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q4. Define First and Second Fundamental Forms of a surface. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> For a surface \(\vec{r} = \vec{r}(u, v)\):</p>
+            <p><strong>First Fundamental Form (\(I\)):</strong> \(I = ds^2 = E\,du^2 + 2F\,du\,dv + G\,dv^2\), where \(E = \vec{r}_u \cdot \vec{r}_u\), \(F = \vec{r}_u \cdot \vec{r}_v\), \(G = \vec{r}_v \cdot \vec{r}_v\). It gives the metric on the surface.</p>
+            <p><strong>Second Fundamental Form (\(II\)):</strong> \(II = -d\vec{r} \cdot d\vec{N} = L\,du^2 + 2M\,du\,dv + N\,dv^2\), where \(L = \vec{r}_{uu} \cdot \vec{N}\), \(M = \vec{r}_{uv} \cdot \vec{N}\), \(N = \vec{r}_{vv} \cdot \vec{N}\), and \(\vec{N}\) is the unit normal vector to the surface.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q5. Define Gaussian curvature \(K\) and Mean curvature \(H\) of a surface. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> If \(\kappa_1, \kappa_2\) are the principal curvatures of a surface, then:</p>
+            <p><strong>Gaussian Curvature (\(K\)):</strong> \(K = \kappa_1 \kappa_2 = \frac{LN - M^2}{EG - F^2}\).</p>
+            <p><strong>Mean Curvature (\(H\)):</strong> \(H = \frac{1}{2}(\kappa_1 + \kappa_2) = \frac{EN - 2FM + GL}{2(EG - F^2)}\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q6. Define contravariant and covariant tensors of rank 1 (vectors). <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> Under a coordinate transformation \(x^i \to \bar{x}^i\):</p>
+            <p>A set of quantities \(A^i\) constitutes a <strong>contravariant vector</strong> (rank 1) if it transforms as:
+            \[
+            \bar{A}^i = \frac{\partial \bar{x}^i}{\partial x^j} A^j
+            \]</p>
+            <p>A set of quantities \(A_i\) constitutes a <strong>covariant vector</strong> (rank 1) if it transforms as:
+            \[
+            \bar{A}_i = \frac{\partial x^j}{\partial \bar{x}^i} A_j
+            \]</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q7. Define Christoffel symbols of the first and second kinds. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> In terms of the metric tensor \(g_{ij}\):</p>
+            <p><strong>First Kind:</strong> \([ij, k] = \Gamma_{ijk} = \frac{1}{2}\left(\frac{\partial g_{ik}}{\partial x^j} + \frac{\partial g_{jk}}{\partial x^i} - \frac{\partial g_{ij}}{\partial x^k}\right)\)</p>
+            <p><strong>Second Kind:</strong> \(\left\{ \begin{matrix} k \\ ij \end{matrix} \right\} = \Gamma^k_{ij} = g^{km} [ij, m]\)</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q8. State Bianchi Identities for the Riemann-Christoffel curvature tensor. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+            <p><strong>Answer:</strong> The Bianchi identity states that the covariant derivative of the curvature tensor satisfies:</p>
+            \[
+            R^l_{ijk, m} + R^l_{ikm, j} + R^l_{imj, k} = 0
+            \]
+            <p>where the comma denotes covariant differentiation with respect to the index.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Section B — Descriptive / Long Answer Questions</h2>
+
+    <ol>
+        <li>State and prove the Serret-Frenet formulae for space curves. Also show that the circle is the only curve of constant positive curvature and zero torsion.</li>
+        <li>Derive the equation of the Osculating plane, Normal plane, and Rectifying plane of a space curve at a given point.</li>
+        <li>Find the curvature and torsion of the circular helix \(\vec{r}(t) = (a\cos t, a\sin t, bt)\).</li>
+        <li>Derive the Gauss characteristic equation and Mainardi-Codazzi equations for a surface.</li>
+        <li>Prove that the metric tensor \(g_{ij}\) is a covariant tensor of rank 2, and that its covariant derivative is identically zero (\(g_{ij, k} = 0\), Ricci's Theorem).</li>
+        <li>Define Geodesics on a surface and derive the differential equations of geodesics using calculus of variations.</li>
+        <li>Show that Christoffel symbols are not tensors, but their transformation law includes an inhomogeneous term involving second derivatives of coordinate transformations.</li>
+        <li>Define the Riemann-Christoffel curvature tensor \(R^l_{ijk}\) and prove its cyclic property and anti-symmetry properties: \(R_{hijk} = -R_{ihjk} = -R_{hikj}\) and \(R_{hijk} = R_{jkhi}\).</li>
+    </ol>
+
+</body>
+
+</html>

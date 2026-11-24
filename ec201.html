@@ -1,0 +1,3844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC-201 — Programming in C &amp; MATLAB</title>
+    <!-- MathJax for rendering LaTeX math -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15.5px;
+            line-height: 1.65;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px 40px;
+            background: #fff;
+            color: #000;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #333;
+            border-bottom: 2px solid #000;
+            padding-bottom: 12px;
+        }
+
+        .qa-block {
+            margin-bottom: 28px;
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 22px;
+        }
+
+        /* Question in bold black - student notebook black pen */
+        .q-line {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .marks {
+            font-weight: normal;
+            color: #000;
+            font-size: 14.5px;
+        }
+
+        /* Answer in notebook blue ink */
+        .answer {
+            margin-top: 8px;
+            text-align: justify;
+            color: #0000cd; /* Notebook blue ink */
+            font-size: 15.5px;
+        }
+
+        .answer p {
+            margin: 0 0 10px 0;
+            color: #0000cd;
+        }
+
+        .answer strong {
+            color: #000080; /* Deep navy for emphasis inside answer */
+        }
+
+        .answer em {
+            color: #0000cd;
+        }
+
+        .answer ul, .answer ol {
+            margin: 8px 0 12px 24px;
+            padding: 0;
+            color: #0000cd;
+        }
+
+        .answer li {
+            margin-bottom: 6px;
+            color: #0000cd;
+        }
+
+        .answer pre {
+            background: #f4f6fa;
+            border: 1px solid #c7d2fe;
+            border-left: 4px solid #0000cd;
+            padding: 12px 16px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 13.5px;
+            line-height: 1.45;
+            color: #051c5e;
+            margin: 12px 0;
+        }
+
+        .answer code {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 14px;
+            background: #eef2ff;
+            color: #051c5e;
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        .answer table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0;
+            font-size: 14px;
+        }
+
+        .answer th {
+            border: 1px solid #93c5fd;
+            background: #e0e7ff;
+            color: #1e3a8a;
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .answer td {
+            border: 1px solid #bfdbfe;
+            padding: 7px 12px;
+            color: #0000cd;
+        }
+
+        .answer tr:nth-child(even) {
+            background: #f8faff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>EC-201 — PROGRAMMING IN C &amp; MATLAB</h1>
+    <h2>M.Sc. Mathematics (Honours) — Question Bank with Complete Solutions</h2>
+    <div class="qa-block">
+        <div class="q-line">Q1. What is an Algorithm? Explain with an example. (2024 Q1a) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>An Algorithm is a finite, step-by-step, unambiguous sequence of well-defined computational instructions designed to solve a specific problem or perform a computation. Every valid algorithm must satisfy five fundamental properties (Knuth’s criteria):</p>
+<ol>
+    <li><strong>Input:</strong> Accepts zero or more well-defined external inputs.</li>
+    <li><strong>Output:</strong> Produces at least one well-defined result.</li>
+    <li><strong>Definiteness:</strong> Every step must be crystal clear, exact, and unambiguous.</li>
+    <li><strong>Finiteness:</strong> Must terminate after a finite number of steps for all valid inputs.</li>
+    <li><strong>Effectiveness:</strong> Every operation must be basic enough to be executed accurately in finite time.</li>
+</ol>
+
+<p><strong>Example: Algorithm to Check Whether a Given Integer \(N\) is Prime:</strong></p>
+<pre><code>ALGORITHM CheckPrime
+BEGIN
+    Step 1: START
+    Step 2: READ a positive integer N
+    Step 3: IF N &lt;= 1 THEN
+                PRINT N, "is NOT a prime number"
+                GOTO Step 8
+            ENDIF
+    Step 4: SET flag &larr; 1, i &larr; 2
+    Step 5: WHILE i &lt;= sqrt(N) DO
+                IF (N MOD i == 0) THEN
+                    SET flag &larr; 0
+                    BREAK
+                ENDIF
+                INCREMENT i &larr; i + 1
+            ENDWHILE
+    Step 6: IF flag == 1 THEN
+                PRINT N, "is a PRIME number"
+            ELSE
+                PRINT N, "is NOT a prime number"
+            ENDIF
+    Step 7: STOP
+END</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q2. What is a Keyword? List the names of 15 Keywords used in Programming in C. (2024 Q1b) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>A <strong>Keyword</strong> (also called a reserved word) is a predefined identifier in the C language whose meaning and functionality are fixed and permanently reserved by the compiler. Keywords cannot be redefined or used as variable names, function names, or user-defined identifiers, and they must always be written in lowercase.</p>
+<p><em>(ANSI C89/C90 defines 32 standard keywords.)</em></p>
+
+<p><strong>List of 15 C Keywords (Categorized for Clarity):</strong></p>
+<ol>
+    <li><strong>Data Type Keywords:</strong> <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>, <code>void</code></li>
+    <li><strong>Type Modifiers:</strong> <code>long</code>, <code>short</code>, <code>signed</code>, <code>unsigned</code></li>
+    <li><strong>Control Flow &amp; Branching:</strong> <code>if</code>, <code>else</code>, <code>switch</code>, <code>case</code>, <code>default</code></li>
+    <li><strong>Looping &amp; Jump Statements:</strong> <code>for</code>, <code>while</code>, <code>do</code>, <code>break</code>, <code>continue</code>, <code>return</code></li>
+    <li><strong>Storage Classes &amp; User Types:</strong> <code>auto</code>, <code>static</code>, <code>extern</code>, <code>struct</code>, <code>union</code>, <code>typedef</code>, <code>sizeof</code>, <code>const</code></li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q3. What are Preprocessor Directives in C? (2024 Q1c) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p><strong>Preprocessor Directives</strong> are special instructions issued to the C Preprocessor—a macro-processing program that transforms the source code before the actual compilation phase begins. Every preprocessor directive begins with the hash symbol (<code>#</code>) and does not end with a semicolon (<code>;</code>).</p>
+
+<p><strong>Major Types of Preprocessor Directives:</strong></p>
+<ol>
+    <li><strong>File Inclusion Directives (<code>#include</code>):</strong>
+        <ul>
+            <li>Inserts the entire contents of a header file into the source code before compilation.</li>
+            <li><code>#include &lt;stdio.h&gt;</code>: Searches standard system library directories.</li>
+            <li><code>#include "myheader.h"</code>: Searches the current project directory first.</li>
+        </ul>
+    </li>
+    <li><strong>Macro Expansion Directives (<code>#define</code>, <code>#undef</code>):</strong>
+        <ul>
+            <li>Defines symbolic constants or inline code macros.</li>
+            <li>Object-like macro: <code>#define PI 3.14159</code></li>
+            <li>Function-like macro: <code>#define SQUARE(x) ((x) * (x))</code></li>
+            <li><code>#undef PI</code> undefines a previously defined macro.</li>
+        </ul>
+    </li>
+    <li><strong>Conditional Compilation Directives (<code>#if</code>, <code>#ifdef</code>, <code>#ifndef</code>, <code>#else</code>, <code>#elif</code>, <code>#endif</code>):</strong>
+        <ul>
+            <li>Allows selective compilation of code blocks depending on whether specific macros are defined or conditions hold true (essential for cross-platform development and header guards).</li>
+        </ul>
+    </li>
+    <li><strong>Miscellaneous Directives (<code>#pragma</code>, <code>#error</code>):</strong>
+        <ul>
+            <li><code>#pragma</code> passes compiler-specific instructions (e.g., <code>#pragma once</code>), while <code>#error</code> halts compilation with a custom diagnostic message.</li>
+        </ul>
+    </li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q4. What is the difference between malloc() and calloc() in C programming? (2024 Q1d) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p>Both <code>malloc()</code> and <code>calloc()</code> are dynamic memory allocation functions declared in <code>&lt;stdlib.h&gt;</code> that allocate memory from the Heap segment at runtime, returning a generic <code>void*</code> pointer (or <code>NULL</code> on failure).</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Basis of Comparison</th>
+            <th>malloc() (Memory Allocation)</th>
+            <th>calloc() (Contiguous Allocation)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Syntax</strong></td>
+            <td><code>void* malloc(size_t size_in_bytes);</code></td>
+            <td><code>void* calloc(size_t n_blocks, size_t block_size);</code></td>
+        </tr>
+        <tr>
+            <td><strong>Number of Arguments</strong></td>
+            <td>Takes 1 argument (total number of bytes required).</td>
+            <td>Takes 2 arguments (number of elements and size of each element).</td>
+        </tr>
+        <tr>
+            <td><strong>Memory Initialization</strong></td>
+            <td>Allocated memory is uninitialized (contains unpredictable garbage values).</td>
+            <td>Allocated memory is automatically initialized to zero (<code>0</code>) in every byte.</td>
+        </tr>
+        <tr>
+            <td><strong>Allocation Structure</strong></td>
+            <td>Allocates a single raw contiguous block of memory.</td>
+            <td>Allocates contiguous memory logically partitioned into \(n\) equal-sized blocks (ideal for arrays/matrices).</td>
+        </tr>
+        <tr>
+            <td><strong>Execution Speed</strong></td>
+            <td>Faster, as it skips the zero-initialization step.</td>
+            <td>Slightly slower due to the overhead of zeroing out all allocated bytes.</td>
+        </tr>
+        <tr>
+            <td><strong>Example Call</strong></td>
+            <td><code>int *p = (int*) malloc(5 * sizeof(int));</code></td>
+            <td><code>int *p = (int*) calloc(5, sizeof(int));</code></td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q5. What is a Recursive Function? Explain with an example. (2024 Q1e) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>A <strong>Recursive Function</strong> is a function that solves a problem by calling itself directly or indirectly on smaller sub-instances of the original problem until it reaches a trivial stopping condition.</p>
+
+<p><strong>Essential Components of Recursion:</strong></p>
+<ol>
+    <li><strong>Base Case (Termination Condition):</strong> A simple condition whose output is directly known without further recursion. It prevents infinite recursion and stack overflow.</li>
+    <li><strong>Recursive Case (Inductive Step):</strong> Expresses the solution for input \(n\) in terms of a smaller input (e.g., \(n-1\)).</li>
+</ol>
+
+<p><strong>Example in C: Computing Fibonacci Term \(F(n)\):</strong></p>
+<p>Mathematically: \(F(0) = 0, F(1) = 1\), and \(F(n) = F(n-1) + F(n-2)\) for \(n \ge 2\).</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int fibonacci(int n) {
+    if (n == 0) return 0; // Base case 1
+    if (n == 1) return 1; // Base case 2
+    return fibonacci(n - 1) + fibonacci(n - 2); // Recursive step
+}
+
+int main() {
+    int n = 6;
+    printf("6th Fibonacci number = %d\n", fibonacci(n)); // Output: 8
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q6. How to write functions in MATLAB? Explain with an example. (2024 Q1f) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Structure of a MATLAB Function:</strong></p>
+<p>In MATLAB, user-defined functions are stored in <code>.m</code> files (where the filename must match the primary function name) and begin with the <code>function</code> keyword.</p>
+<p><strong>General Syntax:</strong></p>
+<pre><code>function [out1, out2, ...] = functionName(in1, in2, ...)
+    % Help comments describing purpose and usage
+    % Executable MATLAB statements
+    out1 = ...;
+    out2 = ...;
+end</code></pre>
+<ul>
+    <li><code>function</code> keyword: Must be the first executable word in the file.</li>
+    <li><code>[out1, out2]</code>: Output arguments returned to the caller.</li>
+    <li><code>(in1, in2)</code>: Input parameters passed by value into the function’s isolated local workspace.</li>
+</ul>
+
+<p><strong>Example: Function Returning Both Area and Circumference of a Circle:</strong></p>
+<p>Save the following code as <code>circleMetrics.m</code>:</p>
+<pre><code>function [area, circumference] = circleMetrics(r)
+    % CIRCLEMETRICS Computes area and circumference for radius r
+    area = pi * r.^2;
+    circumference = 2 * pi * r;
+end</code></pre>
+<p><strong>Calling the Function in Command Window:</strong></p>
+<pre><code>&gt;&gt; [A, C] = circleMetrics(5)
+A = 78.5398
+C = 31.4159</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q7. How to use a for loop in MATLAB? Explain with an example. (2024 Q1g) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Syntax and Working:</strong></p>
+<p>A <code>for</code> loop in MATLAB repeats a group of statements a predetermined number of times, stepping an index variable through the columns of a specified vector or matrix.</p>
+<p><strong>Syntax:</strong></p>
+<pre><code>for index = startValue : step : endValue
+    % Statements to execute repeatedly
+end</code></pre>
+<p><em>(If <code>step</code> is omitted, MATLAB defaults to an increment of +1.)</em></p>
+
+<p><strong>Example: Computing the Sum of the Series \(S = \sum_{k=1}^{10} \frac{1}{k^2}\):</strong></p>
+<pre><code>S = 0; % Initialize accumulator
+for k = 1:10
+    S = S + (1 / k^2);
+end
+fprintf('Sum of the series = %.6f\n', S);</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q8. Write an Algorithm to find the Simple Interest. (2025 Q1a) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Formula:</strong></p>
+\[
+\text{Simple Interest }(SI) = \frac{P \times R \times T}{100}, \quad \text{Total Amount }(A) = P + SI
+\]
+<p>where \(P\) = Principal amount, \(R\) = Annual rate of interest (%), and \(T\) = Time period in years.</p>
+
+<p><strong>Algorithm:</strong></p>
+<pre><code>ALGORITHM CalculateSimpleInterest
+BEGIN
+    Step 1: START
+    Step 2: DECLARE P, R, T, SI, TotalAmount AS REAL
+    Step 3: PRINT "Enter Principal (P), Rate (R), and Time (T):"
+    Step 4: READ P, R, T
+    Step 5: IF (P &lt;= 0 OR R &lt; 0 OR T &lt;= 0) THEN
+                PRINT "Invalid input values. Principal and Time must be positive."
+                GOTO Step 9
+            ENDIF
+    Step 6: COMPUTE SI &larr; (P * R * T) / 100.0
+    Step 7: COMPUTE TotalAmount &larr; P + SI
+    Step 8: PRINT "Simple Interest =", SI
+            PRINT "Total Maturity Amount =", TotalAmount
+    Step 9: STOP
+END</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q9. What are Identifiers? Write the rules to define an identifier in C. (2025 Q1b) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>An <strong>Identifier</strong> is a user-defined symbolic name assigned to program elements such as variables, constants, functions, arrays, structures, and labels so they can be uniquely referenced in memory during program execution.</p>
+
+<p><strong>Rules for Defining Identifiers in C:</strong></p>
+<ol>
+    <li><strong>Allowed Character Set:</strong> An identifier can contain only uppercase letters (<code>A–Z</code>), lowercase letters (<code>a–z</code>), digits (<code>0–9</code>), and the underscore character (<code>_</code>).</li>
+    <li><strong>First Character Rule:</strong> The first character must be an alphabet (<code>A–Z</code>, <code>a–z</code>) or an underscore (<code>_</code>). It cannot begin with a digit (e.g., <code>2sum</code> is invalid; <code>sum2</code> is valid).</li>
+    <li><strong>No Reserved Keywords:</strong> C keywords (such as <code>int</code>, <code>while</code>, <code>return</code>, <code>float</code>) cannot be used as identifiers.</li>
+    <li><strong>No Special Characters or Whitespace:</strong> Spaces, commas, hyphens, <code>@</code>, <code>$</code>, <code>#</code>, etc., are strictly prohibited (e.g., <code>total marks</code> and <code>total-marks</code> are invalid; <code>total_marks</code> is valid).</li>
+    <li><strong>Case Sensitivity:</strong> C treats uppercase and lowercase letters as distinct (<code>Area</code>, <code>area</code>, and <code>AREA</code> represent three separate identifiers).</li>
+    <li><strong>Length Limit:</strong> While modern C compilers recognize up to 63 characters (C99 standard), the first 31 characters are guaranteed to be significant across all standard ANSI C compilers.</li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q10. What is Type Conversion in Programming in C? Explain different types of Type Conversion available in C. (2025 Q1c) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p><strong>Type Conversion</strong> is the process of converting a data value from one data type into another so that operations involving mixed data types can be executed cleanly without data corruption.</p>
+
+<p><strong>Types of Type Conversion in C:</strong></p>
+<ol>
+    <li><strong>Implicit Type Conversion (Automatic Type Coercion):</strong>
+        <ul>
+            <li>Performed automatically by the compiler when operands of different types appear in an expression.</li>
+            <li><strong>Usual Arithmetic Promotion Hierarchy:</strong> Lower-ranked types are automatically promoted to higher-ranked types to preserve precision:
+                <br>
+                \(\text{char} \rightarrow \text{short} \rightarrow \text{int} \rightarrow \text{unsigned int} \rightarrow \text{long} \rightarrow \text{float} \rightarrow \text{double} \rightarrow \text{long double}\)
+            </li>
+            <li><em>Example:</em> <code>int a = 5; float b = 2.5; float c = a + b;</code> (Here <code>a</code> is implicitly promoted to <code>5.0f</code> before addition).</li>
+        </ul>
+    </li>
+    <li><strong>Explicit Type Conversion (Type Casting):</strong>
+        <ul>
+            <li>Forced manually by the programmer using the unary cast operator <code>(target_type)</code>.</li>
+            <li><strong>Syntax:</strong> <code>(data_type) expression</code></li>
+            <li>Essential for avoiding integer truncation during division or narrowing wider types into smaller types.</li>
+            <li><em>Example:</em> <code>int x = 7, y = 2; float res = (float)x / y;</code> (Explicitly casts <code>x</code> to float so <code>res</code> becomes <code>3.50</code> instead of <code>3.00</code>).</li>
+        </ul>
+    </li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q11. What is an Operator? Explain different types of operators used in C. (2025 Q1d) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>An <strong>Operator</strong> is a special symbol or keyword that instructs the C compiler to perform a specific mathematical, logical, relational, or bit-level operation on one, two, or three operands to produce a result.</p>
+
+<p><strong>Classification of Operators in C:</strong></p>
+<ol>
+    <li><strong>Arithmetic Operators:</strong> Perform mathematical calculations (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> modulus).</li>
+    <li><strong>Relational Operators:</strong> Compare two operands and return <code>1</code> (True) or <code>0</code> (False) (<code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>).</li>
+    <li><strong>Logical Operators:</strong> Combine boolean conditions using propositional logic (<code>&amp;&amp;</code> Logical AND, <code>||</code> Logical OR, <code>!</code> Logical NOT).</li>
+    <li><strong>Assignment Operators:</strong> Assign values to variables (<code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>).</li>
+    <li><strong>Increment and Decrement Operators:</strong> Unary operators that increase or decrease an integer value by 1 (<code>++</code> prefix/postfix, <code>--</code> prefix/postfix).</li>
+    <li><strong>Bitwise Operators:</strong> Manipulate individual binary bits of integer operands (<code>&amp;</code> AND, <code>|</code> OR, <code>^</code> XOR, <code>~</code> One's Complement, <code>&lt;&lt;</code> Left Shift, <code>&gt;&gt;</code> Right Shift).</li>
+    <li><strong>Conditional (Ternary) Operator (<code>? :</code>):</strong> Shorthand if-else taking three operands: <code>condition ? expr_if_true : expr_if_false</code>.</li>
+    <li><strong>Special Operators:</strong> <code>sizeof()</code> (returns memory size in bytes), <code>&amp;</code> (address-of operator), <code>*</code> (pointer dereference operator), and <code>,</code> (comma operator).</li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q12. What is an Array? How many types of Arrays are available in C? (2025 Q1e) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>An <strong>Array</strong> is a derived data structure consisting of a fixed-size, sequential collection of elements of the same data type, stored in contiguous memory locations under a single identifier name. Elements are accessed via zero-based integer indices (<code>0</code> to <code>N-1</code>).</p>
+
+<p><strong>Types of Arrays in C:</strong></p>
+<ol>
+    <li><strong>One-Dimensional (1-D) Array:</strong>
+        <ul>
+            <li>Represents a linear list or mathematical vector of elements.</li>
+            <li><strong>Syntax:</strong> <code>data_type array_name[size];</code></li>
+            <li><strong>Example:</strong> <code>int marks[5] = {85, 90, 78, 92, 88};</code></li>
+        </ul>
+    </li>
+    <li><strong>Two-Dimensional (2-D) Array:</strong>
+        <ul>
+            <li>Represents a tabular grid or mathematical matrix organized in rows and columns.</li>
+            <li><strong>Syntax:</strong> <code>data_type array_name[rows][columns];</code></li>
+            <li><strong>Example:</strong> <code>float matrix[2][3] = {{1.0, 2.5, 3.0}, {4.1, 5.2, 6.3}};</code></li>
+        </ul>
+    </li>
+    <li><strong>Multi-Dimensional (N-D) Array:</strong>
+        <ul>
+            <li>Arrays with three or more dimensions (e.g., 3-D tensors used in scientific simulations and image cubes).</li>
+            <li><strong>Syntax:</strong> <code>data_type array_name[d1][d2][d3]...[dn];</code></li>
+            <li><strong>Example:</strong> <code>int tensor[2][3][4];</code></li>
+        </ul>
+    </li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q13. What is a Vector in MATLAB? Explain different types of Vectors available in MATLAB. (2025 Q1f) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>In MATLAB, a <strong>Vector</strong> is a one-dimensional array of numbers (either \(1 \times n\) or \(n \times 1\)) representing a mathematical vector in \(\mathbb{R}^{n}\) or \(\mathbb{C}^{n}\).</p>
+
+<p><strong>Types of Vectors in MATLAB:</strong></p>
+<ol>
+    <li><strong>Row Vector (\(1 \times n\) matrix):</strong>
+        <ul>
+            <li>Elements are arranged horizontally in a single row, separated by spaces or commas inside square brackets.</li>
+            <li><em>Example:</em> <code>r = [10, 20, 30, 40];</code> or <code>r = [10 20 30 40];</code></li>
+        </ul>
+    </li>
+    <li><strong>Column Vector (\(n \times 1\) matrix):</strong>
+        <ul>
+            <li>Elements are arranged vertically in a single column, separated by semicolons (<code>;</code>) or created by transposing a row vector with <code>'</code>.</li>
+            <li><em>Example:</em> <code>c = [10; 20; 30; 40];</code> or <code>c = r';</code></li>
+        </ul>
+    </li>
+    <li><strong>Uniformly Spaced Vectors (Generated via Colon Operator or linspace):</strong>
+        <ul>
+            <li><code>v = 0:0.5:2;</code> creates <code>[0, 0.5, 1.0, 1.5, 2.0]</code>.</li>
+            <li><code>w = linspace(0, 10, 5);</code> creates 5 equally spaced points from 0 to 10.</li>
+        </ul>
+    </li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q14. What is the use of the plot command in MATLAB? Explain it with an example. (2025 Q1g) <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Use of the plot Command:</strong></p>
+<p>The <code>plot</code> command is MATLAB’s primary 2-D data visualization function. It takes vectors of \(x\)-coordinates and corresponding \(y\)-coordinates and renders a continuous line graph (or discrete markers) in a graphics figure window, enabling visual analysis of mathematical functions, experimental data, and numerical solutions.</p>
+<p><strong>Basic Syntax:</strong></p>
+<ul>
+    <li><code>plot(x, y)</code>: Plots vector \(y\) versus vector \(x\).</li>
+    <li><code>plot(x, y, 'LineSpec')</code>: Customizes line style (<code>'-'</code>, <code>'--'</code>, <code>':'</code>), marker (<code>'o'</code>, <code>'*'</code>, <code>'s'</code>), and color (<code>'r'</code>, <code>'b'</code>, <code>'g'</code>, <code>'k'</code>).</li>
+</ul>
+
+<p><strong>Example: Plotting \(y = \sin(x)\) and \(y = \cos(x)\) over \([0, 2\pi]\):</strong></p>
+<pre><code>x = linspace(0, 2*pi, 200); % Generate 200 points between 0 and 2*pi
+y1 = sin(x);
+y2 = cos(x);
+
+figure;
+plot(x, y1, 'b-', 'LineWidth', 2);   % Blue solid curve for sin(x)
+hold on;                             % Retain current plot for overlay
+plot(x, y2, 'r--', 'LineWidth', 2);  % Red dashed curve for cos(x)
+grid on;
+xlabel('Angle x (radians)');
+ylabel('Amplitude');
+title('Plot of sin(x) and cos(x)');
+legend('sin(x)', 'cos(x)');</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q15. Explain array operations and colon operator in MATLAB. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p>MATLAB handles matrices natively. Standard matrix algebra uses <code class="inline">*, /, ^</code>, while element-wise operations use <code class="inline">.*, ./, .^</code>.</p>
+            <p><strong>Colon Operator (<code class="inline">:</code>):</strong> Used for sequence generation (<code class="inline">x = 0:0.1:10</code>) and matrix subscript slicing (<code class="inline">A(:, 2)</code> selects all rows of 2nd column).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q16. How do you solve an ordinary differential equation (ODE) in MATLAB using ode45? <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><code class="inline">ode45</code> is MATLAB's Runge-Kutta (4,5) adaptive step solver for first-order ODEs \(\frac{dy}{dt} = f(t, y)\):</p>
+<pre><code>[t, y] = ode45(@(t, y) -2*y + sin(t), [0 10], 1.0);
+plot(t, y);</code></pre>
+            <p>where <code class="inline">[0 10]</code> is the time interval and <code class="inline">1.0</code> is the initial condition \(y(0)\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q17. Write the formula for finding root of f(x) = 0 using Newton-Raphson Method. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+\[x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}, \quad f'(x_n) \neq 0\]
+            <p>Possesses <strong>quadratic convergence</strong> (\(p = 2\)) near a simple root; number of correct decimal digits doubles in each successive iteration.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q18. State the Runge-Kutta 4th Order (RK4) method for solving dy/dx = f(x, y). <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+\[
+            \begin{aligned}
+            k_1 &= h f(x_n, y_n) \\
+            k_2 &= h f\left(x_n + \frac{h}{2}, \; y_n + \frac{k_1}{2}\right) \\
+            k_3 &= h f\left(x_n + \frac{h}{2}, \; y_n + \frac{k_2}{2}\right) \\
+            k_4 &= h f(x_n + h, \; y_n + k_3)
+            \end{aligned}
+            \]
+            \[y_{n+1} = y_n + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)\]
+            <p>Global truncation error is \(\mathcal{O}(h^4)\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q19. State the Trapezoidal Rule formula and its truncation error for numerical integration. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Formula:</strong></p>
+<p>For integrating \(I = \int_a^b f(x)\,dx\) over \([a, b]\) divided into \(n\) equal sub-intervals of step size \(h = \frac{b - a}{n}\) with nodes \(x_i = a + ih\):</p>
+\[
+I_{\text{trap}} = \frac{h}{2} \left[ f(x_0) + 2\sum_{i=1}^{n-1} f(x_i) + f(x_n) \right]
+\]
+<p><strong>Truncation Error:</strong></p>
+<p>The composite Trapezoidal Rule has global truncation error of order \(O(h^2)\):</p>
+\[
+E_{\text{trap}} = -\frac{(b - a)h^2}{12} f''(\xi), \quad \xi \in (a, b)
+\]
+<p>The rule is exact (zero error) for linear polynomials \(f(x) = c_1 x + c_0\) since \(f''(x) = 0\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q20. State the Bisection Method formula and the condition for existence of a real root. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>Condition for Existence (Intermediate Value Theorem):</strong></p>
+<p>If a real-valued function \(f(x)\) is continuous on a closed interval \([a, b]\) and satisfies:</p>
+\[
+f(a) \cdot f(b) < 0
+\]
+<p>then by Bolzano's Intermediate Value Theorem, there exists at least one real root \(\alpha \in (a, b)\) such that \(f(\alpha) = 0\).</p>
+<p><strong>Iteration Formula:</strong></p>
+<p>The root estimate is computed by halving the interval:</p>
+\[
+x_{n+1} = \frac{a_n + b_n}{2}
+\]
+<p>If \(f(a_n) \cdot f(x_{n+1}) < 0\), set \(b_{n+1} = x_{n+1}\); otherwise, set \(a_{n+1} = x_{n+1}\). The interval length after \(n\) iterations is \(\frac{b - a}{2^n}\).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q21. Explain the purpose of fzero and roots functions in MATLAB. <span class="marks">[2 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. <code>fzero(fun, x0)</code>:</strong></p>
+<ul>
+    <li><strong>Purpose:</strong> Finds a real root (zero) of a continuous, single-variable non-linear or transcendental function \(f(x) = 0\) near an initial guess <code>x0</code> or within an interval <code>[x1, x2]</code> where \(f(x_1) f(x_2) < 0\).</li>
+    <li><strong>Algorithm:</strong> Employs Brent-Dekker algorithm combining bisection, secant, and inverse quadratic interpolation.</li>
+    <li><strong>Example:</strong> <code>x = fzero(@(x) cos(x) - x, 0.5);</code> finds the root \(x \approx 0.739085\).</li>
+</ul>
+<p><strong>2. <code>roots(c)</code>:</strong></p>
+<ul>
+    <li><strong>Purpose:</strong> Computes all roots (both real and complex) of a polynomial \(P(x) = c_1 x^n + c_2 x^{n-1} + \dots + c_{n+1} = 0\).</li>
+    <li><strong>Algorithm:</strong> Computes the eigenvalues of the companion matrix of the polynomial.</li>
+    <li><strong>Example:</strong> <code>r = roots([1 -2 -5]);</code> computes roots of \(x^2 - 2x - 5 = 0\).</li>
+</ul>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q22. Structured Programming and Its Importance (with Example in C) <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition:</strong></p>
+<p>Structured Programming (proposed by Edsger W. Dijkstra and formalized by the Böhm–Jacopini theorem) is a programming paradigm aimed at improving the clarity, logical rigor, and maintainability of software. The Böhm–Jacopini theorem proves that any computable function can be implemented using only three fundamental control structures, completely eliminating unstructured jumps (such as <code>goto</code> statements):</p>
+<ol>
+    <li><strong>Sequence:</strong> Linear execution of statements one after another in the exact order they appear.</li>
+    <li><strong>Selection (Branching):</strong> Conditional execution of code blocks based on boolean predicates (<code>if</code>, <code>if-else</code>, <code>switch</code>).</li>
+    <li><strong>Iteration (Looping):</strong> Repeated execution of a block of statements while a specified condition holds true (<code>for</code>, <code>while</code>, <code>do-while</code>).</li>
+</ol>
+
+<p><strong>Importance of Structured Programming:</strong></p>
+<ul>
+    <li><strong>Prevention of "Spaghetti Code":</strong> Eliminating arbitrary <code>goto</code> jumps ensures a single-entry, single-exit control flow, making execution paths deterministic and traceable.</li>
+    <li><strong>Ease of Formal Verification and Debugging:</strong> Because each block has a predictable entry and exit point, mathematical verification of program correctness and bug isolation become significantly easier.</li>
+    <li><strong>Modularity and Maintainability:</strong> Large programs are divided into self-contained functions, allowing teams to develop, test, and update individual modules without disrupting the entire system.</li>
+    <li><strong>Readability:</strong> Indented, hierarchical code structure directly mirrors human logical reasoning.</li>
+</ul>
+
+<p><strong>Example in C:</strong></p>
+<p>The following C program demonstrates all three structured constructs to compute the factorial of a positive integer:</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i;
+    unsigned long long factorial = 1;
+
+    // 1. SEQUENCE: Linear execution of input/output statements
+    printf("Enter a non-negative integer: ");
+    scanf("%d", &amp;n);
+
+    // 2. SELECTION: Decision-making based on condition
+    if (n &lt; 0) {
+        printf("Error: Factorial is not defined for negative numbers.\n");
+    } 
+    else {
+        // 3. ITERATION: Controlled repetition using a for-loop
+        for (i = 1; i &lt;= n; ++i) {
+            factorial *= i;
+        }
+        printf("Factorial of %d = %llu\n", n, factorial);
+    }
+
+    return 0; // Single exit point
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q23. (a) Operator Precedence and Associativity. (b) Step-by-Step Evaluation of Expression: a = 5 + 3 * 2 - 8 / 4; <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Operator Precedence and Associativity:</strong></p>
+<ol>
+    <li><strong>Operator Precedence:</strong>
+        <ul>
+            <li>Operator precedence determines the order of evaluation when an expression contains multiple operators of different priority levels.</li>
+            <li>Operators with higher precedence are evaluated before operators with lower precedence (analogous to the BODMAS/PEMDAS rule in algebra).</li>
+            <li><em>Example:</em> Multiplication (<code>*</code>) and division (<code>/</code>) have higher precedence than addition (<code>+</code>) and subtraction (<code>-</code>).</li>
+        </ul>
+    </li>
+    <li><strong>Operator Associativity:</strong>
+        <ul>
+            <li>Operator associativity determines the direction of evaluation when an expression contains two or more operators having the same precedence level.</li>
+            <li><strong>Left-to-Right Associativity:</strong> Most binary operators (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>&amp;&amp;</code>, <code>||</code>) evaluate from left to right.</li>
+            <li><strong>Right-to-Left Associativity:</strong> Unary operators (<code>++</code>, <code>--</code>, <code>!</code>, <code>~</code>, <code>sizeof</code>) and assignment operators (<code>=</code>, <code>+=</code>, <code>-=</code>) evaluate from right to left.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>(b) Step-by-Step Evaluation of Expression:</strong></p>
+<p>Given Expression:</p>
+<pre><code>a = 5 + 3 * 2 - 8 / 4;</code></pre>
+
+<p><strong>Step-by-Step Evaluation:</strong></p>
+<ul>
+    <li><strong>Step 1 (Identify Precedence):</strong>
+        <ul>
+            <li>Operators present: <code>=</code> (Assignment), <code>+</code> (Addition), <code>*</code> (Multiplication), <code>-</code> (Subtraction), <code>/</code> (Division).</li>
+            <li>Highest precedence group: <code>*</code> and <code>/</code> (equal precedence, Left-to-Right associativity).</li>
+            <li>Next precedence group: <code>+</code> and <code>-</code> (equal precedence, Left-to-Right associativity).</li>
+            <li>Lowest precedence: <code>=</code> (Right-to-Left associativity).</li>
+        </ul>
+    </li>
+    <li><strong>Step 2 (Evaluate <code>*</code> and <code>/</code> from Left to Right):</strong>
+        <ul>
+            <li>First evaluate <code>3 * 2 = 6</code>:
+                <br><code>a = 5 + 6 - 8 / 4</code></li>
+            <li>Next evaluate <code>8 / 4 = 2</code> (integer division):
+                <br><code>a = 5 + 6 - 2</code></li>
+        </ul>
+    </li>
+    <li><strong>Step 3 (Evaluate <code>+</code> and <code>-</code> from Left to Right):</strong>
+        <ul>
+            <li>First evaluate <code>5 + 6 = 11</code>:
+                <br><code>a = 11 - 2</code></li>
+            <li>Next evaluate <code>11 - 2 = 9</code>:
+                <br><code>a = 9</code></li>
+        </ul>
+    </li>
+    <li><strong>Step 4 (Assignment):</strong>
+        <ul>
+            <li>Assign the final value <code>9</code> to variable <code>a</code>.</li>
+        </ul>
+    </li>
+</ul>
+<p><strong>Final Result:</strong> \(a = 9\)</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q24. Write MATLAB code to create and display 1-D and 2-D arrays. Explain array indexing. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>MATLAB Code:</strong></p>
+<pre><code>% 1-D Array (Row Vector and Column Vector)
+row_vec = [10, 20, 30, 40, 50];
+col_vec = [10; 20; 30];
+
+disp('1-D Row Vector:'); disp(row_vec);
+disp('1-D Column Vector:'); disp(col_vec);
+
+% 2-D Array (3x3 Matrix)
+M = [1 2 3; 
+     4 5 6; 
+     7 8 9];
+
+disp('2-D Matrix M:'); disp(M);</code></pre>
+
+<p><strong>Explanation of Array Indexing in MATLAB:</strong></p>
+<ol>
+    <li><strong>1-Based Indexing:</strong> Unlike C (which starts at index 0), MATLAB arrays are 1-indexed; the first element is at index 1.</li>
+    <li><strong>Subscript Indexing <code>M(r, c)</code>:</strong> Accesses the element located at row <code>r</code> and column <code>c</code> (e.g., <code>M(2, 3)</code> evaluates to <code>6</code>).</li>
+    <li><strong>Colon Operator (<code>:</code>):</strong> Used to slice and extract entire dimensions or ranges:
+        <ul>
+            <li><code>M(2, :)</code> extracts the entire 2nd row (<code>[4 5 6]</code>).</li>
+            <li><code>M(:, 1)</code> extracts the entire 1st column (<code>[1; 4; 7]</code>).</li>
+        </ul>
+    </li>
+    <li><strong><code>end</code> Keyword:</strong> Denotes the terminal index along a specified dimension (e.g., <code>M(end, end)</code> evaluates to <code>9</code>).</li>
+    <li><strong>Linear Indexing:</strong> MATLAB stores 2-D matrices internally in column-major order, so <code>M(4)</code> retrieves the 4th element counted down columns (which is <code>2</code>).</li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q25. (a) Explain use of linspace(), zeros(), ones() functions. (b) Create a 5×5 identity matrix and a diagonal matrix in MATLAB. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Explanation of Generator Functions:</strong></p>
+<ol>
+    <li><strong><code>linspace(x1, x2, n)</code>:</strong> Generates a row vector of <code>n</code> linearly (equally) spaced points between <code>x1</code> and <code>x2</code> inclusive. If <code>n</code> is omitted, it defaults to 100 points.<br>
+    <em>Example:</em> <code>linspace(0, 10, 5)</code> &rarr; <code>[0, 2.5, 5.0, 7.5, 10.0]</code></li>
+    <li><strong><code>zeros(m, n)</code>:</strong> Creates an \(m \times n\) matrix populated entirely with zeros (<code>0</code>). Highly recommended for memory pre-allocation.<br>
+    <em>Example:</em> <code>zeros(2, 3)</code> produces a \(2 \times 3\) matrix of zeros.</li>
+    <li><strong><code>ones(m, n)</code>:</strong> Creates an \(m \times n\) matrix populated entirely with ones (<code>1</code>).<br>
+    <em>Example:</em> <code>ones(3, 3)</code> produces a \(3 \times 3\) matrix of ones.</li>
+</ol>
+
+<p><strong>(b) MATLAB Code for 5&times;5 Identity Matrix and Diagonal Matrix:</strong></p>
+<pre><code>% 1. 5x5 Identity Matrix
+I = eye(5);
+disp('5x5 Identity Matrix:');
+disp(I);
+
+% 2. Diagonal Matrix with elements [2, 4, 6, 8, 10]
+D = diag([2, 4, 6, 8, 10]);
+disp('5x5 Diagonal Matrix:');
+disp(D);</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q26. (a) How are strings handled in MATLAB? (b) Write code to reverse a string and check for palindrome. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) String Handling in MATLAB:</strong></p>
+<ol>
+    <li><strong>Character Arrays (<code>char</code>):</strong> Defined using single quotes (e.g., <code>'MATLAB'</code>). Represented as a \(1 \times N\) vector of characters, allowing direct numerical ASCII index manipulation like <code>str(1)</code> or <code>str(end)</code>.</li>
+    <li><strong>String Objects (<code>string</code>):</strong> Defined using double quotes (e.g., <code>"MATLAB"</code>). Treated as 1&times;1 string scalar objects that can form arrays containing elements of varying text lengths.</li>
+    <li><strong>Standard String Functions:</strong> <code>length()</code>, <code>strcmp()</code> (case-sensitive comparison), <code>lower()</code>, <code>upper()</code>, <code>reverse()</code>, <code>strcat()</code>.</li>
+</ol>
+
+<p><strong>(b) MATLAB Script to Reverse a String and Check Palindrome:</strong></p>
+<pre><code>str = input('Enter a string: ', 's');
+
+% Convert to lowercase for case-insensitive comparison
+s_lower = lower(str);
+
+% Reverse the string using indexing end:-1:1
+rev_str = s_lower(end:-1:1);
+
+fprintf('Reversed String: %s\n', str(end:-1:1));
+
+if strcmp(s_lower, rev_str)
+    disp('Result: The string IS a Palindrome.');
+else
+    disp('Result: The string is NOT a Palindrome.');
+end</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q27. (a) Differentiate between break and continue. (b) Write a program to skip odd numbers in a loop using continue. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Difference Between break and continue:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Basis of Comparison</th>
+            <th>break Statement</th>
+            <th>continue Statement</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>1. Definition</strong></td>
+            <td>Immediately terminates the entire enclosing loop or switch block.</td>
+            <td>Skips only the remaining statements of the current iteration and jumps to the next iteration.</td>
+        </tr>
+        <tr>
+            <td><strong>2. Control Flow</strong></td>
+            <td>Transfers control to the first statement outside/after the loop body.</td>
+            <td>Transfers control back to the loop's update expression (for) or test condition (while / do-while).</td>
+        </tr>
+        <tr>
+            <td><strong>3. Usage Scope</strong></td>
+            <td>Used in both loops (for, while, do-while) and switch-case statements.</td>
+            <td>Used only in loops (for, while, do-while), never inside a switch statement alone.</td>
+        </tr>
+        <tr>
+            <td><strong>4. Effect on Loop</strong></td>
+            <td>Stops all remaining iterations permanently.</td>
+            <td>Keeps the loop running until its normal termination condition becomes false.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>(b) C Program to Skip Odd Numbers in a Loop Using continue:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i, n;
+
+    printf("Enter the upper limit: ");
+    scanf("%d", &amp;n);
+
+    printf("Even numbers from 1 to %d (odd numbers skipped):\n", n);
+    for (i = 1; i &lt;= n; i++) {
+        if (i % 2 != 0) {
+            continue; // Skips odd numbers and jumps to next iteration
+        }
+        printf("%d ", i);
+    }
+    printf("\n");
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q28. Explain how to solve a system of linear equations in MATLAB using the backslash (\) operator vs inv(). <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p>To solve the linear system \(Ax = b\) where \(A\) is an \(n \times n\) coefficient matrix and \(b\) is an \(n \times 1\) vector:</p>
+<p><strong>1. Using Matrix Inverse: <code>x = inv(A) * b;</code></strong></p>
+<ul>
+    <li>Computes the explicit inverse \(A^{-1}\) using adjugate/determinant or Gauss-Jordan elimination, then multiplies by \(b\).</li>
+    <li><strong>Disadvantages:</strong> Computationally expensive (\(O(n^3)\) with higher constant factor) and numerically unstable; highly sensitive to round-off error when \(A\) is ill-conditioned.</li>
+</ul>
+<p><strong>2. Using Backslash Operator (mldivide): <code>x = A \ b;</code> (Recommended)</strong></p>
+<ul>
+    <li>Does not compute \(A^{-1}\) explicitly. Instead, MATLAB automatically analyzes the structure of matrix \(A\):
+        <ul>
+            <li>If \(A\) is triangular/permuted triangular, solves via fast substitution.</li>
+            <li>If \(A\) is symmetric positive definite, applies <strong>Cholesky Factorization</strong>.</li>
+            <li>If \(A\) is general square, applies <strong>Gaussian Elimination with Partial Pivoting (LU Decomposition)</strong>.</li>
+            <li>If \(A\) is rectangular (overdetermined), computes the least-squares solution via <strong>QR Factorization</strong>.</li>
+        </ul>
+    </li>
+    <li><strong>Advantages:</strong> Up to 2–3 times faster than <code>inv(A)*b</code> and achieves superior numerical accuracy.</li>
+</ul>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q29. Explain the use of function handles (@) and anonymous functions in MATLAB with an example. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Function Handle (<code>@</code>):</strong></p>
+<p>A function handle is a MATLAB data type that stores a reference (pointer) to a function. It allows functions to be passed as arguments to other functions (higher-order functions such as <code>fzero</code>, <code>ode45</code>, <code>integral</code>, and <code>fplot</code>).</p>
+<p><em>Syntax:</em> <code>fh = @function_name;</code> (e.g., <code>fh = @sin;</code> allows calling <code>fh(pi/2)</code> to get <code>1</code>).</p>
+
+<p><strong>2. Anonymous Functions:</strong></p>
+<p>An anonymous function is a simple, single-line function that is not stored in an M-file, but defined directly in the workspace or command line.</p>
+<p><em>Syntax:</em> <code>f = @(arg1, arg2, ...) expression</code></p>
+<pre><code>% Define mathematical function f(x) = x^3 - 2*x - 5
+f = @(x) x.^3 - 2.*x - 5;
+
+% Evaluate at a point
+val = f(2);  % 8 - 4 - 5 = -1
+
+% Pass function handle to fzero to find root in [2, 3]
+root = fzero(f, [2, 3]);
+fprintf('Computed root: %.6f\n', root); % 2.094551
+
+% Pass function handle to numerical integration
+area = integral(@(x) exp(-x.^2), 0, 1);
+fprintf('Integral of exp(-x^2) on [0, 1]: %.6f\n', area);</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q30. (a) Write a script file to compute the value of \(\sin(x)\) for \(x = 0\) to \(2\pi\). (b) Plot the result in MATLAB. <span class="marks">[3 Marks]</span></div>
+        <div class="answer">
+<p><strong>MATLAB Script (sine_plot.m):</strong></p>
+<pre><code>% (a) Compute sin(x) for x = 0 to 2*pi
+x = linspace(0, 2*pi, 200); % 200 equally spaced points from 0 to 2*pi
+y = sin(x);                 % Compute sin(x) for all points
+
+% Display sample [x, sin(x)] values
+disp('Sample [x, sin(x)] values:');
+disp([x(1:5)' y(1:5)']);
+
+% (b) Plot the result
+figure;
+plot(x, y, 'b-', 'LineWidth', 2);
+grid on;
+xlabel('x (radians)');
+ylabel('y = sin(x)');
+title('Graph of y = sin(x) from 0 to 2\pi');</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q31. (a) Problem-Solving Techniques Used in Programming. (b) Difference Between Top-Down and Bottom-Up Approaches <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Problem-Solving Techniques Used in Programming:</strong></p>
+<p>Problem-solving in computer science is a systematic, analytical process of formulating a computational strategy to transform a given set of inputs into a desired output. Before translating logic into a formal programming language, structured methodologies are employed to ensure algorithmic correctness, efficiency, and maintainability:</p>
+<ol>
+    <li><strong>Problem Definition and Mathematical Modeling:</strong>
+        <ul>
+            <li>Involves analyzing the problem statement to clearly identify input parameters, constraints, boundary conditions, and expected outputs.</li>
+            <li>For mathematical and scientific computing, this step includes formulating equations, recurrence relations, or logical predicates.</li>
+        </ul>
+    </li>
+    <li><strong>Algorithm Design:</strong>
+        <ul>
+            <li>An algorithm is a finite, well-defined sequence of unambiguous instructions that solves a problem in a finite amount of time.</li>
+            <li>Key properties of a good algorithm include <em>Finiteness</em> (must terminate), <em>Definiteness</em> (clear instructions), <em>Input/Output specification</em>, and <em>Effectiveness</em> (basic operations executable in finite time).</li>
+        </ul>
+    </li>
+    <li><strong>Flowcharting:</strong>
+        <ul>
+            <li>A graphical representation of an algorithm using standardized ANSI/ISO geometric symbols (ovals for terminals, parallelograms for I/O, rectangles for processing, diamonds for decision branching) connected by directional flow lines.</li>
+            <li>It provides visual clarity on control flow, loops, and conditional branches.</li>
+        </ul>
+    </li>
+    <li><strong>Pseudo-code:</strong>
+        <ul>
+            <li>An informal, high-level textual representation of an algorithm that combines natural language with structured programming constructs (<code>IF-THEN-ELSE</code>, <code>WHILE</code>, <code>FOR</code>, <code>RETURN</code>).</li>
+            <li>It eliminates strict syntactic constraints (such as semicolons or variable declarations), allowing focus purely on logical structure.</li>
+        </ul>
+    </li>
+    <li><strong>Divide and Conquer (Modularization):</strong>
+        <ul>
+            <li>Complex problems are partitioned into smaller, mutually independent sub-problems. Each sub-problem is solved individually, and their solutions are combined to form the global solution (e.g., Merge Sort, Binary Search).</li>
+        </ul>
+    </li>
+    <li><strong>Stepwise Refinement:</strong>
+        <ul>
+            <li>Starting with a high-level abstract solution and iteratively breaking down each step into finer, more concrete computational instructions until the logic maps directly to programming statements.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>(b) Difference Between Top-Down and Bottom-Up Approaches:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Top-Down Approach</th>
+            <th>Bottom-Up Approach</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Fundamental Concept</strong></td>
+            <td>Decomposes a complex system into smaller, manageable sub-modules recursively until primitive operations are reached.</td>
+            <td>Constructs fundamental, low-level modules first and integrates them progressively to build the complete system.</td>
+        </tr>
+        <tr>
+            <td><strong>Direction of Design</strong></td>
+            <td>Moves from abstraction (high-level overview) to concrete implementation details.</td>
+            <td>Moves from concrete implementation details (primitive components) to high-level abstraction.</td>
+        </tr>
+        <tr>
+            <td><strong>Programming Paradigm</strong></td>
+            <td>Primarily associated with Structured / Procedural Programming (e.g., C, Pascal, Fortran).</td>
+            <td>Primarily associated with Object-Oriented Programming (OOP) (e.g., C++, Java, Python).</td>
+        </tr>
+        <tr>
+            <td><strong>Redundancy &amp; Reusability</strong></td>
+            <td>Higher chance of redundant code; modules are tightly coupled to specific sub-tasks, leading to lower reusability.</td>
+            <td>Promotes high code reusability and encapsulation, as generic modules are designed independently.</td>
+        </tr>
+        <tr>
+            <td><strong>Testing Methodology</strong></td>
+            <td>Requires <em>Stubs</em> (dummy sub-functions) to simulate lower-level modules that have not yet been written.</td>
+            <td>Requires <em>Drivers</em> (test harnesses) to invoke and verify low-level modules independently.</td>
+        </tr>
+        <tr>
+            <td><strong>Communication Overhead</strong></td>
+            <td>Minimal inter-module communication required during early design stages.</td>
+            <td>Requires well-defined interfaces and data-passing mechanisms between independent modules.</td>
+        </tr>
+    </tbody>
+</table>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q32. Largest of Three Numbers: Flowchart & Pseudo-code <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Flowchart and Explanation:</strong></p>
+<pre class="flow"><code>                 +-----------+
+                 |   START   |
+                 +-----+-----+
+                       |
+                       v
+              /  Read A, B, C  /
+                       |
+                       v
+                 +-----------+
+          No     |  Is A &gt; B |     Yes
+        +--------+     ?     +--------+
+        |        +-----------+        |
+        v                             v
+  +-----------+                 +-----------+
+  |  Is B &gt; C |                 |  Is A &gt; C |
+  |     ?     |                 |     ?     |
+  +--+-----+--+                 +--+-----+--+
+     |     |                       |     |
+ No  |     | Yes               Yes |     | No
+     v     v                       v     v
++----+--+ +--+----+           +----+--+ +--+----+
+|Print C| |Print B|           |Print A| |Print C|
++----+--+ +--+----+           +----+--+ +--+----+
+     |     |                       |     |
+     +--+--+                       +--+--+
+        |                             |
+        +--------------+--------------+
+                       |
+                       v
+                 +-----------+
+                 |   STOP    |
+                 +-----------+</code></pre>
+
+<p><strong>Explanation of Flow:</strong></p>
+<ol>
+    <li><strong>Terminal (START):</strong> Initiates program execution.</li>
+    <li><strong>Input/Output (Read A, B, C):</strong> Accepts three numerical values from the user.</li>
+    <li><strong>First Decision (Is A &gt; B?):</strong> Compares A and B.
+        <ul>
+            <li>If <strong>True (Yes)</strong>, B is eliminated; control moves to compare A with C (<em>Is A &gt; C?</em>). If true, A is printed; otherwise, C is printed.</li>
+            <li>If <strong>False (No)</strong>, A is eliminated; control moves to compare B with C (<em>Is B &gt; C?</em>). If true, B is printed; otherwise, C is printed.</li>
+        </ul>
+    </li>
+    <li><strong>Terminal (STOP):</strong> Converges all branches to terminate execution cleanly.</li>
+</ol>
+
+<p><strong>(b) Equivalent Pseudo-code:</strong></p>
+<pre><code>ALGORITHM FindLargestOfThree
+BEGIN
+    DECLARE A, B, C AS REAL
+    PRINT "Enter three numbers:"
+    INPUT A, B, C
+
+    IF (A &gt; B) THEN
+        IF (A &gt; C) THEN
+            PRINT A, "is the largest number."
+        ELSE
+            PRINT C, "is the largest number."
+        ENDIF
+    ELSE
+        IF (B &gt; C) THEN
+            PRINT B, "is the largest number."
+        ELSE
+            PRINT C, "is the largest number."
+        ENDIF
+    ENDIF
+END</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q33. Types of Errors in Programming & Illustrative C Program <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Classification of Programming Errors:</strong></p>
+<ol>
+    <li><strong>Syntax Errors (Compile-Time Errors):</strong>
+        <ul>
+            <li>Occur when the source code violates the grammatical rules of the programming language (e.g., missing semicolons, mismatched braces, undeclared identifiers).</li>
+            <li>The compiler flags these errors and refuses to generate object code until resolved.</li>
+        </ul>
+    </li>
+    <li><strong>Semantic Errors:</strong>
+        <ul>
+            <li>Occur when a statement is syntactically valid but makes no meaningful sense in the language context (e.g., assigning a string literal to an int variable, or <code>x + y = z;</code>).</li>
+        </ul>
+    </li>
+    <li><strong>Linker Errors:</strong>
+        <ul>
+            <li>Occur after successful compilation when the linker fails to resolve references to external functions or libraries (e.g., misspelling <code>printf</code> as <code>print</code>, or omitting <code>main()</code>).</li>
+        </ul>
+    </li>
+    <li><strong>Runtime Errors (Exceptions):</strong>
+        <ul>
+            <li>Occur dynamically during program execution when an illegal operation is attempted, causing abnormal termination (crash). Examples include division by zero, null pointer dereferencing, stack overflow, and out-of-bounds array access.</li>
+        </ul>
+    </li>
+    <li><strong>Logical Errors:</strong>
+        <ul>
+            <li>The most subtle errors: the program compiles, links, and executes without crashing, but yields mathematically or logically incorrect results due to flawed algorithm design (e.g., wrong operator precedence, off-by-one loop boundaries).</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>(b) C Program Illustrating Logical and Runtime Errors:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num1 = 10, num2 = 20;
+    
+    // --- 1. LOGICAL ERROR ---
+    // Objective: Compute the arithmetic mean of num1 and num2 -&gt; (10 + 20)/2 = 15.
+    // Error: Omitting parentheses causes division (20/2) to execute before addition
+    // due to operator precedence, producing 20 instead of 15.
+    int average = num1 + num2 / 2; 
+    printf("Computed Average (Logical Error): %d (Expected: 15)\n", average);
+
+    // --- 2. RUNTIME ERROR ---
+    // Objective: Perform integer division.
+    // Error: Division by zero is mathematically undefined and triggers a fatal
+    // floating-point/arithmetic exception (SIGFPE) at runtime, crashing the program.
+    int denominator = 0;
+    printf("Attempting division by zero...\n");
+    int quotient = num1 / denominator; // Program crashes right here
+    
+    printf("Quotient: %d\n", quotient); // Unreachable statement
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q34. Elementary Mathematical Functions & Matrix Operations in MATLAB <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Elementary Mathematical Built-in Functions in MATLAB:</strong></p>
+<p>MATLAB (Matrix Laboratory) provides an extensive library of vectorized mathematical functions that operate on scalars, vectors, and matrices element-by-element:</p>
+<ol>
+    <li><strong>Trigonometric Functions:</strong>
+        <ul>
+            <li><strong>Radian-based:</strong> <code>sin(x)</code>, <code>cos(x)</code>, <code>tan(x)</code>, <code>csc(x)</code>, <code>sec(x)</code>, <code>cot(x)</code>.</li>
+            <li><strong>Degree-based:</strong> <code>sind(x)</code>, <code>cosd(x)</code>, <code>tand(x)</code>.</li>
+            <li><strong>Inverse Trigonometric:</strong> <code>asin(x)</code>, <code>acos(x)</code>, <code>atan(x)</code>, <code>atan2(y, x)</code> (four-quadrant inverse tangent).</li>
+        </ul>
+    </li>
+    <li><strong>Hyperbolic Functions:</strong>
+        <ul>
+            <li><code>sinh(x)</code>, <code>cosh(x)</code>, <code>tanh(x)</code>, and their inverses <code>asinh(x)</code>, <code>acosh(x)</code>, <code>atanh(x)</code>.</li>
+        </ul>
+    </li>
+    <li><strong>Exponential and Logarithmic Functions:</strong>
+        <ul>
+            <li><code>exp(x)</code>: Computes the exponential \(e^{x}\).</li>
+            <li><code>log(x)</code>: Computes the natural logarithm \(\ln(x)\) (base \(e\)).</li>
+            <li><code>log10(x)</code>: Computes the common logarithm \(\log_{10}(x)\).</li>
+            <li><code>log2(x)</code>: Computes the base-2 logarithm \(\log_2(x)\).</li>
+            <li><code>sqrt(x)</code>: Computes the principal square root \(\sqrt{x}\).</li>
+        </ul>
+    </li>
+    <li><strong>Rounding and Remainder Functions:</strong>
+        <ul>
+            <li><code>round(x)</code>: Rounds to the nearest integer.</li>
+            <li><code>ceil(x)</code>: Ceiling function \(\lceil x \rceil\) (rounds toward \(+\infty\)).</li>
+            <li><code>floor(x)</code>: Floor function \(\lfloor x \rfloor\) (rounds toward \(-\infty\)).</li>
+            <li><code>fix(x)</code>: Truncates decimal part (rounds toward zero).</li>
+            <li><code>rem(x, y)</code> / <code>mod(x, y)</code>: Computes remainder and modulus after division.</li>
+        </ul>
+    </li>
+    <li><strong>Complex and Discrete Math Functions:</strong>
+        <ul>
+            <li><code>abs(z)</code>: Magnitude \(|z|\) for complex numbers or absolute value for reals.</li>
+            <li><code>angle(z)</code>: Phase angle \(\theta\) in radians; <code>conj(z)</code>: Complex conjugate; <code>real(z)</code>, <code>imag(z)</code>.</li>
+            <li><code>factorial(n)</code>: Computes \(n!\); <code>gcd(a, b)</code>, <code>lcm(a, b)</code>.</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>(b) MATLAB Commands for Matrix Addition, Subtraction, and Multiplication:</strong></p>
+<pre><code>% Define two 3x3 matrices A and B
+A = [1 2 3; 4 5 6; 7 8 9];
+B = [9 8 7; 6 5 4; 3 2 1];
+
+% 1. Matrix Addition (Requires identical dimensions)
+C_add = A + B;
+
+% 2. Matrix Subtraction (Requires identical dimensions)
+C_sub = A - B;
+
+% 3. Matrix Multiplication (Linear Algebra inner product: Columns of A == Rows of B)
+C_mul = A * B;
+
+% Display the results
+disp('Matrix A + B:');
+disp(C_add);
+
+disp('Matrix A - B:');
+disp(C_sub);
+
+disp('Matrix A * B:');
+disp(C_mul);</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q35. Data Types, Constants, and Variables in C <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Data Types, Constants, and Variables:</strong></p>
+<ol>
+    <li><strong>Data Types in C:</strong><br>
+        A data type defines the domain of values a variable can hold, the amount of memory allocated to it, and the valid operations that can be performed on it:
+        <ul>
+            <li><strong>Primary (Fundamental) Data Types:</strong>
+                <ul>
+                    <li><code>int</code>: Stores signed integers (typically 4 bytes, range \(-2^{31}\) to \(2^{31}-1\)).</li>
+                    <li><code>char</code>: Stores a single ASCII character (1 byte, range -128 to 127 or 0 to 255).</li>
+                    <li><code>float</code>: Single-precision IEEE 754 floating-point number (4 bytes, ~6–7 decimal digits precision).</li>
+                    <li><code>double</code>: Double-precision IEEE 754 floating-point number (8 bytes, ~15 decimal digits precision).</li>
+                    <li><code>void</code>: Represents the absence of a type (used for functions returning no value or generic pointers).</li>
+                </ul>
+            </li>
+            <li><strong>Derived Data Types:</strong> Arrays, Pointers, Functions.</li>
+            <li><strong>User-Defined Data Types:</strong> <code>struct</code> (structures), <code>union</code>, <code>enum</code> (enumerations), <code>typedef</code>.</li>
+            <li><strong>Type Modifiers:</strong> <code>short</code>, <code>long</code>, <code>signed</code>, <code>unsigned</code> (modify storage size and sign range).</li>
+        </ul>
+    </li>
+    <li><strong>Variables:</strong>
+        <ul>
+            <li>A variable is a named symbolic reference to a physical memory location whose stored value can be modified during program execution.</li>
+            <li><strong>Syntax:</strong> <code>data_type variable_name = initial_value;</code></li>
+            <li><strong>Rules for Identifiers:</strong> Must begin with a letter or underscore (<code>_</code>), contain only alphanumeric characters and underscores, cannot use reserved keywords (e.g., <code>int</code>, <code>return</code>), and is case-sensitive.</li>
+        </ul>
+    </li>
+    <li><strong>Constants:</strong>
+        <ul>
+            <li>A constant is a fixed value (literal or read-only identifier) that cannot be altered by the program during execution.</li>
+            <li><strong>Types of Constants:</strong>
+                <ol>
+                    <li><strong>Integer Constants:</strong> Decimal (42), Octal (prefixed with 0, e.g., 052), Hexadecimal (prefixed with 0x, e.g., 0x2A).</li>
+                    <li><strong>Floating-Point Constants:</strong> Fractional form (3.14159) or Exponential/Scientific form (2.5e-4).</li>
+                    <li><strong>Character Constants:</strong> Single character enclosed in single quotes ('A', '\n').</li>
+                    <li><strong>String Constants:</strong> Sequence of characters enclosed in double quotes ("Mathematics", automatically terminated by null character '\0').</li>
+                    <li><strong>Symbolic / const-qualified Constants:</strong> Defined via <code>#define</code> preprocessor directive or the <code>const</code> keyword.</li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>(b) C Program Demonstrating All Types of Constants:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+// 1. Symbolic Constant using #define preprocessor
+#define PI 3.14159265
+
+int main() {
+    // 2. Integer Constants (Decimal, Octal, Hexadecimal)
+    const int DEC_CONST = 100;      // Decimal
+    const int OCT_CONST = 0144;     // Octal equivalent of 100
+    const int HEX_CONST = 0x64;     // Hexadecimal equivalent of 100
+
+    // 3. Floating-Point Constants (Fractional and Scientific notation)
+    const float FLOAT_CONST = 9.81f;
+    const double EXP_CONST = 6.022e23;
+
+    // 4. Character Constant (Single quotes)
+    const char CHAR_CONST = 'M';
+
+    // 5. String Constant (Double quotes)
+    const char STRING_CONST[] = "M.Sc. Mathematics";
+
+    printf("--- Demonstration of C Constants ---\n");
+    printf("Symbolic Constant (PI) : %.5lf\n", PI);
+    printf("Integer Constants      : Dec = %d, Oct = %o, Hex = %X\n", DEC_CONST, OCT_CONST, HEX_CONST);
+    printf("Floating Constants     : Fractional = %.2f, Exponential = %.3e\n", FLOAT_CONST, EXP_CONST);
+    printf("Character Constant     : %c (ASCII: %d)\n", CHAR_CONST, CHAR_CONST);
+    printf("String Constant        : %s\n", STRING_CONST);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q36. Formatted vs. Unformatted I/O Functions in C <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Differentiation Table:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Formatted I/O Functions</th>
+            <th>Unformatted I/O Functions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Definition</strong></td>
+            <td>Read and write data according to a user-specified format string (<code>%d</code>, <code>%f</code>, <code>%c</code>, <code>%s</code>).</td>
+            <td>Read and write raw characters or strings directly without any format specifiers.</td>
+        </tr>
+        <tr>
+            <td><strong>Data Types Supported</strong></td>
+            <td>Supports all primitive data types (<code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>, strings).</td>
+            <td>Works exclusively with <code>char</code> and character arrays (strings).</td>
+        </tr>
+        <tr>
+            <td><strong>Formatting Control</strong></td>
+            <td>Allows field width, precision, alignment, and padding control (e.g., <code>%8.2f</code>).</td>
+            <td>No control over output alignment, precision, or layout.</td>
+        </tr>
+        <tr>
+            <td><strong>Execution Speed</strong></td>
+            <td>Slightly slower due to runtime parsing of format strings.</td>
+            <td>Faster because data is transferred directly as raw bytes.</td>
+        </tr>
+        <tr>
+            <td><strong>Header Files</strong></td>
+            <td><code>&lt;stdio.h&gt;</code></td>
+            <td><code>&lt;stdio.h&gt;</code> (for <code>getchar</code>, <code>putchar</code>, <code>gets</code>, <code>puts</code>) and <code>&lt;conio.h&gt;</code> (for <code>getch</code>, <code>getche</code>, <code>putch</code>).</td>
+        </tr>
+        <tr>
+            <td><strong>Examples</strong></td>
+            <td><code>printf()</code>, <code>scanf()</code>, <code>fprintf()</code>, <code>fscanf()</code>, <code>sprintf()</code></td>
+            <td><code>getch()</code>, <code>getche()</code>, <code>getchar()</code>, <code>putchar()</code>, <code>gets()</code>, <code>puts()</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>(b) C Program Using scanf(), getch(), and puts():</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt; // Required for getch() on Windows/DOS compilers
+
+int main() {
+    int roll_no;
+    char grade;
+    char department[50];
+
+    // 1. Using puts() to display a string with an automatic newline
+    puts("=== Student Record Entry ===");
+
+    // 2. Using scanf() for formatted integer input
+    printf("Enter Roll Number: ");
+    scanf("%d", &amp;roll_no);
+
+    // Clear input buffer newline before reading string/character
+    getchar(); 
+
+    printf("Enter Department Name: ");
+    fgets(department, sizeof(department), stdin); // Safe string input
+
+    // 3. Using getch() to read a single character immediately without pressing Enter
+    // Note: getch() does not echo the typed character onto the console screen.
+    printf("Press any key for Grade (will not echo on screen): ");
+    grade = getch(); 
+    printf("\n");
+
+    // Displaying outputs
+    puts("\n--- Entered Details ---");
+    printf("Roll Number : %d\n", roll_no);
+    printf("Grade       : %c\n", grade);
+    printf("Department  : ");
+    puts(department); // Outputs string followed by newline
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q37. (a) Explain file handling concepts and file modes in C. (b) Write a C program to copy contents from one file to another. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) File Handling Concepts in C:</strong></p>
+<p>Variables and arrays store data in RAM, which is volatile and lost when a program terminates. <strong>File handling</strong> allows a C program to store, read, and manipulate data permanently on secondary storage devices (hard disks/SSDs).</p>
+<ul>
+    <li><strong>File Pointer (<code>FILE *fp</code>):</strong> <code>FILE</code> is a predefined structure in <code>&lt;stdio.h&gt;</code> that maintains the state of an open file (buffer memory, current read/write byte offset, and EOF status). A file pointer <code>FILE *fp;</code> acts as a bridge between the program and the physical file on disk.</li>
+    <li><strong>Basic File Operations:</strong>
+        <ol>
+            <li><em>Opening:</em> <code>fp = fopen("filename.txt", "mode");</code> (returns <code>NULL</code> if opening fails).</li>
+            <li><em>Reading / Writing:</em> <code>fgetc()</code>, <code>fputc()</code>, <code>fgets()</code>, <code>fputs()</code>, <code>fprintf()</code>, <code>fscanf()</code>.</li>
+            <li><em>Closing:</em> <code>fclose(fp);</code> (flushes remaining buffered data and releases memory).</li>
+        </ol>
+    </li>
+</ul>
+
+<p><strong>File Opening Modes in C:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Mode</th>
+            <th>Meaning</th>
+            <th>If File Exists</th>
+            <th>If File Does Not Exist</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>"r"</code></td>
+            <td>Read mode</td>
+            <td>Opens for reading from beginning.</td>
+            <td>Returns <code>NULL</code> (Error).</td>
+        </tr>
+        <tr>
+            <td><code>"w"</code></td>
+            <td>Write mode</td>
+            <td>Erases (truncates) existing content.</td>
+            <td>Creates a new empty file.</td>
+        </tr>
+        <tr>
+            <td><code>"a"</code></td>
+            <td>Append mode</td>
+            <td>Preserves content; writes at the end.</td>
+            <td>Creates a new empty file.</td>
+        </tr>
+        <tr>
+            <td><code>"r+"</code></td>
+            <td>Read + Write</td>
+            <td>Opens for both reading and overwriting.</td>
+            <td>Returns <code>NULL</code> (Error).</td>
+        </tr>
+        <tr>
+            <td><code>"w+"</code></td>
+            <td>Write + Read</td>
+            <td>Erases content; allows read and write.</td>
+            <td>Creates a new empty file.</td>
+        </tr>
+        <tr>
+            <td><code>"a+"</code></td>
+            <td>Append + Read</td>
+            <td>Reads anywhere; writes only at end.</td>
+            <td>Creates a new empty file.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>(b) Complete C Program to Copy Contents from One File to Another:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    FILE *src, *dest;
+    char sourceFile[100], destFile[100];
+    int ch;
+
+    printf("Enter source file name: ");
+    scanf("%s", sourceFile);
+    printf("Enter destination file name: ");
+    scanf("%s", destFile);
+
+    // Open source file in read mode
+    src = fopen(sourceFile, "r");
+    if (src == NULL) {
+        printf("Error: Cannot open source file.\n");
+        exit(1);
+    }
+
+    // Open destination file in write mode
+    dest = fopen(destFile, "w");
+    if (dest == NULL) {
+        printf("Error: Cannot open destination file.\n");
+        fclose(src);
+        exit(1);
+    }
+
+    // Copy character by character until End-Of-File (EOF)
+    while ((ch = fgetc(src)) != EOF) {
+        fputc(ch, dest);
+    }
+
+    printf("File copied successfully.\n");
+
+    fclose(src);
+    fclose(dest);
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q38. Explain the four Storage Classes in C (auto, register, static, extern) with a comparison table and C program. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p>In C, every variable possesses both a <strong>data type</strong> and a <strong>storage class</strong>. The storage class determines the variable's storage location, default initial value, scope (visibility), and lifetime (longevity).</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Storage Class</th>
+            <th>Storage Location</th>
+            <th>Default Value</th>
+            <th>Scope</th>
+            <th>Lifetime</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>auto</code></td>
+            <td>RAM (Stack segment)</td>
+            <td>Garbage (unpredictable)</td>
+            <td>Local (block / function)</td>
+            <td>Until control leaves the enclosing block</td>
+        </tr>
+        <tr>
+            <td><code>register</code></td>
+            <td>CPU Registers</td>
+            <td>Garbage</td>
+            <td>Local (block / function)</td>
+            <td>Until control leaves the enclosing block</td>
+        </tr>
+        <tr>
+            <td><code>static</code></td>
+            <td>RAM (Data segment)</td>
+            <td>Zero (<code>0</code>)</td>
+            <td>Local to function or file</td>
+            <td>Entire program execution duration</td>
+        </tr>
+        <tr>
+            <td><code>extern</code></td>
+            <td>RAM (Data segment)</td>
+            <td>Zero (<code>0</code>)</td>
+            <td>Global (across all linked files)</td>
+            <td>Entire program execution duration</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>C Program Demonstrating Storage Classes:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+// Global variable (extern by default)
+int global_var = 100;
+
+void test_static() {
+    auto int auto_count = 0;       // Re-created on each function call
+    static int static_count = 0;   // Retains value across function calls
+
+    auto_count++;
+    static_count++;
+
+    printf("auto_count = %d, static_count = %d\n", auto_count, static_count);
+}
+
+int main() {
+    register int fast_i; // Requesting CPU register allocation
+
+    printf("--- Demonstration of Storage Classes ---\n");
+    printf("Call 1: "); test_static(); // auto = 1, static = 1
+    printf("Call 2: "); test_static(); // auto = 1, static = 2
+    printf("Call 3: "); test_static(); // auto = 1, static = 3
+
+    printf("Global (extern) variable = %d\n", global_var);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q39. Differentiate between Structures and Unions in C. Write a C program to demonstrate memory allocation and member access. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p>Both <code>struct</code> and <code>union</code> are user-defined composite data types in C that group elements of disparate types under a single name, but their internal memory architectures differ fundamentally:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Structure (<code>struct</code>)</th>
+            <th>Union (<code>union</code>)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Memory Allocation</strong></td>
+            <td>Each member gets its own separate memory location.</td>
+            <td>All members share the exact same memory location.</td>
+        </tr>
+        <tr>
+            <td><strong>Total Size</strong></td>
+            <td>Sum of sizes of all members + alignment padding (\(\ge \sum \text{size}_i\)).</td>
+            <td>Size of the largest member only (\(= \max(\text{size}_i)\)).</td>
+        </tr>
+        <tr>
+            <td><strong>Concurrent Access</strong></td>
+            <td>All members can be accessed and store distinct valid data simultaneously.</td>
+            <td>Only one member can hold a valid value at any given time.</td>
+        </tr>
+        <tr>
+            <td><strong>Initialization</strong></td>
+            <td>All members can be initialized simultaneously in a single initializer list.</td>
+            <td>Only the first member can be initialized at declaration.</td>
+        </tr>
+        <tr>
+            <td><strong>Keyword</strong></td>
+            <td><code>struct</code></td>
+            <td><code>union</code></td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>C Program Demonstrating Structure vs Union:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct StudentStruct {
+    int id;          // 4 bytes
+    float gpa;       // 4 bytes
+    char name[20];   // 20 bytes
+}; // Total size = 28 bytes
+
+union StudentUnion {
+    int id;          // 4 bytes
+    float gpa;       // 4 bytes
+    char name[20];   // 20 bytes
+}; // Total size = 20 bytes (largest member)
+
+int main() {
+    struct StudentStruct s = {101, 9.4f, "Rupesh"};
+    union StudentUnion u;
+
+    printf("Size of Structure = %zu bytes\n", sizeof(s));
+    printf("Size of Union     = %zu bytes\n", sizeof(u));
+
+    // Accessing structure members concurrently
+    printf("\n--- Structure (All values preserved) ---\n");
+    printf("ID: %d, GPA: %.2f, Name: %s\n", s.id, s.gpa, s.name);
+
+    // Union member assignment (overwrites shared memory)
+    printf("\n--- Union (Sequential overwriting) ---\n");
+    u.id = 202;
+    printf("u.id set to 202 -&gt; ID: %d\n", u.id);
+
+    u.gpa = 8.8f;
+    printf("u.gpa set to 8.8 -&gt; GPA: %.2f (ID corrupted: %d)\n", u.gpa, u.id);
+
+    strcpy(u.name, "Mathematics");
+    printf("u.name set -&gt; Name: %s (GPA corrupted: %.2f)\n", u.name, u.gpa);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q40. Write custom C functions to implement strlen(), strcpy(), and strrev() without using string.h library functions. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p>In C, strings are null-terminated (<code>'\0'</code>) one-dimensional character arrays. Below are custom implementations of three fundamental string-processing routines implemented using pointer arithmetic:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+
+// 1. Custom strlen(): Computes string length excluding '\0'
+int my_strlen(const char *str) {
+    int len = 0;
+    while (*(str + len) != '\0') {
+        len++;
+    }
+    return len;
+}
+
+// 2. Custom strcpy(): Copies characters from src to dest including '\0'
+void my_strcpy(char *dest, const char *src) {
+    while (*src != '\0') {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0'; // Append null terminator
+}
+
+// 3. Custom strrev(): In-place string reversal using two-pointer swap
+void my_strrev(char *str) {
+    int start = 0;
+    int end = my_strlen(str) - 1;
+    char temp;
+
+    while (start &lt; end) {
+        temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    char original[] = "Mathematics";
+    char copy[50];
+
+    printf("Original String: %s\n", original);
+    printf("Calculated Length (my_strlen): %d\n", my_strlen(original));
+
+    my_strcpy(copy, original);
+    printf("Copied String (my_strcpy): %s\n", copy);
+
+    my_strrev(copy);
+    printf("Reversed String (my_strrev): %s\n", copy);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q41. Explain Lagrange's Interpolation Formula for unequally spaced data with mathematical derivation and formula. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>Problem Formulation:</strong></p>
+<p>Given \(n+1\) distinct data points \((x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)\) where the nodal points \(x_i\) are not necessarily equally spaced, we seek a unique polynomial \(P_n(x)\) of degree \(\le n\) such that \(P_n(x_i) = y_i\) for all \(i = 0, 1, \dots, n\).</p>
+
+<p><strong>Derivation of Lagrange Basis Polynomials:</strong></p>
+<p>We express \(P_n(x)\) as a linear combination of Lagrange cardinal basis polynomials \(L_i(x)\):</p>
+\[
+P_n(x) = \sum_{i=0}^n y_i L_i(x)
+\]
+<p>where each basis polynomial \(L_i(x)\) satisfies the Kronecker delta property:</p>
+\[
+L_i(x_j) = \delta_{ij} = \begin{cases} 1 & \text{if } j = i \\ 0 & \text{if } j \neq i \end{cases}
+\]
+<p>Since \(L_i(x)\) vanishes at all \(x_j\) for \(j \neq i\), it must contain the factors \((x - x_0), \dots, (x - x_{i-1}), (x - x_{i+1}), \dots, (x - x_n)\). To normalize \(L_i(x_i) = 1\), we divide by the corresponding value at \(x = x_i\):</p>
+\[
+L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^n \frac{x - x_j}{x_i - x_j}
+\]
+
+<p><strong>Explicit Formula for \(n = 2\) (Three Points):</strong></p>
+\[
+P_2(x) = y_0 \frac{(x - x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)} + y_1 \frac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)} + y_2 \frac{(x - x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)}
+\]
+<p><strong>Advantages:</strong> Applicable to both equally and unequally spaced data points. Does not require constructing a finite difference table.</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q42. Explain the Gauss-Seidel Iteration Method for solving a system of linear equations. State the condition for diagonal dominance and convergence. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Problem Formulation:</strong></p>
+<p>Consider the linear system \(Ax = b\) of \(n\) equations in \(n\) unknowns:</p>
+\[
+\begin{aligned}
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n &= b_1 \\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n &= b_2 \\
+&\;\vdots \\
+a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n &= b_n
+\end{aligned}
+\]
+<p>Assuming the diagonal elements \(a_{ii} \neq 0\), we rewrite each equation solving explicitly for \(x_i\):</p>
+\[
+x_i^{(k+1)} = \frac{1}{a_{ii}} \left[ b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(k)} \right]
+\]
+<p><strong>Key Mechanism:</strong> Unlike the Gauss-Jacobi method (which uses only old iteration values \(x_j^{(k)}\)), the Gauss-Seidel method immediately uses the updated values \(x_j^{(k+1)}\) as soon as they are computed, doubling the rate of convergence.</p>
+
+<p><strong>2. Condition for Convergence (Strict Diagonal Dominance):</strong></p>
+<p>The Gauss-Seidel iteration is guaranteed to converge for any initial vector \(x^{(0)}\) if matrix \(A\) is <strong>strictly diagonally dominant</strong>:</p>
+\[
+|a_{ii}| > \sum_{\substack{j=1 \\ j \neq i}}^n |a_{ij}|, \quad \forall i = 1, 2, \dots, n
+\]
+<p>Alternatively, convergence is guaranteed if \(A\) is symmetric positive definite (by the Ostrowski–Reich theorem).</p>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q43. Explain the Symbolic Math Toolbox in MATLAB: syms, differentiation (diff), integration (int), algebraic solve (solve), and ODE solve (dsolve). <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p>The Symbolic Math Toolbox in MATLAB allows analytical, exact algebraic and calculus manipulations without numerical approximation errors:</p>
+
+<ol>
+    <li><strong><code>syms</code>:</strong> Declares symbolic variables, functions, and assumptions.
+        <br><code>syms x y a b;</code> creates abstract symbolic variables.
+    </li>
+    <li><strong>Symbolic Differentiation (<code>diff</code>):</strong>
+        <br><code>diff(f, x)</code> computes \(\frac{df}{dx}\); <code>diff(f, x, n)</code> computes \(\frac{d^n f}{dx^n}\).
+    </li>
+    <li><strong>Symbolic Integration (<code>int</code>):</strong>
+        <br><code>int(f, x)</code> computes indefinite integral \(\int f(x)\,dx\).
+        <br><code>int(f, x, a, b)</code> computes definite integral \(\int_a^b f(x)\,dx\).
+    </li>
+    <li><strong>Algebraic Equation Solver (<code>solve</code>):</strong>
+        <br>Solves algebraic equations and systems: <code>sol = solve(x^2 - 5*x + 6 == 0, x);</code> returns <code>[2; 3]</code>.
+    </li>
+    <li><strong>Differential Equation Solver (<code>dsolve</code>):</strong>
+        <br>Solves analytical ODEs: <code>dsolve('Dy + 2*y = exp(-x)', 'y(0) = 1', 'x')</code>.
+    </li>
+</ol>
+
+<p><strong>Complete MATLAB Demonstration Script:</strong></p>
+<pre><code>% 1. Declare symbolic variables
+syms x t y(t)
+
+% 2. Exact Differentiation
+f = exp(-x) * sin(2*x);
+df = diff(f, x);
+disp('Derivative d/dx [exp(-x)*sin(2x)]:');
+disp(df);
+
+% 3. Exact Integration
+I = int(x^2 / (1 + x^3), x);
+disp('Indefinite Integral int [x^2 / (1+x^3) dx]:');
+disp(I);
+
+% 4. Solving Non-linear System
+sol = solve(x^2 - 4*x + 4 == 0, x);
+disp('Root of x^2 - 4x + 4 = 0:');
+disp(sol);
+
+% 5. Analytical ODE Solution
+ode = diff(y, t, 2) + 4*y == 0;
+cond = [y(0) == 1, subs(diff(y, t), t, 0) == 0];
+y_sol = dsolve(ode, cond);
+disp('Exact Solution of y'' + 4y = 0:');
+disp(y_sol);</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q44. Write a C program to print even numbers from 1 to 50 using for, while, and do-while loop. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>Logic:</strong></p>
+<p>A number is even if it is completely divisible by 2 (<code>i % 2 == 0</code>), or by initializing the counter at 2 and incrementing by 2 in each successive step (<code>i += 2</code>) until 50 is reached.</p>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int i;
+
+    // 1. Using 'for' loop
+    printf("Even numbers from 1 to 50 using FOR loop:\n");
+    for (i = 2; i &lt;= 50; i += 2) {
+        printf("%d ", i);
+    }
+    printf("\n\n");
+
+    // 2. Using 'while' loop
+    printf("Even numbers from 1 to 50 using WHILE loop:\n");
+    i = 2;
+    while (i &lt;= 50) {
+        printf("%d ", i);
+        i += 2;
+    }
+    printf("\n\n");
+
+    // 3. Using 'do-while' loop
+    printf("Even numbers from 1 to 50 using DO-WHILE loop:\n");
+    i = 2;
+    do {
+        printf("%d ", i);
+        i += 2;
+    } while (i &lt;= 50);
+    printf("\n");
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q45. What are header files in C? Discuss stdio.h, math.h, and ctype.h with examples. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition of Header Files:</strong></p>
+<p>A <strong>header file</strong> in C (with extension <code>.h</code>) is a file containing predefined function declarations (prototypes), macros, symbolic constants, and data type definitions that can be shared across multiple C source files. Header files are included at the beginning of a program using the <code>#include</code> preprocessor directive.</p>
+
+<p><strong>Core Standard Header Files:</strong></p>
+<ol>
+    <li><strong>&lt;stdio.h&gt; (Standard Input/Output Header):</strong>
+        <ul>
+            <li><em>Purpose:</em> Provides functions and macros (<code>EOF</code>, <code>NULL</code>, <code>FILE</code>) for standard console and stream file input/output operations.</li>
+            <li><em>Common Functions:</em> <code>printf()</code>, <code>scanf()</code>, <code>getchar()</code>, <code>putchar()</code>, <code>fgets()</code>, <code>puts()</code>, <code>fopen()</code>, <code>fclose()</code>.</li>
+        </ul>
+    </li>
+    <li><strong>&lt;math.h&gt; (Mathematics Library Header):</strong>
+        <ul>
+            <li><em>Purpose:</em> Provides standard mathematical functions operating primarily on <code>double</code> precision floating-point numbers (angles in radians).</li>
+            <li><em>Common Functions:</em> <code>sqrt(x)</code> (\(\sqrt{x}\)), <code>pow(x, y)</code> (\(x^y\)), <code>sin(x)</code>, <code>cos(x)</code>, <code>tan(x)</code>, <code>exp(x)</code> (\(e^x\)), <code>log(x)</code> (\(\ln x\)), <code>ceil(x)</code>, <code>floor(x)</code>, <code>fabs(x)</code>.</li>
+        </ul>
+    </li>
+    <li><strong>&lt;ctype.h&gt; (Character Handling Header):</strong>
+        <ul>
+            <li><em>Purpose:</em> Provides functions to test and convert single ASCII characters.</li>
+            <li><em>Common Functions:</em> <code>isalpha(c)</code> (checks alphabet), <code>isdigit(c)</code> (checks digit 0–9), <code>isspace(c)</code> (checks whitespace), <code>isupper(c)</code>, <code>islower(c)</code>, <code>toupper(c)</code> (converts to uppercase), <code>tolower(c)</code> (converts to lowercase).</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>Example Program Demonstrating All Three Header Files:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;  // For printf()
+#include &lt;math.h&gt;   // For sqrt(), pow()
+#include &lt;ctype.h&gt;  // For isalpha(), toupper()
+
+int main() {
+    double x = 25.0;
+    char ch = 'a';
+
+    // Using stdio.h and math.h
+    printf("Square root of %.1lf = %.2lf\n", x, sqrt(x));
+    printf("2 raised to power 4    = %.2lf\n", pow(2, 4));
+
+    // Using ctype.h
+    if (isalpha(ch)) {
+        printf("Character '%c' in uppercase is '%c'\n", ch, toupper(ch));
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q46. (a) Define algorithm and flowchart. (b) Draw flowchart to calculate factorial of a number. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Definition of Algorithm and Flowchart:</strong></p>
+<ol>
+    <li><strong>Algorithm:</strong>
+        <ul>
+            <li>An <strong>algorithm</strong> is a finite, step-by-step, unambiguous sequence of well-defined instructions designed to solve a specific computational problem in a finite amount of time.</li>
+            <li>Every valid algorithm satisfies Knuth's five criteria: Input, Output, Definiteness, Finiteness, and Effectiveness.</li>
+        </ul>
+    </li>
+    <li><strong>Flowchart:</strong>
+        <ul>
+            <li>A <strong>flowchart</strong> is a standardized graphical representation of an algorithm using geometric symbols connected by directional flow lines.</li>
+            <li>Standard symbols include Ovals (Terminal / Start-Stop), Parallelograms (Input/Output), Rectangles (Processing / Calculation), and Diamonds (Decision branching).</li>
+        </ul>
+    </li>
+</ol>
+
+<p><strong>(b) Flowchart to Calculate Factorial of a Number:</strong></p>
+<pre><code>                 +-----------+
+                 |   START   |
+                 +-----+-----+
+                       |
+                       v
+                 /  Read N   /
+                       |
+                       v
+                 +-----------+
+          Yes    |  Is N &lt; 0 |     No
+        +--------+     ?     +--------+
+        |        +-----------+        |
+        v                             v
+/ Print "Invalid" /          +-----------------+
+        |                    |  fact = 1       |
+        |                    |  i = 1          |
+        |                    +--------+--------+
+        |                             |
+        |                             v
+        |                       +-----------+
+        |                No     | Is i &lt;= N |
+        |              +--------+     ?     |
+        |              |        +-----+-----+
+        |              |              | Yes
+        |              |              v
+        |              |     +-----------------+
+        |              |     | fact = fact * i |
+        |              |     | i = i + 1       |
+        |              |     +--------+--------+
+        |              |              |
+        |              |              +--- (Loop Back)
+        |              v
+        |       / Print fact  /
+        |              |
+        +------+-------+
+               |
+               v
+         +-----------+
+         |   STOP    |
+         +-----------+</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q47. (a) Define structure and union in C. (b) Write a C program to store and display student details using structures. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>(a) Definition of Structure and Union:</strong></p>
+<ol>
+    <li><strong>Structure (<code>struct</code>):</strong> A user-defined heterogeneous data type that groups variables of different data types under a single identifier. Every member gets its own separate memory allocation, allowing all members to store valid values simultaneously.</li>
+    <li><strong>Union (<code>union</code>):</strong> A user-defined data type where all members share the same common memory location. The total memory allocated equals the size of the largest member, and only one member can store a valid value at any given time.</li>
+</ol>
+
+<p><strong>(b) Complete C Program to Store and Display Student Details Using Structure:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+struct Student {
+    int roll_no;
+    char name[50];
+    float marks;
+};
+
+int main() {
+    struct Student s;
+
+    // Input student details
+    printf("Enter Roll Number: ");
+    scanf("%d", &amp;s.roll_no);
+    getchar(); // Clear newline from buffer
+
+    printf("Enter Student Name: ");
+    fgets(s.name, sizeof(s.name), stdin);
+
+    printf("Enter Marks: ");
+    scanf("%f", &amp;s.marks);
+
+    // Display student details
+    printf("\n--- Student Details ---\n");
+    printf("Roll Number : %d\n", s.roll_no);
+    printf("Name        : %s", s.name);
+    printf("Marks       : %.2f\n", s.marks);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q48. Write a C program to accept 10 integers in an array and sort them in ascending order. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>Algorithmic Principle (Bubble Sort):</strong></p>
+<p>Bubble Sort is a straightforward comparison-based sorting algorithm. It repeatedly steps through the array, compares adjacent elements, and swaps them if they are in the wrong order (<code>arr[j] &gt; arr[j + 1]</code>). After each complete pass, the largest remaining element "bubbles up" to its correct position at the end of the array.</p>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[10], i, j, temp;
+
+    printf("Enter 10 integers:\n");
+    for (i = 0; i &lt; 10; i++) {
+        scanf("%d", &amp;arr[i]);
+    }
+
+    // Bubble Sort in Ascending Order
+    for (i = 0; i &lt; 9; i++) {
+        for (j = 0; j &lt; 9 - i; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array in Ascending Order:\n");
+    for (i = 0; i &lt; 10; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q49. Explain how script files and function files are created and executed in MATLAB. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p>Both script files and function files in MATLAB are plain-text M-files saved with the <code>.m</code> file extension using the built-in MATLAB Editor.</p>
+
+<p><strong>1. Script Files:</strong></p>
+<ul>
+    <li><strong>Creation:</strong>
+        <ol>
+            <li>Open the MATLAB Editor via <em>Home &rarr; New Script</em> or by typing <code>edit myscript.m</code> in the Command Window.</li>
+            <li>Write a sequence of valid MATLAB commands without any function header.</li>
+            <li>Save the file with a <code>.m</code> extension (e.g., <code>myscript.m</code>).</li>
+        </ol>
+    </li>
+    <li><strong>Characteristics:</strong> Does not take input arguments or return formal outputs. Operates directly on variables in the <em>Base Workspace</em>.</li>
+    <li><strong>Execution:</strong> Type the file basename in the Command Window (<code>&gt;&gt; myscript</code>) or click the green <em>Run</em> button in the Editor toolbar.</li>
+</ul>
+
+<p><strong>2. Function Files:</strong></p>
+<ul>
+    <li><strong>Creation:</strong>
+        <ol>
+            <li>Open the MATLAB Editor (<code>edit myfunc.m</code>).</li>
+            <li>The first executable line must begin with the <code>function</code> declaration keyword:
+<pre><code>function [out1, out2] = myfunc(in1, in2)
+    % Executable statements
+end</code></pre>
+            </li>
+            <li>Save the file with the exact same name as the function identifier (<code>myfunc.m</code>).</li>
+        </ol>
+    </li>
+    <li><strong>Characteristics:</strong> Accepts formal input parameters, returns computed outputs, and executes within its own private, isolated <em>Local Function Workspace</em>.</li>
+    <li><strong>Execution:</strong> Invoked by passing actual arguments from the Command Window or another script:
+<pre><code>&gt;&gt; [y1, y2] = myfunc(5, 10);</code></pre>
+    </li>
+</ul>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q50. Create a 2D plot of \(y = x^2\) and \(y = \sin(x)\) on the same graph in MATLAB. Label the axes and give title. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>MATLAB Script:</strong></p>
+<pre><code>% Define domain x from -2 to 2
+x = linspace(-2, 2, 200);
+
+% Compute y1 = x^2 (using element-wise power .^) and y2 = sin(x)
+y1 = x .^ 2;
+y2 = sin(x);
+
+% Plot both curves on the same graph
+figure;
+plot(x, y1, 'r-', 'LineWidth', 2);   % Red solid line for y = x^2
+hold on;                             % Retain current plot for second curve
+plot(x, y2, 'b--', 'LineWidth', 2);  % Blue dashed line for y = sin(x)
+hold off;
+
+% Add grid, labels, title, and legend
+grid on;
+xlabel('x-axis');
+ylabel('y-axis');
+title('2D Plot of y = x^2 and y = sin(x)');
+legend('y = x^2', 'y = sin(x)', 'Location', 'north');</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q51. Explain symbolic constants and their use with a C program to calculate the area of a circle. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Definition:</strong></p>
+<p>A <strong>Symbolic Constant</strong> is a meaningful name assigned to a constant literal value using the <code>#define</code> preprocessor directive. Before the compilation phase begins, the C preprocessor scans the source code and textually replaces every occurrence of that symbolic identifier with its defined value.</p>
+<p><em>Syntax:</em> <code>#define CONSTANT_NAME value</code> (Note: No semicolon or assignment operator is used).</p>
+
+<p><strong>2. Uses and Advantages of Symbolic Constants:</strong></p>
+<ol>
+    <li><strong>Easy Modification (Centralized Control):</strong> If a constant value needs updating, modifying it once at the <code>#define</code> header directive automatically propagates the change throughout the entire program.</li>
+    <li><strong>Enhanced Code Readability:</strong> Using descriptive names like <code>PI</code>, <code>MAX_BUFFER</code>, or <code>GRAVITY</code> makes mathematical and scientific code self-explanatory compared to "magic numbers".</li>
+    <li><strong>Zero Memory Overhead:</strong> Because the replacement happens during preprocessing, symbolic constants do not occupy any physical RAM storage at runtime.</li>
+</ol>
+
+<p><strong>3. Complete C Program to Calculate Area of a Circle:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+#define PI 3.14159  // Symbolic constant definition
+
+int main() {
+    float radius, area;
+
+    printf("Enter radius of the circle: ");
+    scanf("%f", &amp;radius);
+
+    area = PI * radius * radius;
+
+    printf("Area of the circle = %.4f\n", area);
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q52. Write a C program that accepts a number from the user and checks whether it is a prime number. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>Algorithmic Logic:</strong></p>
+<p>A positive integer \(n &gt; 1\) is prime if it has no positive divisors other than 1 and itself. In C, we test divisibility from \(i = 2\) up to \(n/2\) (or \(\sqrt{n}\)). If any \(i\) divides \(n\) evenly (<code>n % i == 0</code>), a boolean flag <code>isPrime</code> is cleared to 0 and the loop terminates immediately using <code>break</code>.</p>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i, isPrime = 1;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &amp;n);
+
+    if (n &lt;= 1) {
+        isPrime = 0; // Numbers &lt;= 1 are not prime
+    } else {
+        for (i = 2; i &lt;= n / 2; i++) {
+            if (n % i == 0) {
+                isPrime = 0; // Divisible by i, hence not prime
+                break;
+            }
+        }
+    }
+
+    if (isPrime == 1)
+        printf("%d is a Prime number.\n", n);
+    else
+        printf("%d is NOT a Prime number.\n", n);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q53. What is MATLAB? Discuss its desktop interface and common applications in mathematics and engineering. <span class="marks">[5 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. What is MATLAB?</strong></p>
+<p><strong>MATLAB</strong> (short for <em>MATrix LABoratory</em>) is a high-level numerical computing language and interactive development environment created by MathWorks. Unlike scalar-centric languages (such as C), MATLAB treats a matrix or array as its fundamental data type without requiring explicit dimensioning, making it exceptionally suited for linear algebra, scientific computing, and interactive data visualization.</p>
+
+<p><strong>2. MATLAB Desktop Interface Components:</strong></p>
+<ol>
+    <li><strong>Command Window:</strong> The interactive command line (indicated by the <code>&gt;&gt;</code> prompt) where expressions, calculations, and functions are executed immediately.</li>
+    <li><strong>Workspace:</strong> A browser window listing all active variables currently held in memory, displaying their names, sizes, byte memory consumption, and data classes.</li>
+    <li><strong>Current Folder:</strong> Displays files, directories, and <code>.m</code> scripts in the active working directory from which MATLAB can execute programs directly.</li>
+    <li><strong>Command History:</strong> Records a chronological log of all previously executed commands for rapid review, search, and re-execution.</li>
+    <li><strong>Editor:</strong> A full-featured development environment used to author, debug, profile, and save M-files (scripts and functions).</li>
+</ol>
+
+<p><strong>3. Common Applications in Mathematics and Engineering:</strong></p>
+<ul>
+    <li><strong>Linear Algebra &amp; Numerical Analysis:</strong> Direct solving of linear systems (\(Ax = b\)), eigenvalue decomposition, matrix inversions, and numerical integration/ODEs.</li>
+    <li><strong>Signal and Image Processing:</strong> Fast Fourier Transforms (FFT), digital filter design, audio processing, and medical imaging.</li>
+    <li><strong>Control Systems:</strong> Transfer function modeling, state-space equations, Root Locus, Bode plots, and PID tuning.</li>
+    <li><strong>2D and 3D Scientific Visualization:</strong> Function curves, surface meshes (<code>surf</code>, <code>mesh</code>), vector fields, and contour plots.</li>
+    <li><strong>Optimization &amp; Machine Learning:</strong> Curve fitting, constrained nonlinear optimization, and training neural networks.</li>
+</ul>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q54. Write a program in C to find the value of x from quadratic equation ax^2 + bx + c = 0. (2024 Q7b) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Formulation:</strong></p>
+<p>For a standard quadratic equation \(ax^2 + bx + c = 0\) with real coefficients \(a, b, c\) (\(a \neq 0\)), the nature and values of the roots \(x_1, x_2\) depend on the discriminant \(\Delta = b^2 - 4ac\):</p>
+<ol>
+    <li><strong>\(\Delta &gt; 0\) (Real and Distinct Roots):</strong>
+        \[
+        x_{1} = \frac{-b + \sqrt{\Delta}}{2a}, \quad x_{2} = \frac{-b - \sqrt{\Delta}}{2a}
+        \]
+    </li>
+    <li><strong>\(\Delta = 0\) (Real and Equal Roots):</strong>
+        \[
+        x_{1} = x_{2} = \frac{-b}{2a}
+        \]
+    </li>
+    <li><strong>\(\Delta &lt; 0\) (Complex Conjugate Roots):</strong>
+        \[
+        x_{1} = \alpha + i\beta, \quad x_{2} = \alpha - i\beta \quad \text{where } \alpha = \frac{-b}{2a}, \; \beta = \frac{\sqrt{-\Delta}}{2a}
+        \]
+    </li>
+</ol>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+    double a, b, c, discriminant, root1, root2, realPart, imagPart;
+
+    printf("Enter coefficients a, b, and c of ax^2 + bx + c = 0: ");
+    scanf("%lf %lf %lf", &amp;a, &amp;b, &amp;c);
+
+    // Check if equation is actually quadratic
+    if (a == 0) {
+        printf("Invalid input: 'a' cannot be zero for a quadratic equation.\n");
+        if (b != 0) {
+            printf("Linear equation root: x = %.4lf\n", -c / b);
+        }
+        return 1;
+    }
+
+    // Calculate discriminant D = b^2 - 4ac
+    discriminant = (b * b) - (4 * a * c);
+
+    // Case 1: Real and distinct roots
+    if (discriminant &gt; 0) {
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Roots are REAL and DISTINCT:\n");
+        printf("x1 = %.4lf\n", root1);
+        printf("x2 = %.4lf\n", root2);
+    }
+    // Case 2: Real and equal roots
+    else if (discriminant == 0) {
+        root1 = root2 = -b / (2 * a);
+        printf("Roots are REAL and EQUAL:\n");
+        printf("x1 = x2 = %.4lf\n", root1);
+    }
+    // Case 3: Complex conjugate roots
+    else {
+        realPart = -b / (2 * a);
+        imagPart = sqrt(-discriminant) / (2 * a);
+        printf("Roots are COMPLEX CONJUGATES:\n");
+        printf("x1 = %.4lf + %.4lfi\n", realPart, imagPart);
+        printf("x2 = %.4lf - %.4lfi\n", realPart, imagPart);
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q55. What is a Pointer in C? Explain it with suitable example. (2025 Q3a) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Definition of a Pointer:</strong></p>
+<p>A <strong>Pointer</strong> in C is a derived variable whose value is the physical memory address of another variable (or function) stored in RAM, rather than a direct data value. Pointers enable direct memory manipulation, dynamic memory allocation, efficient array/string traversal, and call-by-reference function parameter passing.</p>
+
+<p><strong>2. Pointer Declaration and Core Operators:</strong></p>
+<ul>
+    <li><strong>Declaration Syntax:</strong> <code>data_type *pointer_name;</code><br>
+    Here, <code>data_type</code> specifies the base type of the variable the pointer points to, which governs pointer arithmetic and dereferencing size.</li>
+    <li><strong>Address-of Operator (<code>&amp;</code>):</strong> Unary operator that returns the physical memory address of an operand (e.g., <code>&amp;x</code>).</li>
+    <li><strong>Indirection / Dereference Operator (<code>*</code>):</strong> Unary operator that accesses or modifies the value stored at the memory address held by a pointer (e.g., <code>*ptr</code>).</li>
+    <li><strong>NULL Pointer:</strong> A pointer assigned <code>NULL</code> (<code>int *ptr = NULL;</code>) indicates it currently points to no valid memory location, preventing accidental wild-pointer corruption.</li>
+</ul>
+
+<p><strong>3. Suitable Example in C:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num = 42;       // Regular integer variable
+    int *ptr;           // Declaration of an integer pointer
+
+    ptr = &amp;num;         // Store memory address of 'num' in 'ptr'
+
+    printf("Value of num                 = %d\n", num);
+    printf("Memory address of num (&amp;num) = %p\n", (void*)&amp;num);
+    printf("Value stored in ptr          = %p\n", (void*)ptr);
+    printf("Value pointed to by *ptr     = %d\n", *ptr);
+
+    // Modifying the original variable indirectly through the pointer
+    *ptr = 100;
+    printf("Updated value of num via *ptr = %d\n", num);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q56. Explain malloc(), calloc() and realloc() functions used in C programming with suitable example. (2025 Q3b) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Dynamic Memory Allocation (DMA):</strong></p>
+<p>Static arrays reserve a fixed amount of stack memory at compile time. Dynamic Memory Allocation allows programs to allocate, resize, and release memory dynamically from the Heap at runtime using library functions declared in <code>&lt;stdlib.h&gt;</code>:</p>
+<ol>
+    <li><strong>malloc() (Memory Allocation):</strong>
+        <ul>
+            <li><em>Prototype:</em> <code>void* malloc(size_t size_in_bytes);</code></li>
+            <li><em>Working:</em> Allocates a single contiguous block of <code>size_in_bytes</code> on the heap and returns a <code>void*</code> pointer to its starting address (or <code>NULL</code> if memory is exhausted). The allocated block contains uninitialized garbage values.</li>
+        </ul>
+    </li>
+    <li><strong>calloc() (Contiguous Allocation):</strong>
+        <ul>
+            <li><em>Prototype:</em> <code>void* calloc(size_t num_elements, size_t element_size);</code></li>
+            <li><em>Working:</em> Allocates contiguous memory for an array of <code>num_elements</code>, each of size <code>element_size</code> bytes, and automatically initializes every byte to zero (0).</li>
+        </ul>
+    </li>
+    <li><strong>realloc() (Re-allocation):</strong>
+        <ul>
+            <li><em>Prototype:</em> <code>void* realloc(void* ptr, size_t new_size_in_bytes);</code></li>
+            <li><em>Working:</em> Dynamically expands or shrinks an existing heap memory block pointed to by <code>ptr</code> to <code>new_size_in_bytes</code> while preserving existing stored values.</li>
+        </ul>
+    </li>
+    <li><strong>free(ptr):</strong> Releases dynamically allocated heap memory back to the operating system to prevent memory leaks.</li>
+</ol>
+
+<p><strong>2. Suitable Example in C:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int *arr, i;
+
+    // 1. Allocate memory for 3 integers using calloc (initialized to 0)
+    arr = (int*) calloc(3, sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    for (i = 0; i &lt; 3; i++) arr[i] = (i + 1) * 5; // Stores 5, 10, 15
+
+    // 2. Expand memory block to hold 5 integers using realloc
+    arr = (int*) realloc(arr, 5 * sizeof(int));
+    if (arr == NULL) {
+        printf("Reallocation failed!\n");
+        return 1;
+    }
+    arr[3] = 20;
+    arr[4] = 25;
+
+    printf("Array elements after realloc: ");
+    for (i = 0; i &lt; 5; i++) {
+        printf("%d ", arr[i]); // Output: 5 10 15 20 25
+    }
+    printf("\n");
+
+    // 3. Free dynamically allocated memory
+    free(arr);
+    arr = NULL;
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q57. Write a program to accept two numbers and find the Greatest Common Divisor (G.C.D) of those numbers. (2025 Q5a) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Basis (Euclidean Algorithm):</strong></p>
+<p>For any two non-negative integers \(a\) and \(b\) (not both zero), the Euclidean Algorithm states that:</p>
+<p>\[\gcd(a, b) = \gcd(b, a \bmod b)\]</p>
+<p>with the base case \(\gcd(a, 0) = |a|\). At each step, the problem reduces to finding the GCD of the divisor and remainder until the remainder becomes zero, at which point the last non-zero remainder is the GCD.</p>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() {
+    int num1, num2, a, b, remainder, gcd;
+
+    printf("Enter two integers: ");
+    scanf("%d %d", &amp;num1, &amp;num2);
+
+    // Handle negative inputs using absolute values
+    a = abs(num1);
+    b = abs(num2);
+
+    if (a == 0 &amp;&amp; b == 0) {
+        printf("GCD(0, 0) is mathematically undefined.\n");
+        return 1;
+    }
+
+    // Euclidean Algorithm using while loop
+    while (b != 0) {
+        remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+    gcd = a;
+
+    printf("Greatest Common Divisor (G.C.D) of %d and %d = %d\n", num1, num2, gcd);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q58. Write a program to input and print whether the number is a special number or not. (Sum of factorial of digits = number) (2025 Q5b) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>Definition and Mathematical Basis:</strong></p>
+<p>A number is said to be a <strong>Special Number</strong> (also known in mathematics as a <em>Factorion</em> or <em>Strong Number</em>) if the sum of the factorials of its digits equals the original number itself.</p>
+<p>For example, \(145\) is a special number because:</p>
+<p>\[1! + 4! + 5! = 1 + 24 + 120 = 145\]</p>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+// Helper function to compute factorial of a single digit (0 to 9)
+long long factorial(int d) {
+    long long fact = 1;
+    for (int i = 1; i &lt;= d; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+int main() {
+    int num, temp, digit;
+    long long sumOfFactorials = 0;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &amp;num);
+
+    if (num &lt;= 0) {
+        printf("%d is NOT a Special Number.\n", num);
+        return 0;
+    }
+
+    temp = num;
+
+    // Extract each digit and accumulate its factorial
+    while (temp &gt; 0) {
+        digit = temp % 10;
+        sumOfFactorials += factorial(digit);
+        temp /= 10;
+    }
+
+    printf("Sum of factorials of digits of %d = %lld\n", num, sumOfFactorials);
+
+    if (sumOfFactorials == num) {
+        printf("Result: %d IS a Special Number.\n", num);
+    } else {
+        printf("Result: %d is NOT a Special Number.\n", num);
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q59. What is a Recursive function in MATLAB? How Recursive functions work in MATLAB? (2025 Q8a) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Definition:</strong></p>
+<p>A <strong>Recursive Function</strong> in MATLAB is a user-defined function (saved in a <code>.m</code> file) that solves a computational problem by invoking itself within its own function body on progressively smaller inputs until a trivial stopping condition is reached.</p>
+
+<p><strong>2. How Recursive Functions Work in MATLAB:</strong></p>
+<ol>
+    <li><strong>Two Structural Requirements:</strong>
+        <ul>
+            <li><strong>Base Case (Termination Condition):</strong> A conditional branch (<code>if ...</code>) that returns a direct result without making any further recursive calls. Without a base case, recursion runs indefinitely until MATLAB throws a stack-limit error (<em>"Maximum recursion limit of 500 reached"</em>).</li>
+            <li><strong>Recursive Step:</strong> Decomposes the current problem of size \(n\) into a smaller sub-problem (e.g., \(n-1\)) and calls the function itself.</li>
+        </ul>
+    </li>
+    <li><strong>Call Stack and Isolated Function Workspaces:</strong>
+        <ul>
+            <li>In MATLAB, every function call operates in its own independent local workspace isolated from other calls.</li>
+            <li>When a recursive call is made, MATLAB pushes a new stack frame onto the Execution Call Stack, freezing the current workspace variables while the inner call executes.</li>
+            <li>Once the Base Case is hit and returns a value, the stack unwinds in Last-In, First-Out (LIFO) order, substituting each returned value back into the pending parent expressions until the original call completes.</li>
+        </ul>
+    </li>
+</ol>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q60. Write a program to create a recursive function to find the factorial of a given number in MATLAB. (2025 Q8b) <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Recurrence Relation:</strong></p>
+<p>\[n! = \begin{cases} 1 &amp; \text{if } n = 0 \text{ or } n = 1 \quad (\text{Base Case}) \\ n \times (n-1)! &amp; \text{if } n &gt; 1 \quad (\text{Recursive Step}) \end{cases}\]</p>
+
+<p><strong>1. Recursive Function File (recursiveFactorial.m):</strong></p>
+<pre><code>function result = recursiveFactorial(n)
+    % RECURSIVEFACTORIAL Computes n! recursively for non-negative integer n
+    
+    % Input validation: Ensure n is a non-negative integer
+    if n &lt; 0 || floor(n) ~= n
+        error('Error: Input must be a non-negative integer.');
+    end
+    
+    % Base Case: 0! = 1 and 1! = 1
+    if n == 0 || n == 1
+        result = 1;
+    else
+        % Recursive Step: n! = n * (n - 1)!
+        result = n * recursiveFactorial(n - 1);
+    end
+end</code></pre>
+
+<p><strong>2. Main Driver Script (main_factorial.m):</strong></p>
+<pre><code>% Prompt user for input and invoke recursiveFactorial
+num = input('Enter a non-negative integer to find its factorial: ');
+
+fact_val = recursiveFactorial(num);
+
+fprintf('Factorial of %d (%d!) = %d\n', num, num, fact_val);</code></pre>
+
+<p><strong>Sample Command Window Output:</strong></p>
+<pre><code>Enter a non-negative integer to find its factorial: 6
+Factorial of 6 (6!) = 720</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q61. Write a program to enter 20 numbers in an array and then perform Selection Sorting to arrange the elements in Descending order. <span class="marks">[7 Marks]</span></div>
+        <div class="answer">
+<p><strong>Algorithmic Principle (Selection Sort - Descending):</strong></p>
+<p>In Selection Sort for descending order, the array is conceptually divided into a sorted prefix and an unsorted suffix. In each pass <code>i</code> from <code>0</code> to <code>18</code>:</p>
+<ol>
+    <li>Scan the unsorted portion <code>arr[i ... 19]</code> to find the index <code>max_idx</code> of the maximum element.</li>
+    <li>Swap <code>arr[max_idx]</code> with <code>arr[i]</code>.</li>
+    <li>After 19 passes, all 20 elements are placed in strictly descending order with \(O(N^2)\) time complexity and \(O(1)\) auxiliary space.</li>
+</ol>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[20], i, j, max_idx, temp;
+
+    printf("Enter 20 integers:\n");
+    for (i = 0; i &lt; 20; i++) {
+        scanf("%d", &amp;arr[i]);
+    }
+
+    // Selection Sort in Descending Order
+    for (i = 0; i &lt; 19; i++) {
+        max_idx = i;
+        for (j = i + 1; j &lt; 20; j++) {
+            if (arr[j] &gt; arr[max_idx]) {
+                max_idx = j; // Find index of largest element
+            }
+        }
+        // Swap maximum element with arr[i]
+        if (max_idx != i) {
+            temp = arr[i];
+            arr[i] = arr[max_idx];
+            arr[max_idx] = temp;
+        }
+    }
+
+    printf("Array sorted in Descending Order:\n");
+    for (i = 0; i &lt; 20; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q62. Write a complete C program to find the real root of a non-linear equation using the Newton-Raphson method correct up to four decimal places. <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p>We solve \(f(x) = x^3 - 2x - 5 = 0\) with \(f'(x) = 3x^2 - 2\) with tolerance \(\varepsilon = 10^{-4}\):</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+double f(double x) { return x * x * x - 2 * x - 5; }
+double df(double x) { return 3 * x * x - 2; }
+
+int main() {
+    double x0, x1, tol = 0.0001;
+    int iter = 0;
+
+    printf("Enter initial guess x0: ");
+    scanf("%lf", &amp;x0);
+
+    printf("\nIter\t   x0\t\t  f(x0)\t\t  f'(x0)\t   x1\n");
+    printf("-----------------------------------------------------------------\n");
+
+    do {
+        double f0 = f(x0), df0 = df(x0);
+        if (fabs(df0) &lt; 1e-12) { printf("Derivative near zero!\n"); return 1; }
+
+        x1 = x0 - (f0 / df0);
+        iter++;
+        printf("%2d\t%10.6lf\t%10.6lf\t%10.6lf\t%10.6lf\n", iter, x0, f0, df0, x1);
+
+        if (fabs(x1 - x0) &lt; tol) {
+            printf("-----------------------------------------------------------------\n");
+            printf("Approximate Real Root = %.4lf (after %d iterations)\n", x1, iter);
+            return 0;
+        }
+        x0 = x1;
+    } while (iter &lt; 100);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q63. Write a C program to solve a system of linear equations using the Gauss Elimination method with partial pivoting. <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#define MAX 10
+
+int main() {
+    int n, i, j, k, max_row;
+    double a[MAX][MAX + 1], x[MAX], temp, factor, sum;
+
+    printf("Enter number of equations (n): ");
+    scanf("%d", &amp;n);
+
+    printf("Enter Augmented Matrix [A | B]:\n");
+    for (i = 0; i &lt; n; i++)
+        for (j = 0; j &lt;= n; j++)
+            scanf("%lf", &amp;a[i][j]);
+
+    // Forward Elimination with Partial Pivoting
+    for (k = 0; k &lt; n - 1; k++) {
+        max_row = k;
+        for (i = k + 1; i &lt; n; i++)
+            if (fabs(a[i][k]) &gt; fabs(a[max_row][k])) max_row = i;
+
+        if (max_row != k) {
+            for (j = k; j &lt;= n; j++) {
+                temp = a[k][j]; a[k][j] = a[max_row][j]; a[max_row][j] = temp;
+            }
+        }
+
+        for (i = k + 1; i &lt; n; i++) {
+            factor = a[i][k] / a[k][k];
+            for (j = k; j &lt;= n; j++) a[i][j] -= factor * a[k][j];
+        }
+    }
+
+    // Back Substitution
+    for (i = n - 1; i &gt;= 0; i--) {
+        sum = 0.0;
+        for (j = i + 1; j &lt; n; j++) sum += a[i][j] * x[j];
+        x[i] = (a[i][n] - sum) / a[i][i];
+    }
+
+    printf("\nSolution vector x:\n");
+    for (i = 0; i &lt; n; i++) printf("x[%d] = %.6lf\n", i + 1, x[i]);
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q64. Implement the Runge-Kutta 4th Order (RK4) method in C to solve the initial value problem \(\frac{dy}{dx} = x + y^2, \; y(0) = 1\) on \([0, 0.5]\) with \(h = 0.1\). <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<pre><code>#include &lt;stdio.h&gt;
+
+double f(double x, double y) { return x + y * y; }
+
+int main() {
+    double x = 0.0, y = 1.0, h = 0.1, x_end = 0.5;
+    double k1, k2, k3, k4;
+    int step = 0;
+
+    printf("Step\t   x\t\t   y\n");
+    printf("-------------------------------------------\n");
+    printf("%2d\t%6.2lf\t%12.6lf\n", step, x, y);
+
+    while (x &lt; x_end - 1e-6) {
+        k1 = h * f(x, y);
+        k2 = h * f(x + 0.5 * h, y + 0.5 * k1);
+        k3 = h * f(x + 0.5 * h, y + 0.5 * k2);
+        k4 = h * f(x + h, y + k3);
+
+        y = y + (k1 + 2 * k2 + 2 * k3 + k4) / 6.0;
+        x = x + h;
+        step++;
+        printf("%2d\t%6.2lf\t%12.6lf\n", step, x, y);
+    }
+    printf("Final y(0.5) = %.6lf\n", y);
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q65. Explain numerical integration using Simpson's 1/3rd and 3/8th rules. Write a MATLAB script to compute \(\int_0^1 \frac{1}{1+x^2} dx\). <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p><strong>Simpson's 1/3rd Rule (\(n\) even):</strong> \(\frac{h}{3}[(y_0 + y_n) + 4\sum_{\text{odd}} y_i + 2\sum_{\text{even}} y_i]\).</p>
+            <p><strong>Simpson's 3/8th Rule (\(n\) multiple of 3):</strong> \(\frac{3h}{8}[(y_0 + y_n) + 3\sum_{3\nmid i} y_i + 2\sum_{3\mid i} y_i]\).</p>
+<pre><code>f = @(x) 1 ./ (1 + x.^2);
+a = 0; b = 1; n = 6; h = (b - a) / n;
+x = a:h:b; y = f(x);
+
+% Simpson's 1/3rd
+I_13 = (h / 3) * (y(1) + y(end) + 4 * sum(y(2:2:end-1)) + 2 * sum(y(3:2:end-2)));
+
+% Simpson's 3/8th
+idx_3 = 4:3:n;
+idx_other = setdiff(2:n, idx_3);
+I_38 = (3 * h / 8) * (y(1) + y(end) + 3 * sum(y(idx_other)) + 2 * sum(y(idx_3)));
+
+exact = pi / 4;
+fprintf('Exact       = %.8f\n', exact);
+fprintf('Simpson 1/3 = %.8f\n', I_13);
+fprintf('Simpson 3/8 = %.8f\n', I_38);</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q66. Explain the structure of M-files (scripts vs functions) in MATLAB. Write a MATLAB function to compute the eigenvalues and eigenvectors of a square matrix. <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p><strong>Scripts:</strong> Operate on base workspace; no formal input/output arguments.</p>
+            <p><strong>Functions:</strong> Begin with <code class="inline">function [outputs] = name(inputs)</code>; execute in their own private function workspace.</p>
+<pre><code>function [V, D] = computeEig(A)
+    [rows, cols] = size(A);
+    if rows ~= cols
+        error('Input matrix must be square.');
+    end
+    [V, D] = eig(A);
+    disp('Eigenvectors (columns of V):'); disp(V);
+    disp('Eigenvalues (diagonal of D):'); disp(D);
+end</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q67. Write a MATLAB program to simulate and plot the phase portrait of the second-order non-linear pendulum equation \(\ddot{\theta} + \sin\theta = 0\). <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p>State-space substitution: \(y_1 = \theta, y_2 = \dot{\theta} \implies \dot{y}_1 = y_2, \dot{y}_2 = -\sin(y_1)\).</p>
+<pre><code>function pendulum_phase_portrait()
+    figure('Color', 'w'); hold on; grid on; box on;
+    tspan = [0 25];
+    pendulum_ode = @(t, y) [y(2); -sin(y(1))];
+
+    for theta0 = -2*pi : pi/3 : 2*pi
+        for omega0 = -2.5 : 0.8 : 2.5
+            [t, y] = ode45(pendulum_ode, tspan, [theta0; omega0]);
+            plot(y(:,1), y(:,2), 'b-', 'LineWidth', 1.0);
+        end
+    end
+    xlabel('\theta (rad)'); ylabel('\omega = d\theta/dt');
+    title('Phase Portrait: \ddot{\theta} + sin(\theta) = 0');
+    xlim([-2.5*pi, 2.5*pi]); ylim([-3.5, 3.5]);
+end</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q68. Explain 2D and 3D graphics in MATLAB with examples of plot(), surf(), mesh(), and contour(). <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<pre><code>% 2D Line Plot
+x = linspace(0, 2*pi, 200);
+figure; plot(x, sin(x), 'b-', 'LineWidth', 2); grid on;
+title('2D Plot: y = sin(x)');
+
+% 3D Surface, Mesh & Contour
+[X, Y] = meshgrid(-2:0.1:2, -2:0.1:2);
+Z = X .* exp(-X.^2 - Y.^2);
+
+figure;
+subplot(1,3,1); mesh(X, Y, Z); title('mesh()');
+subplot(1,3,2); surf(X, Y, Z); shading interp; title('surf()');
+subplot(1,3,3); contour(X, Y, Z, 20); title('contour()');</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q69. Write a complete C program to find a real root of an equation using the Bisection Method with user-specified tolerance and iteration table. <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Rationale:</strong></p>
+<p>The Bisection Method is a bracketing method based on Bolzano's Intermediate Value Theorem. Given continuous \(f(x)\) with \(f(a) \cdot f(b) < 0\), the midpoint \(c_n = \frac{a_n + b_n}{2}\) is computed iteratively. The method has linear convergence with rate \(1/2\), and the number of iterations required to achieve error tolerance \(\epsilon\) is given by \(n \ge \frac{\ln(b - a) - \ln(\epsilon)}{\ln 2}\).</p>
+
+<p><strong>Complete C Implementation for \(f(x) = x^3 - x - 2 = 0\):</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+// Define function f(x) = x^3 - x - 2
+double f(double x) {
+    return x * x * x - x - 2.0;
+}
+
+int main() {
+    double a, b, c, tol;
+    int iter = 0, max_iter = 100;
+
+    printf("=== Bisection Method Root Finder ===\n");
+    printf("Target Equation: x^3 - x - 2 = 0\n");
+
+    // Input initial bracket [a, b]
+    printf("Enter lower bracket a: ");
+    scanf("%lf", &amp;a);
+    printf("Enter upper bracket b: ");
+    scanf("%lf", &amp;b);
+    printf("Enter tolerance (e.g. 0.0001): ");
+    scanf("%lf", &amp;tol);
+
+    // Check Bolzano's Theorem condition
+    if (f(a) * f(b) &gt;= 0.0) {
+        printf("Error: f(a) and f(b) must have opposite signs! f(a)=%.4lf, f(b)=%.4lf\n", f(a), f(b));
+        return 1;
+    }
+
+    printf("\n----------------------------------------------------------------------\n");
+    printf("%-6s %-12s %-12s %-12s %-14s %-12s\n", "Iter", "a", "b", "c (Midpoint)", "f(c)", "Error (|b-a|)");
+    printf("----------------------------------------------------------------------\n");
+
+    do {
+        iter++;
+        c = (a + b) / 2.0;
+        double fc = f(c);
+        double err = fabs(b - a);
+
+        printf("%-6d %-12.6lf %-12.6lf %-12.6lf %-14.6lf %-12.6lf\n", iter, a, b, c, fc, err);
+
+        if (fabs(fc) &lt;= tol || (b - a) / 2.0 &lt;= tol) {
+            break;
+        }
+
+        // Halve the interval
+        if (f(a) * fc &lt; 0.0) {
+            b = c;
+        } else {
+            a = c;
+        }
+
+    } while (iter &lt; max_iter);
+
+    printf("----------------------------------------------------------------------\n");
+    printf("Real Root converged to: %.6lf in %d iterations\n", c, iter);
+    printf("Value of f(root)      : %.6e\n", f(c));
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q70. Write a complete C program to solve an initial value problem dy/dx = f(x, y), y(x0) = y0 using Euler's and Modified Euler's Method. <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Formulations:</strong></p>
+<ol>
+    <li><strong>Standard Euler's Method:</strong>
+        <br>Advances along the tangent slope at the beginning of the step:
+        \[
+        y_{n+1} = y_n + h f(x_n, y_n)
+        \]
+        Local truncation error is \(O(h^2)\); global error is \(O(h)\) (1st Order).
+    </li>
+    <li><strong>Modified Euler's (Heun's Predictor-Corrector) Method:</strong>
+        <br><em>Predictor:</em> \(y_{n+1}^* = y_n + h f(x_n, y_n)\)
+        <br><em>Corrector:</em>
+        \[
+        y_{n+1} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_{n+1}^*) \right]
+        \]
+        Global error is \(O(h^2)\) (2nd Order Runge-Kutta).
+    </li>
+</ol>
+
+<p><strong>Complete C Program for \(\frac{dy}{dx} = x + y, \; y(0) = 1\) on \([0, 1]\) with \(h = 0.1\):</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+// Differential equation: dy/dx = x + y
+double f(double x, double y) {
+    return x + y;
+}
+
+// Exact analytical solution: y(x) = 2*exp(x) - x - 1
+double exact(double x) {
+    return 2.0 * exp(x) - x - 1.0;
+}
+
+int main() {
+    double x0 = 0.0, y0 = 1.0, x_end = 1.0, h = 0.1;
+    double x_e = x0, y_e = y0;
+    double x_m = x0, y_m = y0;
+
+    int steps = (int)((x_end - x0) / h + 0.5);
+
+    printf("=== Numerical ODE: dy/dx = x + y, y(0) = 1, h = 0.1 ===\n");
+    printf("----------------------------------------------------------------------------------\n");
+    printf("%-6s %-8s %-14s %-16s %-14s %-12s\n", "Step", "x", "Euler y", "Modified Euler y", "Exact y", "Mod Error");
+    printf("----------------------------------------------------------------------------------\n");
+    printf("%-6d %-8.2lf %-14.6lf %-16.6lf %-14.6lf %-12.6e\n", 0, x0, y_e, y_m, exact(x0), 0.0);
+
+    for (int i = 1; i &lt;= steps; i++) {
+        // 1. Standard Euler
+        y_e = y_e + h * f(x_e, y_e);
+        x_e = x0 + i * h;
+
+        // 2. Modified Euler (Heun)
+        double k1 = f(x_m, y_m);
+        double y_pred = y_m + h * k1;
+        double k2 = f(x_m + h, y_pred);
+        y_m = y_m + (h / 2.0) * (k1 + k2);
+        x_m = x0 + i * h;
+
+        double y_true = exact(x_m);
+        double mod_err = fabs(y_true - y_m);
+
+        printf("%-6d %-8.2lf %-14.6lf %-16.6lf %-14.6lf %-12.6e\n", i, x_m, y_e, y_m, y_true, mod_err);
+    }
+    printf("----------------------------------------------------------------------------------\n");
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q71. Write a complete C program to find the interpolated value y(xp) using Newton's Forward Difference Interpolation Formula with forward difference table. <span class="marks">[10 Marks]</span></div>
+        <div class="answer">
+<p><strong>Mathematical Formulation:</strong></p>
+<p>Given \(n\) equally spaced nodes \(x_0, x_1, \dots, x_{n-1}\) with spacing \(h = x_{i+1} - x_i\), define dimensionless coordinate \(u = \frac{x_p - x_0}{h}\). Newton's Forward Difference Interpolation Formula is:</p>
+\[
+y(x_p) = y_0 + u \Delta y_0 + \frac{u(u-1)}{2!} \Delta^2 y_0 + \frac{u(u-1)(u-2)}{3!} \Delta^3 y_0 + \dots + \frac{u(u-1)\dots(u-n+2)}{(n-1)!} \Delta^{n-1} y_0
+\]
+<p>where \(\Delta y_0 = y_1 - y_0\), \(\Delta^2 y_0 = \Delta y_1 - \Delta y_0\), and in general \(\Delta^{k} y_i = \Delta^{k-1} y_{i+1} - \Delta^{k-1} y_i\).</p>
+
+<p><strong>Complete C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n = 5;
+    double x[] = {10.0, 20.0, 30.0, 40.0, 50.0};
+    double diff[5][5] = {0};
+
+    // Initial y values
+    diff[0][0] = 0.1736;
+    diff[1][0] = 0.3420;
+    diff[2][0] = 0.5000;
+    diff[3][0] = 0.6428;
+    diff[4][0] = 0.7660;
+
+    double xp = 25.0; // Point to interpolate
+
+    // Compute Forward Difference Table
+    for (int j = 1; j &lt; n; j++) {
+        for (int i = 0; i &lt; n - j; i++) {
+            diff[i][j] = diff[i + 1][j - 1] - diff[i][j - 1];
+        }
+    }
+
+    // Display Forward Difference Table
+    printf("=== Newton's Forward Difference Table ===\n");
+    printf("%-8s %-10s %-12s %-12s %-12s %-12s\n", "x", "y", "Delta y", "Delta^2 y", "Delta^3 y", "Delta^4 y");
+    for (int i = 0; i &lt; n; i++) {
+        printf("%-8.1lf ", x[i]);
+        for (int j = 0; j &lt; n - i; j++) {
+            printf("%-12.4lf ", diff[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Calculate Interpolation at xp
+    double h = x[1] - x[0];
+    double u = (xp - x[0]) / h;
+    double yp = diff[0][0];
+    double u_term = 1.0;
+    double fact = 1.0;
+
+    for (int k = 1; k &lt; n; k++) {
+        u_term *= (u - (k - 1));
+        fact *= k;
+        yp += (u_term / fact) * diff[0][k];
+    }
+
+    printf("\n--------------------------------------------\n");
+    printf("Interpolating point xp = %.2lf\n", xp);
+    printf("Parameter u = (xp - x0)/h = (%.1lf - %.1lf)/%.1lf = %.4lf\n", xp, x[0], h, u);
+    printf("Interpolated value y(%.2lf) = %.6lf\n", xp, yp);
+    printf("--------------------------------------------\n");
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q72. What is a function in C programming? Explain call by value and call by reference type function in C programming with suitable example. (2024 Q2) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Introduction and Definition of a Function in C:</strong></p>
+<p>In C programming, a <strong>function</strong> is a self-contained, named, modular block of executable statements designed to perform a specific, well-defined computational task. Every C program is essentially a collection of one or more functions, with <code>main()</code> serving as the mandatory entry point where program execution begins.</p>
+<p>Functions embody the <em>Divide and Conquer</em> and <em>Structured Programming</em> paradigms by breaking a large, monolithic program into smaller, manageable, and independently testable sub-programs.</p>
+
+<p><strong>2. Advantages of Using Functions:</strong></p>
+<ul>
+    <li><strong>Code Reusability:</strong> Once written and debugged, a function can be invoked multiple times from different parts of the program (or even across different programs via header files), eliminating code duplication.</li>
+    <li><strong>Modularity and Abstraction:</strong> Complex mathematical or logical workflows can be decomposed into clean modules, hiding low-level implementation details behind a clear function interface.</li>
+    <li><strong>Ease of Debugging and Maintenance:</strong> Isolating logic into discrete functions makes identifying errors, profiling performance, and updating algorithms significantly faster.</li>
+    <li><strong>Memory Efficiency:</strong> Local variables inside a function exist on the call stack only while the function is executing and are automatically deallocated upon return.</li>
+</ul>
+
+<p><strong>3. Anatomy (Components) of a Function in C:</strong></p>
+<ol>
+    <li><strong>Function Declaration (Prototype):</strong> Informs the compiler about the function’s name, return type, and parameter types before its first call.
+        <br><code>return_type function_name(parameter_type_list);</code>
+    </li>
+    <li><strong>Function Call:</strong> Transfers control from the calling function (e.g., <code>main()</code>) to the called function, passing actual arguments.
+        <br><code>variable = function_name(actual_arguments);</code>
+    </li>
+    <li><strong>Function Definition:</strong> Contains the actual body of executable code:
+<pre><code>return_type function_name(formal_parameter_list) {
+    // Local variable declarations
+    // Executable statements
+    return value; // Optional if return_type is void
+}</code></pre>
+    </li>
+</ol>
+
+<p><strong>4. Parameter Passing Mechanisms in C:</strong></p>
+<p>When a function is invoked, data is communicated from the caller (actual parameters) to the callee (formal parameters) via two fundamental mechanisms:</p>
+
+<p><strong>(A) Call by Value:</strong></p>
+<ul>
+    <li><strong>Mechanism:</strong> The values of the actual arguments are copied into the formal parameters of the called function. Both actual and formal parameters occupy separate memory locations on the call stack.</li>
+    <li><strong>Implication:</strong> Any modifications made to the formal parameters inside the called function affect only the local copies; the original variables in the calling function remain completely unchanged.</li>
+    <li><strong>Use Case:</strong> Ideal when the function only needs to read/compute a value without altering the caller's original data (e.g., evaluating \(\sin(x)\), computing \(n!\)).</li>
+</ul>
+
+<p><strong>(B) Call by Reference (Simulated via Pointers in C):</strong></p>
+<ul>
+    <li><strong>Mechanism:</strong> Strictly speaking, C passes all arguments by value; however, Call by Reference is achieved by passing the memory addresses (pointers) of the actual arguments to the formal pointer parameters using the address-of operator (<code>&amp;</code>). Inside the function, the dereference operator (<code>*</code>) is used to access and manipulate the data directly at those memory addresses.</li>
+    <li><strong>Implication:</strong> Since both the caller’s variables and the callee’s pointers refer to the exact same physical memory locations, any modification performed inside the function directly alters the original variables in the calling function.</li>
+    <li><strong>Use Case:</strong> Essential when a function must modify the caller's variables or effectively "return" multiple results (e.g., swapping two numbers, matrix transformations).</li>
+</ul>
+
+<p><strong>5. Comparative Summary: Call by Value vs. Call by Reference:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>Call by Value</th>
+            <th>Call by Reference (Using Pointers)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>What is Passed?</strong></td>
+            <td>Copies of the actual variable values.</td>
+            <td>Memory addresses (<code>&amp;var</code>) of the actual variables.</td>
+        </tr>
+        <tr>
+            <td><strong>Memory Allocation</strong></td>
+            <td>Separate memory locations are created for formal parameters.</td>
+            <td>Formal pointer parameters point to the exact same memory locations as actual arguments.</td>
+        </tr>
+        <tr>
+            <td><strong>Effect on Original Data</strong></td>
+            <td>Changes inside the function do not affect original variables.</td>
+            <td>Changes inside the function directly modify original variables.</td>
+        </tr>
+        <tr>
+            <td><strong>Data Safety</strong></td>
+            <td>High safety; original variables are protected against accidental corruption.</td>
+            <td>Lower safety; direct memory access risks unintended side effects.</td>
+        </tr>
+        <tr>
+            <td><strong>Syntax Overhead</strong></td>
+            <td>Standard variable syntax (<code>int x</code>).</td>
+            <td>Requires pointer syntax (<code>int *x</code>), <code>&amp;</code> at call site, and <code>*</code> inside function.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>6. Suitable Example in C Demonstrating Both Mechanisms:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+// Function Prototypes
+void swapByValue(int x, int y);
+void swapByReference(int *x, int *y);
+
+int main() {
+    int a = 10, b = 20;
+
+    printf("Original values in main() before calls: a = %d, b = %d\n\n", a, b);
+
+    // 1. Demonstrating Call by Value
+    swapByValue(a, b);
+    printf("In main() AFTER swapByValue()     : a = %d, b = %d (Unchanged)\n\n", a, b);
+
+    // 2. Demonstrating Call by Reference (passing addresses of a and b)
+    swapByReference(&amp;a, &amp;b);
+    printf("In main() AFTER swapByReference() : a = %d, b = %d (Swapped!)\n", a, b);
+
+    return 0;
+}
+
+// Call by Value Definition: Operates on local copies x and y
+void swapByValue(int x, int y) {
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+    printf("  [Inside swapByValue]     x = %d, y = %d\n", x, y);
+}
+
+// Call by Reference Definition: Operates directly on memory addresses via pointers
+void swapByReference(int *x, int *y) {
+    int temp;
+    temp = *x;   // Store value pointed to by x
+    *x = *y;     // Copy value pointed to by y into address x
+    *y = temp;   // Copy temp into address y
+    printf("  [Inside swapByReference] *x = %d, *y = %d\n", *x, *y);
+}</code></pre>
+
+<p><strong>Program Output:</strong></p>
+<pre><code>Original values in main() before calls: a = 10, b = 20
+
+  [Inside swapByValue]     x = 20, y = 10
+In main() AFTER swapByValue()     : a = 10, b = 20 (Unchanged)
+
+  [Inside swapByReference] *x = 20, *y = 10
+In main() AFTER swapByReference() : a = 20, b = 10 (Swapped!)</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q73. Explain conditional statements and switch case default statement with suitable examples. (2024 Q3) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Introduction to Decision-Making (Selection) Control Structures:</strong></p>
+<p>By default, statements in a C program execute sequentially from top to bottom. Conditional (Selection) statements allow a program to alter this linear flow dynamically by evaluating boolean predicates (relational or logical expressions) and selecting among alternative execution paths. In C, any non-zero value is treated as True, while <code>0</code> is treated as False.</p>
+
+<p><strong>2. Types of Conditional Statements in C:</strong></p>
+
+<p><strong>(A) Simple if Statement:</strong></p>
+<p>Executes a block of statements only if the specified condition evaluates to True. If False, the block is skipped entirely.</p>
+<pre><code>if (condition) {
+    // Statements executed when condition is True
+}</code></pre>
+
+<p><strong>(B) if-else Statement:</strong></p>
+<p>Provides a two-way mutually exclusive branch: one block executes when the condition is True, and the alternative else block executes when the condition is False.</p>
+<pre><code>if (condition) {
+    // Statements executed when condition is True
+} else {
+    // Statements executed when condition is False
+}</code></pre>
+
+<p><strong>(C) Nested if-else Statement:</strong></p>
+<p>An if or if-else construct placed inside the body of another if or else block to test hierarchical, multi-level conditions.</p>
+<pre><code>if (condition1) {
+    if (condition2) {
+        // Executed when both condition1 and condition2 are True
+    } else {
+        // Executed when condition1 is True and condition2 is False
+    }
+} else {
+    // Executed when condition1 is False
+}</code></pre>
+
+<p><strong>(D) if-else-if Ladder:</strong></p>
+<p>Used to evaluate a chain of mutually exclusive conditions sequentially from top to bottom. As soon as a True condition is encountered, its corresponding block executes and the rest of the ladder is bypassed. If none are True, the final else block executes.</p>
+<pre><code>if (condition1) {
+    // Block 1
+} else if (condition2) {
+    // Block 2
+} else if (condition3) {
+    // Block 3
+} else {
+    // Default fallback block
+}</code></pre>
+
+<p><strong>3. The switch-case-default Statement:</strong></p>
+<p>When a program must select one branch among many discrete constant values of a single variable or expression, a deep if-else-if ladder becomes cumbersome. The switch-case-default statement provides a clean, multi-way branching mechanism.</p>
+<pre><code>switch (integral_expression) {
+    case constant1:
+        // Statements for constant1
+        break;
+    case constant2:
+        // Statements for constant2
+        break;
+    ...
+    default:
+        // Fallback statements if no case matches
+}</code></pre>
+
+<p><strong>Key Rules and Components of switch-case-default:</strong></p>
+<ol>
+    <li><strong>Switch Expression:</strong> Must evaluate to an integral type (<code>int</code>, <code>char</code>, <code>short</code>, <code>long</code>, or <code>enum</code>). Floating-point numbers (<code>float</code>, <code>double</code>) and strings are strictly invalid.</li>
+    <li><strong>case Labels:</strong> Must be unique compile-time constant expressions followed by a colon (<code>:</code>). Duplicate case values cause a compilation error.</li>
+    <li><strong>Role of break (Preventing Fall-Through):</strong> The <code>break</code> statement terminates the switch block immediately after a matching case finishes. If <code>break</code> is omitted, execution "falls through" into subsequent case blocks regardless of whether their constants match.</li>
+    <li><strong>Role of default Statement:</strong> The <code>default</code> label acts as a catch-all fallback branch executed when the switch expression does not match any case constant. It is optional and usually placed at the end.</li>
+</ol>
+
+<p><strong>4. Suitable Examples in C:</strong></p>
+
+<p><strong>Example 1: if-else-if Ladder &amp; Nested if (Classifying an Integer):</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &amp;num);
+
+    if (num &gt; 0) {
+        // Nested if to check parity of positive number
+        if (num % 2 == 0)
+            printf("%d is a Positive Even number.\n", num);
+        else
+            printf("%d is a Positive Odd number.\n", num);
+    } 
+    else if (num &lt; 0) {
+        printf("%d is a Negative number.\n", num);
+    } 
+    else {
+        printf("The number is Zero.\n");
+    }
+
+    return 0;
+}</code></pre>
+
+<p><strong>Example 2: switch-case-default Statement (Menu-Driven Arithmetic Calculator):</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    char op;
+    double a, b;
+
+    printf("Enter an arithmetic operator (+, -, *, /): ");
+    scanf(" %c", &amp;op);
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &amp;a, &amp;b);
+
+    switch (op) {
+        case '+':
+            printf("%.2lf + %.2lf = %.2lf\n", a, b, a + b);
+            break;
+
+        case '-':
+            printf("%.2lf - %.2lf = %.2lf\n", a, b, a - b);
+            break;
+
+        case '*':
+            printf("%.2lf * %.2lf = %.2lf\n", a, b, a * b);
+            break;
+
+        case '/':
+            if (b != 0)
+                printf("%.2lf / %.2lf = %.2lf\n", a, b, a / b);
+            else
+                printf("Error: Division by zero is undefined!\n");
+            break;
+
+        default:
+            printf("Error: Invalid operator '%c' entered.\n", op);
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q74. What are the types of loops does MATLAB provides? Explain all of them with suitable examples. (2024 Q8) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Introduction to Loops in MATLAB:</strong></p>
+<p>In MATLAB, loops (iteration structures) allow a block of statements to be executed repeatedly without rewriting redundant code. While MATLAB is optimized for vectorized matrix operations, loops remain essential for iterative numerical algorithms (such as Newton-Raphson iterations, Gauss-Seidel solvers, recurrence relations, and dynamic convergence checks).</p>
+<p>MATLAB provides three primary looping constructs:</p>
+<ol>
+    <li><code>for</code> Loop (Count-controlled / Definite iteration)</li>
+    <li><code>while</code> Loop (Condition-controlled / Indefinite iteration)</li>
+    <li>Nested Loops (Loops inside other loops for multi-dimensional matrix/grid traversal)</li>
+</ol>
+<p>Additionally, MATLAB provides two loop-control statements—<code>break</code> (terminates the loop immediately) and <code>continue</code> (skips the remainder of the current iteration and jumps to the next iteration).</p>
+
+<p><strong>2. Detailed Explanation of MATLAB Loops with Examples:</strong></p>
+
+<p><strong>(A) The for Loop:</strong></p>
+<ul>
+    <li><strong>Purpose:</strong> Executes a group of statements a predetermined, fixed number of times. On each iteration, the loop index variable assumes the value of the next column in a specified vector or array.</li>
+    <li><strong>Syntax:</strong>
+<pre><code>for index = initial_value : step : final_value
+    % Loop body statements
+end</code></pre>
+    </li>
+    <li><em>(Note: If <code>step</code> is omitted, it defaults to 1. The step can also be negative for decrementing loops, e.g., <code>10:-1:1</code>.)</em></li>
+    <li><strong>Suitable Example (Computing Partial Sum of Exponential Series \(e^x \approx \sum_{k=0}^{N} \frac{x^k}{k!}\)):</strong>
+<pre><code>x = 2;
+N = 10;
+approx_exp = 0;
+
+for k = 0:N
+    approx_exp = approx_exp + (x^k) / factorial(k);
+end
+
+fprintf('Approximation of exp(%d) using %d terms = %.6f\n', x, N, approx_exp);
+fprintf('Exact built-in exp(%d) = %.6f\n', x, exp(x));</code></pre>
+    </li>
+</ul>
+
+<p><strong>(B) The while Loop:</strong></p>
+<ul>
+    <li><strong>Purpose:</strong> Repeatedly executes a block of statements as long as a specified logical condition remains True (1). It is an entry-controlled loop: the condition is tested before each iteration. If the condition is initially False, the loop body never executes.</li>
+    <li><strong>Use Case:</strong> Ideal when the exact number of iterations is unknown beforehand—such as iterating until an error tolerance \(|x_{n+1} - x_n| &lt; \epsilon\) is satisfied.</li>
+    <li><strong>Syntax:</strong>
+<pre><code>while logical_expression
+    % Loop body statements
+    % (Must update condition variable to avoid an infinite loop)
+end</code></pre>
+    </li>
+    <li><strong>Suitable Example (Finding Square Root of \(N = 25\) via Newton-Raphson Iteration):</strong>
+<pre><code>N = 25;
+x = 1.0;          % Initial guess
+tol = 1e-6;       % Convergence tolerance
+err = inf;        % Initial error
+
+while err &gt; tol
+    x_new = 0.5 * (x + N / x);  % Newton-Raphson update formula
+    err = abs(x_new - x);       % Compute absolute error
+    x = x_new;
+end
+
+fprintf('Converged square root of %.2f = %.6f\n', N, x);</code></pre>
+    </li>
+</ul>
+
+<p><strong>(C) Nested Loops:</strong></p>
+<ul>
+    <li><strong>Purpose:</strong> Placing one loop (<code>for</code> or <code>while</code>) completely inside the body of another loop. For every single iteration of the outer loop, the inner loop executes through all of its iterations.</li>
+    <li><strong>Use Case:</strong> Indispensable for element-by-element construction or manipulation of 2-D matrices, solving systems of equations, and evaluating bivariate functions \(f(x_i, y_j)\).</li>
+    <li><strong>Syntax:</strong>
+<pre><code>for i = 1:rows
+    for j = 1:cols
+        % Inner loop statements operating on (i, j)
+    end
+end</code></pre>
+    </li>
+    <li><strong>Suitable Example (Constructing a \(4 \times 4\) Hilbert Matrix \(H_{ij} = \frac{1}{i + j - 1}\)):</strong>
+<pre><code>n = 4;
+H = zeros(n, n); % Pre-allocate 4x4 matrix for speed
+
+for i = 1:n
+    for j = 1:n
+        H(i, j) = 1 / (i + j - 1);
+    end
+end
+
+disp('Generated 4x4 Hilbert Matrix:');
+disp(H);</code></pre>
+    </li>
+</ul>
+
+<p><strong>3. Loop Control Statements in MATLAB (break and continue):</strong></p>
+<ul>
+    <li><strong><code>break</code>:</strong> Immediately exits the innermost enclosing <code>for</code> or <code>while</code> loop, transferring control to the first statement following <code>end</code>.</li>
+    <li><strong><code>continue</code>:</strong> Skips any remaining statements in the current iteration of the loop and immediately proceeds to the next iteration.</li>
+</ul>
+<p><strong>Example Illustrating break and continue:</strong></p>
+<pre><code>for k = 1:10
+    if mod(k, 2) == 0
+        continue; % Skip even numbers
+    end
+    if k &gt; 7
+        break;    % Terminate loop completely once k exceeds 7
+    end
+    fprintf('%d ', k); % Prints: 1 3 5 7
+end
+fprintf('\n');</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q75. What is a loop? Explain different types of loops used in Programming in C with suitable example. (2025 Q2) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Definition and Purpose of a Loop:</strong></p>
+<p>In C programming, a <strong>loop</strong> (iteration control structure) is a fundamental programming construct that allows a block of statements to be executed repeatedly until a specified boolean termination condition is met. Instead of writing redundant lines of code to perform repetitive calculations (such as summing a series, traversing an array, or iterating a numerical method), loops automate repetition cleanly and compactly.</p>
+
+<p><strong>2. Essential Phases of Every Loop:</strong></p>
+<ol>
+    <li><strong>Initialization:</strong> Setting a loop-control variable (counter) to its starting value before the loop begins.</li>
+    <li><strong>Test Condition:</strong> A relational or logical predicate evaluated before or after each pass to decide whether repetition continues (<code>True</code> / non-zero) or terminates (<code>False</code> / 0).</li>
+    <li><strong>Loop Body:</strong> The block of statements executed during each iteration.</li>
+    <li><strong>Update (Increment/Decrement):</strong> Modifying the loop-control variable in every pass so the loop eventually reaches the termination condition (preventing an infinite loop).</li>
+</ol>
+
+<p><strong>3. Classification of Loops in C:</strong></p>
+<p>Based on when the termination condition is evaluated, C provides three types of loops:</p>
+
+<p><strong>(A) while Loop (Entry-Controlled Loop):</strong></p>
+<ul>
+    <li><strong>Working Mechanism:</strong> The test condition is evaluated before entering the loop body. If the condition is initially <code>False</code> (0), the loop body will execute zero times.</li>
+    <li><strong>Use Case:</strong> Best suited when the exact number of iterations is unknown beforehand and depends on dynamic input or convergence criteria.</li>
+    <li><strong>Syntax:</strong>
+<pre><code>initialization;
+while (test_condition) {
+    // Body of loop
+    update_expression;
+}</code></pre>
+    </li>
+</ul>
+
+<p><strong>(B) for Loop (Entry-Controlled Counter Loop):</strong></p>
+<ul>
+    <li><strong>Working Mechanism:</strong> Consolidates initialization, test condition, and update into a single compact header line. Like <code>while</code>, it is entry-controlled and checks the condition before every iteration.</li>
+    <li><strong>Use Case:</strong> Ideal when the exact number of iterations is known in advance (e.g., iterating from 1 to N or indexing array elements).</li>
+    <li><strong>Syntax:</strong>
+<pre><code>for (initialization; test_condition; update_expression) {
+    // Body of loop
+}</code></pre>
+    </li>
+</ul>
+
+<p><strong>(C) do-while Loop (Exit-Controlled Loop):</strong></p>
+<ul>
+    <li><strong>Working Mechanism:</strong> The loop body executes first, and the test condition is evaluated at the end (exit) of the loop. Consequently, a <code>do-while</code> loop is guaranteed to execute at least once, even if the condition is initially <code>False</code>.</li>
+    <li><strong>Use Case:</strong> Ideal for interactive menu-driven programs and input validation prompts.</li>
+    <li><strong>Syntax:</strong>
+<pre><code>initialization;
+do {
+    // Body of loop
+    update_expression;
+} while (test_condition); // Note the mandatory semicolon</code></pre>
+    </li>
+</ul>
+
+<p><strong>4. Comparison of for, while, and do-while Loops:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>for Loop</th>
+            <th>while Loop</th>
+            <th>do-while Loop</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Control Type</strong></td>
+            <td>Entry-controlled</td>
+            <td>Entry-controlled</td>
+            <td>Exit-controlled</td>
+        </tr>
+        <tr>
+            <td><strong>Minimum Executions</strong></td>
+            <td>0 times (if condition is initially false)</td>
+            <td>0 times (if condition is initially false)</td>
+            <td>At least 1 time (always)</td>
+        </tr>
+        <tr>
+            <td><strong>Semicolon after ()</strong></td>
+            <td>No (<code>for(...) { }</code>)</td>
+            <td>No (<code>while(...) { }</code>)</td>
+            <td>Yes (<code>do { } while(...);</code>)</td>
+        </tr>
+        <tr>
+            <td><strong>Best Use Case</strong></td>
+            <td>Fixed / known number of iterations</td>
+            <td>Indefinite iterations / sentinel loops</td>
+            <td>Menu-driven programs / validation</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>5. Suitable Example in C Demonstrating All Three Loops:</strong></p>
+<p>The following program computes the sum of the first \(N\) natural numbers using <code>for</code>, <code>while</code>, and <code>do-while</code> loops:</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int n, i, sum;
+
+    printf("Enter a positive integer N: ");
+    scanf("%d", &amp;n);
+
+    // 1. Using 'for' loop
+    sum = 0;
+    for (i = 1; i &lt;= n; i++) {
+        sum += i;
+    }
+    printf("Sum using for loop      = %d\n", sum);
+
+    // 2. Using 'while' loop
+    sum = 0;
+    i = 1;
+    while (i &lt;= n) {
+        sum += i;
+        i++;
+    }
+    printf("Sum using while loop    = %d\n", sum);
+
+    // 3. Using 'do-while' loop
+    sum = 0;
+    i = 1;
+    if (n &gt;= 1) {
+        do {
+            sum += i;
+            i++;
+        } while (i &lt;= n);
+    }
+    printf("Sum using do-while loop = %d\n", sum);
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q76. Write a program to enter 20 numbers in an array in ascending order and then perform binary search to find the given element. (2025 Q4) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Algorithmic Principle of Binary Search:</strong></p>
+<p><strong>Binary Search</strong> is an efficient Divide and Conquer searching algorithm that operates exclusively on a sorted array. Instead of scanning elements linearly (\(O(N)\)), it repeatedly compares the target key against the middle element (<code>mid</code>) of the current search interval <code>[low, high]</code>:</p>
+<ul>
+    <li>If <code>arr[mid] == key</code>, the search succeeds at index <code>mid</code>.</li>
+    <li>If <code>key &lt; arr[mid]</code>, the right half is discarded (<code>high = mid - 1</code>).</li>
+    <li>If <code>key &gt; arr[mid]</code>, the left half is discarded (<code>low = mid + 1</code>).</li>
+    <li>This halves the search space on every step, achieving a logarithmic time complexity of \(O(\log_2 N)\). For \(N = 20\), the target is located in at most \(\lceil\log_2 20\rceil = 5\) comparisons.</li>
+</ul>
+
+<p><strong>2. Complete C Program (With Input Order Verification &amp; Binary Search):</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[20], i, key;
+    int low, high, mid, foundIndex = -1;
+
+    // Step 1: Read 20 numbers in ascending order
+    printf("Enter 20 integers in ASCENDING order:\n");
+    for (i = 0; i &lt; 20; i++) {
+        printf("Element [%d]: ", i + 1);
+        scanf("%d", &amp;arr[i]);
+
+        // Enforce ascending order validation
+        if (i &gt; 0 &amp;&amp; arr[i] &lt; arr[i - 1]) {
+            printf("Error: %d is smaller than %d. Please re-enter in ascending order.\n", arr[i], arr[i - 1]);
+            i--; // Repeat current index input
+        }
+    }
+
+    // Step 2: Read target element to search
+    printf("\nEnter the element to search: ");
+    scanf("%d", &amp;key);
+
+    // Step 3: Perform Binary Search
+    low = 0;
+    high = 19; // N - 1
+
+    while (low &lt;= high) {
+        mid = low + (high - low) / 2; // Prevents integer overflow
+
+        if (arr[mid] == key) {
+            foundIndex = mid;
+            break; // Element found
+        }
+        else if (key &lt; arr[mid]) {
+            high = mid - 1; // Search left half
+        }
+        else {
+            low = mid + 1;  // Search right half
+        }
+    }
+
+    // Step 4: Display search result
+    if (foundIndex != -1) {
+        printf("Element %d FOUND at position %d (Array Index: %d).\n", key, foundIndex + 1, foundIndex);
+    } else {
+        printf("Element %d NOT FOUND in the array.\n", key);
+    }
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q77. Write a Menu-driven program to display the pattern of a String entered by user. If user enters a choice 'F' then it displays the first character of each word. In case the choice is 'L' then it will display the last character of each word. (2025 Q6) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>Algorithmic Logic:</strong></p>
+<p>Given a sentence or string stored in a character array <code>str</code>:</p>
+<ul>
+    <li><strong>First Character of Each Word ('F'):</strong> A character <code>str[i]</code> is the beginning of a word if <code>str[i]</code> is a non-whitespace character AND either <code>i == 0</code> OR the immediately preceding character <code>str[i - 1]</code> is whitespace (<code>' '</code>, <code>'\t'</code>, <code>'\n'</code>).</li>
+    <li><strong>Last Character of Each Word ('L'):</strong> A character <code>str[i]</code> is the end of a word if <code>str[i]</code> is a non-whitespace character AND the immediately following character <code>str[i + 1]</code> is whitespace (<code>' '</code>, <code>'\t'</code>, <code>'\n'</code>) or the null terminator (<code>'\0'</code>).</li>
+</ul>
+
+<p><strong>Complete Menu-Driven C Program:</strong></p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+int main() {
+    char str[200];
+    char choice;
+    int i, len;
+
+    printf("Enter a sentence/string: ");
+    fgets(str, sizeof(str), stdin);
+
+    // Remove trailing newline character inserted by fgets()
+    len = strlen(str);
+    if (len &gt; 0 &amp;&amp; str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+        len--;
+    }
+
+    do {
+        printf("\n========== STRING WORD PATTERN MENU ==========\n");
+        printf("  F : Display FIRST character of each word\n");
+        printf("  L : Display LAST character of each word\n");
+        printf("  E : Exit Program\n");
+        printf("==============================================\n");
+        printf("Enter your choice (F / L / E): ");
+        scanf(" %c", &amp;choice);
+
+        // Normalize choice to uppercase so both 'f'/'F' and 'l'/'L' work
+        choice = toupper(choice);
+
+        switch (choice) {
+            case 'F':
+                printf("\nFirst character of each word: ");
+                for (i = 0; i &lt; len; i++) {
+                    if (!isspace((unsigned char)str[i]) &amp;&amp; 
+                        (i == 0 || isspace((unsigned char)str[i - 1]))) {
+                        printf("%c ", str[i]);
+                    }
+                }
+                printf("\n");
+                break;
+
+            case 'L':
+                printf("\nLast character of each word: ");
+                for (i = 0; i &lt; len; i++) {
+                    if (!isspace((unsigned char)str[i]) &amp;&amp; 
+                        (str[i + 1] == '\0' || isspace((unsigned char)str[i + 1]))) {
+                        printf("%c ", str[i]);
+                    }
+                }
+                printf("\n");
+                break;
+
+            case 'E':
+                printf("Exiting program. Goodbye!\n");
+                break;
+
+            default:
+                printf("Invalid choice! Please enter 'F', 'L', or 'E'.\n");
+        }
+    } while (choice != 'E');
+
+    return 0;
+}</code></pre>
+        </div>
+    </div>
+
+    <div class="qa-block">
+        <div class="q-line">Q78. What is Decision Making Statement in MATLAB? Explain different types of Decision Making statements used in MATLAB with suitable example. (2025 Q7) <span class="marks">[14 Marks]</span></div>
+        <div class="answer">
+<p><strong>1. Definition of Decision-Making Statements in MATLAB:</strong></p>
+<p><strong>Decision-making (conditional branching) statements</strong> in MATLAB allow a script or function to evaluate logical expressions and execute specific blocks of code selectively based on whether those expressions evaluate to <code>True</code> (logical 1 or non-zero) or <code>False</code> (logical 0). Every decision-making block in MATLAB is terminated with the <code>end</code> keyword.</p>
+
+<p><strong>2. Types of Decision-Making Statements in MATLAB:</strong></p>
+
+<p><strong>(A) if ... end Statement:</strong></p>
+<p>Executes a group of statements only when the specified logical condition is True.</p>
+<pre><code>if condition
+    % Statements executed if condition is True
+end</code></pre>
+
+<p><strong>(B) if ... else ... end Statement:</strong></p>
+<p>Provides a two-way branch: executes the <code>if</code> block when the condition is True, and the <code>else</code> block when the condition is False.</p>
+<pre><code>if condition
+    % Statements executed if condition is True
+else
+    % Statements executed if condition is False
+end</code></pre>
+
+<p><strong>(C) if ... elseif ... else ... end Ladder:</strong></p>
+<p>Evaluates a sequence of mutually exclusive conditions from top to bottom. As soon as the first True condition is encountered, its block executes and all remaining <code>elseif</code>/<code>else</code> blocks are skipped.</p>
+<pre><code>if condition1
+    % Block 1
+elseif condition2
+    % Block 2
+elseif condition3
+    % Block 3
+else
+    % Default block if all conditions above are False
+end</code></pre>
+
+<p><strong>(D) Nested if Statements:</strong></p>
+<p>An <code>if</code> or <code>if-else</code> structure placed inside another <code>if</code> or <code>else</code> block to test hierarchical conditions.</p>
+
+<p><strong>(E) switch ... case ... otherwise ... end Statement:</strong></p>
+<p>Selects one block of statements from multiple choices by comparing a scalar number or string expression against discrete case values. Unlike C, MATLAB does not require <code>break</code> statements—only the first matching case executes.</p>
+<pre><code>switch switch_expression
+    case case_expression1
+        % Statements
+    case {case_expression2, case_expression3} % Cell array matches multiple values
+        % Statements
+    otherwise
+        % Fallback statements if no case matches
+end</code></pre>
+
+<p><strong>3. Suitable Examples in MATLAB:</strong></p>
+
+<p><strong>Example 1: Using if-elseif-else (Determining Nature of Matrix Determinant):</strong></p>
+<pre><code>A = [4 2; 2 1];
+detA = det(A);
+
+if detA &gt; 0
+    disp('Matrix is Non-Singular with Positive Determinant.');
+elseif detA &lt; 0
+    disp('Matrix is Non-Singular with Negative Determinant.');
+else
+    disp('Matrix is Singular (Determinant = 0; Inverse does not exist).');
+end</code></pre>
+
+<p><strong>Example 2: Using switch-case-otherwise (Unit Angle Converter):</strong></p>
+<pre><code>angle_val = 90;
+unit = 'deg';
+
+switch lower(unit)
+    case {'deg', 'degrees'}
+        rad = deg2rad(angle_val);
+        fprintf('%.2f degrees = %.4f radians\n', angle_val, rad);
+    case {'rad', 'radians'}
+        deg = rad2deg(angle_val);
+        fprintf('%.4f radians = %.2f degrees\n', angle_val, deg);
+    otherwise
+        disp('Unknown angle unit specified.');
+end</code></pre>
+        </div>
+    </div>
+</body>
+
+</html>
