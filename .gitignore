@@ -1,0 +1,5 @@
+# Ignore temporary previews and base intermediate PDFs
+*_preview.png
+*_base*.pdf
+*_with_duplicates*.html
+temp_*

@@ -157,6 +157,7 @@
     /* Compact Continuous Print Optimization - NO GAPS, MAXIMUM DENSITY */
     
     /* Compact Continuous Print Optimization - NO GAPS, MAXIMUM DENSITY */
+        /* Compact Continuous Print Optimization - NO GAPS, MAXIMUM DENSITY */
     @media print {
         @page {
             size: A4 portrait;
@@ -194,6 +195,8 @@
             margin-bottom: 3px !important;
             break-after: avoid !important;
             page-break-after: avoid !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
         }
         .answer {
             font-size: 11.5px !important;
@@ -209,31 +212,39 @@
             margin-bottom: 2px !important;
         }
         pre {
-            break-inside: auto !important;
-            page-break-inside: auto !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
             padding: 5px 8px !important;
-            font-size: 10.5px !important;
-            line-height: 1.25 !important;
+            font-size: 10px !important;
+            line-height: 1.2 !important;
             margin: 4px 0 !important;
             background: #f4f6fa !important;
             border: 1px solid #c7d2fe !important;
             border-left: 3px solid #0000cd !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
         }
         code {
-            font-size: 10.5px !important;
+            font-size: 10px !important;
         }
         table {
             break-inside: auto !important;
             page-break-inside: auto !important;
             margin: 4px 0 !important;
-            font-size: 10.5px !important;
+            font-size: 10px !important;
         }
         th, td {
             padding: 3px 6px !important;
         }
+        mjx-container {
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            font-size: 92% !important;
+        }
+        mjx-container > svg {
+            max-width: 100% !important;
+        }
     }
-
-
 
     </style>
 </head>
@@ -1890,7 +1901,10 @@ L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^n \frac{x - x_j}{x_i - x_j}
 
 <p><strong>Explicit Formula for \(n = 2\) (Three Points):</strong></p>
 \[
-P_2(x) = y_0 \frac{(x - x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)} + y_1 \frac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)} + y_2 \frac{(x - x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)}
+\begin{aligned}
+P_2(x) &= y_0 \frac{(x - x_1)(x - x_2)}{(x_0 - x_1)(x_0 - x_2)} + y_1 \frac{(x - x_0)(x - x_2)}{(x_1 - x_0)(x_1 - x_2)} \\
+&\quad + y_2 \frac{(x - x_0)(x - x_1)}{(x_2 - x_0)(x_2 - x_1)}
+\end{aligned}
 \]
 <p><strong>Advantages:</strong> Applicable to both equally and unequally spaced data points. Does not require constructing a finite difference table.</p>
         </div>
@@ -3118,7 +3132,10 @@ int main() {
 <p><strong>Mathematical Formulation:</strong></p>
 <p>Given \(n\) equally spaced nodes \(x_0, x_1, \dots, x_{n-1}\) with spacing \(h = x_{i+1} - x_i\), define dimensionless coordinate \(u = \frac{x_p - x_0}{h}\). Newton's Forward Difference Interpolation Formula is:</p>
 \[
-y(x_p) = y_0 + u \Delta y_0 + \frac{u(u-1)}{2!} \Delta^2 y_0 + \frac{u(u-1)(u-2)}{3!} \Delta^3 y_0 + \dots + \frac{u(u-1)\dots(u-n+2)}{(n-1)!} \Delta^{n-1} y_0
+\begin{aligned}
+y(x_p) = y_0 &+ u \Delta y_0 + \frac{u(u-1)}{2!} \Delta^2 y_0 + \frac{u(u-1)(u-2)}{3!} \Delta^3 y_0 \\
+&+ \dots + \frac{u(u-1)\dots(u-n+2)}{(n-1)!} \Delta^{n-1} y_0
+\end{aligned}
 \]
 <p>where \(\Delta y_0 = y_1 - y_0\), \(\Delta^2 y_0 = \Delta y_1 - \Delta y_0\), and in general \(\Delta^{k} y_i = \Delta^{k-1} y_{i+1} - \Delta^{k-1} y_i\).</p>
 
