@@ -438,6 +438,150 @@
         body.layout-6 { page: landscape; }
     }
 
+    
+    /* === Custom Multi-Column Zero-Gap Engine === */
+    :root {
+        --col-count: 1;
+        --col-gap: 5mm;
+        --container-pad: 10px;
+        --doc-font: 14.5px;
+        --q-font: 15.5px;
+        --code-font: 11.5px;
+        --item-margin: 10px;
+        --item-pad: 8px;
+        --page-size: A4 portrait;
+        --page-margin: 5mm;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f8fafc;
+        color: #1e293b;
+    }
+
+    .container {
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: var(--container-pad) !important;
+        column-count: var(--col-count) !important;
+        column-gap: var(--col-gap) !important;
+        column-rule: 1px dashed #cbd5e1 !important;
+        font-size: var(--doc-font) !important;
+        line-height: 1.35 !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+
+    .qa-block {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        margin-bottom: var(--item-margin) !important;
+        padding: var(--item-pad) !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        background: #fff;
+        border-radius: 4px;
+        box-sizing: border-box !important;
+    }
+
+    .q-line {
+        font-size: var(--q-font) !important;
+        font-weight: 700 !important;
+        margin-bottom: 2px !important;
+        color: #000000 !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .answer {
+        font-size: var(--doc-font) !important;
+        color: #0000cd !important;
+    }
+
+    .answer p {
+        margin: 0 0 3px 0 !important;
+    }
+
+    .answer ul, .answer ol {
+        margin: 2px 0 3px 16px !important;
+    }
+
+    .answer li {
+        margin-bottom: 1px !important;
+    }
+
+    pre {
+        break-inside: auto !important;
+        font-size: var(--code-font) !important;
+        line-height: 1.2 !important;
+        padding: 3px 6px !important;
+        margin: 3px 0 !important;
+        background: #f4f6fa !important;
+        border: 1px solid #c7d2fe !important;
+        border-left: 2.5px solid #0000cd !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+    }
+
+    code {
+        font-size: var(--code-font) !important;
+    }
+
+    table {
+        font-size: var(--code-font) !important;
+        margin: 3px 0 !important;
+    }
+
+    th, td {
+        padding: 2px 5px !important;
+    }
+
+    mjx-container {
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        font-size: 92% !important;
+    }
+
+    mjx-container > svg {
+        max-width: 100% !important;
+    }
+
+    /* ZERO GAP ACTIVE CLASS */
+    body.zero-gap-active .container {
+        --container-pad: 2px !important;
+        --col-gap: 3mm !important;
+        --item-margin: 2px !important;
+        --item-pad: 2px !important;
+    }
+
+    body.zero-gap-active .qa-block {
+        margin-bottom: 2px !important;
+        padding: 2px !important;
+        border-bottom: 0.5px solid #94a3b8 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+
+    body.zero-gap-active p {
+        margin: 0 0 2px 0 !important;
+    }
+
+    @media print {
+        @page {
+            size: var(--page-size);
+            margin: var(--page-margin) !important;
+        }
+        body {
+            background: #fff !important;
+        }
+        .paper-layout-bar {
+            display: none !important;
+        }
+        .container {
+            padding: 0 !important;
+        }
+    }
+
     </style>
 </head>
 
@@ -4154,6 +4298,43 @@ function switchPaperLayout(mode) {
 window.addEventListener('message', function(e) {
     if (e.data && e.data.type === 'SET_LAYOUT') {
         switchPaperLayout(e.data.mode);
+    }
+});
+</script>
+
+
+<script>
+function setCustomConfig(cfg) {
+    var root = document.documentElement;
+    var body = document.body;
+    
+    if (cfg.columns) {
+        root.style.setProperty('--col-count', cfg.columns);
+    }
+    if (cfg.fontSize) {
+        root.style.setProperty('--doc-font', cfg.fontSize + 'px');
+        root.style.setProperty('--q-font', (cfg.fontSize + 1) + 'px');
+        root.style.setProperty('--code-font', Math.max(7.5, cfg.fontSize - 2) + 'px');
+    }
+    if (cfg.colGap !== undefined) {
+        root.style.setProperty('--col-gap', cfg.colGap);
+    }
+    if (cfg.zeroGap) {
+        body.classList.add('zero-gap-active');
+    } else {
+        body.classList.remove('zero-gap-active');
+    }
+    if (cfg.orientation) {
+        root.style.setProperty('--page-size', 'A4 ' + cfg.orientation);
+    }
+    if (cfg.pageMargin) {
+        root.style.setProperty('--page-margin', cfg.pageMargin);
+    }
+}
+
+window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'APPLY_CUSTOM_CONFIG') {
+        setCustomConfig(e.data.config);
     }
 });
 </script>
