@@ -254,15 +254,18 @@
             </div>
         </div>
 
-        <div class="header-actions">
-            <button class="btn" onclick="printCurrentPaper()" title="Print currently active paper">
+                <div class="header-actions">
+            <button class="btn" style="background: #10b981; border-color: #059669; font-weight: 600;" onclick="download6in1PDF()" title="Download 6-pages-in-1-sheet PDF for current paper">
+                📥 6-in-1 PDF (6 Pages/Sheet)
+            </button>
+            <button class="btn" onclick="printCurrentPaper()" title="Print currently active paper (Ctrl + P)">
                 🖨️ Print Active
             </button>
             <button class="btn" onclick="openCurrentInNewTab()" title="Open currently active paper in new browser tab">
-                ↗ Open Separate Tab
+                ↗ Separate Tab
             </button>
             <button class="btn btn-primary" onclick="switchTab('multi')" title="View all 3 papers together side-by-side">
-                📑 View All 3 Together
+                📑 View All 3
             </button>
         </div>
     </header>
@@ -361,6 +364,16 @@
                 const url = fileMap[currentActive];
                 if (url) window.open(url, '_blank');
             }
+        }
+
+        function download6in1PDF() {
+            const pdfMap = {
+                'cc204': 'cc204_6in1.pdf',
+                'cc205': 'cc205_6in1.pdf',
+                'ec201': 'ec201_6in1.pdf'
+            };
+            const targetPdf = pdfMap[currentTab] || 'ec201_6in1.pdf';
+            window.open(targetPdf, '_blank');
         }
 
         function printCurrentPaper() {
