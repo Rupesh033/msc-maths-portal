@@ -535,19 +535,194 @@
         }
     }
 
+    
+    /* === Continuous Auto-Fill Engine (ZERO GAPS) === */
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background: #f8fafc;
+        color: #1e293b;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 4px 6px !important;
+        display: block !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Auto-fill all gaps: allow seamless page breaks */
+    .qa-block {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        margin: 0 0 4px 0 !important;
+        padding: 3px 4px !important;
+        border-bottom: 0.8px dashed #cbd5e1 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    .q-line {
+        font-weight: 700 !important;
+        color: #000000 !important;
+        margin: 0 0 2px 0 !important;
+        break-after: avoid !important;
+        page-break-after: avoid !important;
+    }
+
+    .answer {
+        color: #0000cd !important;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+    }
+
+    .answer p {
+        margin: 0 0 2px 0 !important;
+        break-inside: auto !important;
+    }
+
+    .answer ul, .answer ol {
+        margin: 2px 0 2px 14px !important;
+        break-inside: auto !important;
+    }
+
+    .answer li {
+        margin-bottom: 1px !important;
+        break-inside: auto !important;
+    }
+
+    pre {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        padding: 2px 5px !important;
+        margin: 2px 0 !important;
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        border-left: 2.5px solid #0000cd !important;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
+    }
+
+    code {
+        font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    table {
+        margin: 2px 0 !important;
+        border-collapse: collapse;
+        break-inside: auto !important;
+    }
+
+    th, td {
+        padding: 2px 4px !important;
+    }
+
+    mjx-container {
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        font-size: 90% !important;
+    }
+    mjx-container > svg {
+        max-width: 100% !important;
+    }
+
+    /* --- Layout Modes --- */
+    /* 1 in 1 (Book Reading) */
+    body.layout-1 .container {
+        max-width: 880px !important;
+        margin: 0 auto !important;
+        padding: 10px 16px !important;
+        column-count: 1 !important;
+        font-size: 13.5px !important;
+        line-height: 1.35 !important;
+    }
+    body.layout-1 .q-line { font-size: 14.5px !important; }
+    body.layout-1 pre { font-size: 11px !important; line-height: 1.25 !important; }
+
+    /* 2 in 1 (Dual Columns) */
+    body.layout-2 .container {
+        column-count: 2 !important;
+        column-gap: 5mm !important;
+        column-rule: 1px dashed #cbd5e1 !important;
+        font-size: 11.5px !important;
+        line-height: 1.3 !important;
+        padding: 4px 8px !important;
+    }
+    body.layout-2 .q-line { font-size: 12px !important; }
+    body.layout-2 pre { font-size: 9.5px !important; line-height: 1.2 !important; }
+
+    /* 4 in 1 (4-Up Compact) */
+    body.layout-4 .container {
+        column-count: 2 !important;
+        column-gap: 4mm !important;
+        column-rule: 1px dashed #cbd5e1 !important;
+        font-size: 10px !important;
+        line-height: 1.25 !important;
+        padding: 3px 6px !important;
+    }
+    body.layout-4 .q-line { font-size: 10.5px !important; }
+    body.layout-4 pre { font-size: 8.5px !important; line-height: 1.15 !important; }
+
+    /* 6 in 1 (6-Up Pocket Notes) */
+    body.layout-6 .container {
+        column-count: 3 !important;
+        column-gap: 3mm !important;
+        column-rule: 1px dashed #cbd5e1 !important;
+        font-size: 8.5px !important;
+        line-height: 1.2 !important;
+        padding: 2px 4px !important;
+    }
+    body.layout-6 .q-line { font-size: 9px !important; }
+    body.layout-6 pre { font-size: 7.5px !important; line-height: 1.12 !important; }
+
+    /* 9 in 1 (9-Up Ultra Pocket) */
+    body.layout-9 .container {
+        column-count: 3 !important;
+        column-gap: 2.5mm !important;
+        column-rule: 0.8px dashed #cbd5e1 !important;
+        font-size: 7.5px !important;
+        line-height: 1.15 !important;
+        padding: 2px !important;
+    }
+    body.layout-9 .q-line { font-size: 8px !important; }
+    body.layout-9 pre { font-size: 6.8px !important; line-height: 1.1 !important; }
+    body.layout-9 mjx-container { font-size: 80% !important; }
+
+    @media print {
+        body { background: #fff !important; }
+        .paper-layout-bar { display: none !important; }
+        .container { padding: 0 !important; }
+        @page { margin: 3.5mm !important; }
+        body.layout-1 @page { size: A4 portrait; margin: 6mm !important; }
+        body.layout-2 @page { size: A4 portrait; margin: 4mm !important; }
+        body.layout-4 @page { size: A4 portrait; margin: 3.5mm !important; }
+        body.layout-6 @page { size: A4 landscape; margin: 3.5mm !important; }
+        body.layout-9 @page { size: A4 landscape; margin: 3mm !important; }
+    }
+
     </style>
 </head>
 
 <body class="layout-1">
 
-    <div id="paper-layout-bar" class="paper-layout-bar">
-        <span class="bar-title">📐 Layout:</span>
-        <button class="lay-btn active" id="lay-btn-1" onclick="switchPaperLayout('1')">📄 1-in-1 (Normal)</button>
-        <button class="lay-btn" id="lay-btn-2" onclick="switchPaperLayout('2')">📑 2-in-1 (Dual)</button>
-        <button class="lay-btn" id="lay-btn-4" onclick="switchPaperLayout('4')">📑 4-in-1 (Compact)</button>
-        <button class="lay-btn" id="lay-btn-6" onclick="switchPaperLayout('6')">📑 6-in-1 (Pocket)</button>
-        <button class="lay-btn lay-print" onclick="window.print()">🖨️ Print</button>
+    
+    <div id="paper-layout-bar" class="paper-layout-bar" style="position: sticky; top: 0; z-index: 1000; background: #0f172a; color: #fff; padding: 5px 12px; display: flex; align-items: center; gap: 6px; font-family: sans-serif; font-size: 12px; border-bottom: 2px solid #3b82f6;">
+        <span style="font-weight: 700; color: #93c5fd; margin-right: 4px;">📐 LAYOUT:</span>
+        <button class="lay-btn active" id="lay-btn-1" onclick="switchPaperLayout('1')">📄 1-in-1</button>
+        <button class="lay-btn" id="lay-btn-2" onclick="switchPaperLayout('2')">📑 2-in-1</button>
+        <button class="lay-btn" id="lay-btn-4" onclick="switchPaperLayout('4')">📑 4-in-1</button>
+        <button class="lay-btn" id="lay-btn-6" onclick="switchPaperLayout('6')">📑 6-in-1</button>
+        <button class="lay-btn" id="lay-btn-9" onclick="switchPaperLayout('9')">📑 9-in-1</button>
+        <button class="lay-btn" style="margin-left: auto; background: #059669; border-color: #10b981;" onclick="window.print()">🖨️ Print</button>
     </div>
+
 
 
     <h1>CC-205 (CCMATH205) — DIFFERENTIAL GEOMETRY AND TENSOR ANALYSIS</h1>
