@@ -291,12 +291,12 @@
             display: block;
         }
 
-        /* Split / Multi View */
+        /* Split / Dual Multi View */
         .multi-view-container {
             display: none;
             width: 100%;
             height: 100%;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 4px;
             background: #94a3b8;
         }
@@ -343,7 +343,7 @@
         @media (max-width: 900px) {
             .multi-view-container {
                 grid-template-columns: 1fr;
-                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
             }
         }
     </style>
@@ -362,8 +362,8 @@
         </div>
 
         <div>
-            <button class="btn-ctrl btn-tab" onclick="switchTab('multi')" title="View all 3 papers together side-by-side">
-                📑 Split View (All 3 Papers)
+            <button class="btn-ctrl btn-tab" onclick="switchTab('multi')" title="View both papers side-by-side">
+                📑 Split View (Both Papers)
             </button>
         </div>
     </header>
@@ -403,7 +403,7 @@
                     <a href="javascript:void(0)" onclick="downloadPaperPDF('9in1')">📑 9-in-1 PDF (Ultra Pocket)</a>
                     <a href="javascript:void(0)" onclick="downloadPaperPDF('6in1')">📑 6-in-1 PDF (Pocket Print)</a>
                     <a href="javascript:void(0)" onclick="downloadPaperPDF('4in1')">📑 4-in-1 PDF (Compact Grid)</a>
-                    <a href="javascript:void(0)" onclick="downloadPaperPDF('compact')">📄 1-in-1 Full Paper PDF</a>
+                    <a href="javascript:void(0)" onclick="downloadPaperPDF('1in1')">📄 1-in-1 Full Paper PDF</a>
                 </div>
             </div>
             <button class="btn-ctrl btn-tab" onclick="openCurrentInNewTab()" title="Open active paper in separate browser tab">
@@ -422,34 +422,27 @@
             📄 CC-205
             <span class="tab-pill">Diff Geometry & Tensors</span>
         </button>
-        <button class="tab-btn" id="tab-btn-ec201" onclick="switchTab('ec201')">
-            💻 EC-201
-            <span class="tab-pill">C & MATLAB</span>
-        </button>
         <button class="tab-btn" id="tab-btn-multi" onclick="switchTab('multi')">
-            🗂️ Split View (All 3 Together)
+            🗂️ Split View (Both Together)
         </button>
     </nav>
 
     <!-- Main Workspace -->
     <main class="main-container">
         <!-- Tab 1: CC-204 -->
-        <iframe id="iframe-cc204" class="iframe-view active" src="paper cc-204.html"></iframe>
+        <iframe id="iframe-cc204" class="iframe-view active" src="cc-204.html"></iframe>
 
         <!-- Tab 2: CC-205 -->
         <iframe id="iframe-cc205" class="iframe-view" src="cc-205.html"></iframe>
 
-        <!-- Tab 3: EC-201 -->
-        <iframe id="iframe-ec201" class="iframe-view" src="ec201.html"></iframe>
-
-        <!-- Tab 4: Side-by-Side Multi View -->
+        <!-- Tab 3: Side-by-Side Multi View -->
         <div id="multi-view" class="multi-view-container">
             <div class="multi-col">
                 <div class="multi-header">
                     <span>CC-204: ODE</span>
-                    <a href="paper cc-204.html" target="_blank">Full Page ↗</a>
+                    <a href="cc-204.html" target="_blank">Full Page ↗</a>
                 </div>
-                <iframe class="multi-iframe" src="paper cc-204.html"></iframe>
+                <iframe class="multi-iframe" src="cc-204.html"></iframe>
             </div>
             <div class="multi-col">
                 <div class="multi-header">
@@ -457,13 +450,6 @@
                     <a href="cc-205.html" target="_blank">Full Page ↗</a>
                 </div>
                 <iframe class="multi-iframe" src="cc-205.html"></iframe>
-            </div>
-            <div class="multi-col">
-                <div class="multi-header">
-                    <span>EC-201: C & MATLAB</span>
-                    <a href="ec201.html" target="_blank">Full Page ↗</a>
-                </div>
-                <iframe class="multi-iframe" src="ec201.html"></iframe>
             </div>
         </div>
     </main>
@@ -473,9 +459,8 @@
         let currentLayout = '1';
 
         const fileMap = {
-            'cc204': 'paper cc-204.html',
-            'cc205': 'cc-205.html',
-            'ec201': 'ec201.html'
+            'cc204': 'cc-204.html',
+            'cc205': 'cc-205.html'
         };
 
         function switchTab(tabId) {
@@ -512,17 +497,31 @@
             const pBtn = document.getElementById('btn-preset-' + num);
             if (pBtn) pBtn.classList.add('active');
 
-            // Send layout message to active iframes
-            ['iframe-cc204', 'iframe-cc205', 'iframe-ec201'].forEach(id => {
-                const frame = document.getElementById(id);
-                if (frame && frame.contentWindow) {
-                    frame.contentWindow.postMessage({
-                        type: 'SET_LAYOUT',
-                        mode: num
-                    }, '*');
-                }
+            // Send layout message to all iframes
+            document.querySelectorAll('iframe').forEach(frame => {
+                try {
+                    if (frame.contentWindow) {
+                        frame.contentWindow.postMessage({
+                            type: 'SET_LAYOUT',
+                            mode: num
+                        }, '*');
+                    }
+                } catch(e) {}
             });
         }
+
+        // Auto sync layout when any iframe loads
+        window.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('iframe').forEach(frame => {
+                frame.addEventListener('load', function() {
+                    try {
+                        if (frame.contentWindow) {
+                            frame.contentWindow.postMessage({ type: 'SET_LAYOUT', mode: currentLayout }, '*');
+                        }
+                    } catch(e) {}
+                });
+            });
+        });
 
         function toggleDownloadMenu() {
             const drop = document.getElementById('download-dropdown');
@@ -540,12 +539,11 @@
 
         function downloadPaperPDF(type) {
             const map = {
-                'cc204': { '9in1': 'cc204_9in1.pdf', '6in1': 'cc204_6in1.pdf', '4in1': 'cc204_4in1.pdf', 'compact': 'cc204_base_compact.pdf' },
-                'cc205': { '9in1': 'cc205_9in1.pdf', '6in1': 'cc205_6in1.pdf', '4in1': 'cc205_4in1.pdf', 'compact': 'cc205_base_compact.pdf' },
-                'ec201': { '9in1': 'ec201_9in1.pdf', '6in1': 'ec201_6in1.pdf', '4in1': 'ec201_4in1.pdf', 'compact': 'ec201_base_compact.pdf' }
+                'cc204': { '9in1': 'cc204_9in1.pdf', '6in1': 'cc204_6in1.pdf', '4in1': 'cc204_4in1.pdf', '1in1': 'cc204_1in1.pdf' },
+                'cc205': { '9in1': 'cc205_9in1.pdf', '6in1': 'cc205_6in1.pdf', '4in1': 'cc205_4in1.pdf', '1in1': 'cc205_1in1.pdf' }
             };
-            const paper = (currentActive === 'multi') ? 'ec201' : currentActive;
-            const targetPdf = (map[paper] && map[paper][type]) || 'ec201_9in1.pdf';
+            const paper = (currentActive === 'multi') ? 'cc204' : currentActive;
+            const targetPdf = (map[paper] && map[paper][type]) || 'cc204_9in1.pdf';
             window.open(targetPdf, '_blank');
             const drop = document.getElementById('download-dropdown');
             if (drop) drop.classList.remove('show');
@@ -553,9 +551,8 @@
 
         function openCurrentInNewTab() {
             if (currentActive === 'multi') {
-                window.open('paper cc-204.html', '_blank');
+                window.open('cc-204.html', '_blank');
                 window.open('cc-205.html', '_blank');
-                window.open('ec201.html', '_blank');
             } else {
                 const url = fileMap[currentActive];
                 if (url) window.open(url, '_blank');
@@ -564,13 +561,16 @@
 
         function printCurrentPaper() {
             if (currentActive === 'multi') {
-                alert('Please select a specific paper tab (CC-204, CC-205, or EC-201) to print.');
+                alert('Please select CC-204 or CC-205 tab to print.');
                 return;
             }
             const iframe = document.getElementById('iframe-' + currentActive);
             if (iframe && iframe.contentWindow) {
-                iframe.contentWindow.focus();
-                iframe.contentWindow.print();
+                iframe.contentWindow.postMessage({ type: 'SET_LAYOUT', mode: currentLayout }, '*');
+                setTimeout(function() {
+                    iframe.contentWindow.focus();
+                    iframe.contentWindow.print();
+                }, 150);
             }
         }
     </script>
